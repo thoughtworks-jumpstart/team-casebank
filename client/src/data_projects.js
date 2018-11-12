@@ -90,3 +90,17 @@
     tag: "Delivery App"
   }
  ];
+
+ function getProject(){
+   return projects;
+ }
+
+ function getProjectById(projectId){
+   return projects.find(project => project._id === projectId)
+ }
+
+ function getProjectByTS(techstack){
+  return projects.find(project => project.techstack === techstack)
+}
+
+ export {getProject, getProjectById,getProjectByTS} 
