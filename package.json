@@ -1,0 +1,20 @@
+{
+  "name": "casebank-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "concurrently \"cd client&&npm install\" \"cd server&&npm install\"",
+    "start:dev:client": "cd client&&npm start",
+    "start:dev:server": "cd server&&npm run dev",
+    "start": "concurrently \"npm run start:dev:client\" \"npm run start:dev:server\"",
+    "start:prod:server": "cd server&&npm run start",
+    "build": "cd client&&npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^4.0.1"
+  }
+}
