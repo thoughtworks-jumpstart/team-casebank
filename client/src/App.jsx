@@ -14,11 +14,13 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/search" exact component={Search} />
-          <Route path="/editor" exact component={Editor} />
-        </Switch>
+        <div className="container-fluid">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/search" exact component={Search} />
+            <Route path="/editor" exact component={Editor} />
+          </Switch>
+        </div>
       </div>
     );
   }
