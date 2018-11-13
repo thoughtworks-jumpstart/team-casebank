@@ -3,9 +3,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
-import App from "./App.jsx";
-import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "font-awesome/css/font-awesome.css";
+import * as serviceWorker from "./serviceWorker";
+import App from "./App.jsx";
 import Details from "./components/ViewCase/Details";
 
 ReactDOM.render(
