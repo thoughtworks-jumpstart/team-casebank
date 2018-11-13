@@ -17,14 +17,12 @@ export default class Search extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <SearchOptions filteredResults={this.filteredResults} />
-          </div>
-          <div className="col-8">
-            <SearchResults resultList={this.state.resultList} />
-          </div>
+      <div className="row">
+        <div className="col-2 ml-4">
+          <SearchOptions filteredResults={this.filteredResults} />
+        </div>
+        <div className="col mr-4">
+          <SearchResults resultList={this.state.resultList} />
         </div>
       </div>
     );
