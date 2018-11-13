@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { getBackEndData } from "./handler/case_data_handler";
 import ResultList from "./components/search/searchResults";
-import { BrowserRouter as Router } from "react-router-dom";
 
 class Main extends Component {
   state = {
@@ -77,9 +76,7 @@ class Main extends Component {
     return (
       <div>
         <h1>{this.state.results}</h1>
-        <Router>
-          <ResultList resultList={this.state.listing} />
-        </Router>
+        <ResultList resultList={this.state.listing} />
       </div>
     );
   }
