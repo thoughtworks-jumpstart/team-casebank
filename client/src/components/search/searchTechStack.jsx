@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { getProject } from "../data_projects";
-import { getTechstack } from "../data_techstacks";
+import { getProject } from "../../data_projects";
+import { getTechstack } from "../../data_techstacks";
 
 class SearchTechStack extends Component {
   constructor(props) {
@@ -8,7 +8,7 @@ class SearchTechStack extends Component {
     this.state = {
       project: getProject(),
       techstack: getTechstack(),
-      value: "techstack"
+      value: "all"
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,7 +20,7 @@ class SearchTechStack extends Component {
   }
 
   getProjectByTechStack(techstack) {
-    return techstack !== "techstack"
+    return techstack !== "all"
       ? this.state.project.filter(project =>
           project.techstack.find(item => item === techstack)
         )
@@ -31,20 +31,23 @@ class SearchTechStack extends Component {
     const filteredData = this.getProjectByTechStack(this.state.value);
 
     const display = filteredData.map(project => {
-      return <h1>Project: {project.name}</h1>;
+      return <h1 key={project.name}>Project: {project.name}</h1>;
     });
 
     const listTechs = this.state.techstack.map(tech => {
-      return <option>{tech}</option>;
+      return <option key={tech}>{tech}</option>;
     });
 
     return (
       <div>
+        <span>
+          <strong>Techstack: </strong>
+        </span>
         <select name="techstack" id="techstack" onChange={this.handleChange}>
-          <option>Select</option>
+          <option>All</option>
           {listTechs}
         </select>
-        {display}
+        <div>{display}</div>
       </div>
     );
   }
