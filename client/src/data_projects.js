@@ -1,4 +1,4 @@
- const projects = [
+const projects = [
   {
     _id: "asd2390384jkbudis",
     name: "Sleep-app",
@@ -89,18 +89,18 @@
     members: ["Daniel Done", "Mary Lamb", "Vlad Russ"],
     tag: "Delivery App"
   }
- ];
+];
 
- function getProject(){
-   return projects;
- }
-
- function getProjectById(projectId){
-   return projects.find(project => project._id === projectId)
- }
-
- function getProjectByTS(techstack){
-  return projects.find(project => project.techstack === techstack)
+function getProject() {
+  return projects;
 }
 
- export {getProject, getProjectById,getProjectByTS} 
+function getProjectById(projectId) {
+  return projects.find(project => project._id === projectId);
+}
+
+function getProjectByTS(techstack) {
+  return projects.find(project => project.techstack === techstack);
+}
+
+export { getProject, getProjectById, getProjectByTS };
