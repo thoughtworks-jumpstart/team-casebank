@@ -9,7 +9,17 @@ describe("Renders Case component", () => {
     expect(getByText(/Name/).textContent).toContain("Name");
   });
 
-  it("Should render property name", () => {
+  it("Should render techstack property name", () => {
     expect(getByText(/techstack/).textContent).toContain("techstack");
+  });
+
+  it("Should render nda property name", () => {
+    expect(getByText(/nda/).textContent).toContain("nda");
+  });
+
+  it("Should render main_tw_contact property name", () => {
+    expect(getByText(/main_tw_contact/).textContent).toContain(
+      "main_tw_contact"
+    );
   });
 });

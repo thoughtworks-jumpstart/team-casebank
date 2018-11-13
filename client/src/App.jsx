@@ -8,19 +8,19 @@ import NavBar from "./components/navBar/navBar";
 import Home from "./components/home/home";
 import Search from "./components/search/search";
 import Editor from "./components/Editor/Editor";
+import Details from "./components/ViewCase/Details";
 
 class App extends Component {
   render() {
     return (
       <div>
         <NavBar />
-        <div className="container-fluid">
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/search" exact component={Search} />
-            <Route path="/editor" exact component={Editor} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/search" exact component={Search} />
+          <Route path="/editor" exact component={Editor} />
+          <Route path="/details" exact component={Details} />
+        </Switch>
       </div>
     );
   }

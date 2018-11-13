@@ -4,7 +4,7 @@ const projects = [
     name: "Sleep-app",
     client: "Sleep Well Inc",
     nda: "yes",
-    description: "To create an app to track sleep data.",
+    description: `To create an app to sleep well`,
     main_tw_contact: "John Mayer",
     techstack: ["javascript", "react", "mongoose"],
     year: 2018,
