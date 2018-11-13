@@ -5,7 +5,7 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { Link } from "react-router-dom";
 
-export default class ResultList extends Component {
+export default class SearchResults extends Component {
   state = {};
 
   render() {

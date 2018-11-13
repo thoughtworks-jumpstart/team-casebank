@@ -31,7 +31,7 @@ class SearchTechStack extends Component {
     const filteredData = this.getProjectByTechStack(this.state.value);
 
     const display = filteredData.map(project => {
-      return <h1 key={project.name}>Project: {project.name}</h1>;
+      return <h5 key={project.name}>Project: {project.name}</h5>;
     });
 
     const listTechs = this.state.techstack.map(tech => {

@@ -4,8 +4,10 @@ import { getUser, getUserById } from "./data_users.js";
 import { getProject, getProjectById } from "./data_projects.js";
 import "./App.css";
 import Main from "./main";
-import SearchTechStack from "./components/search/searchTechStack";
 import NavBar from "./components/navBar/navBar";
+import Home from "./components/home/home";
+import Search from "./components/search/search";
+import Editor from "./components/Editor/Editor";
 
 class App extends Component {
   render() {
@@ -13,12 +15,10 @@ class App extends Component {
       <div>
         <NavBar />
         <Switch>
-          <Route path="/" exact component={Main} />
-          <Route path="/search" exact component={Main} />
-          <Route path="/editor" exact component={Main} />
+          <Route path="/" exact component={Home} />
+          <Route path="/search" exact component={Search} />
+          <Route path="/editor" exact component={Editor} />
         </Switch>
-        <SearchTechStack />
-        <Main />
       </div>
     );
   }
