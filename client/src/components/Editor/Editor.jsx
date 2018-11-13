@@ -20,6 +20,11 @@ class RichTextEditor extends Component {
         options={{
           height: 350,
           dialogsInBody: true,
+          popover: {
+            image: [],
+            link: [],
+            air: []
+          },
           toolbar: [
             ["style", ["style"]],
             ["font", ["bold", "underline", "clear"]],
