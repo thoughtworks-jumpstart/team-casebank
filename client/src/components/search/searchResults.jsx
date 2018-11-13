@@ -6,9 +6,10 @@ import "react-table/react-table.css";
 import { Link } from "react-router-dom";
 
 export default class SearchResults extends Component {
-  state = {};
+  // state = {};
 
   render() {
+    console.log(this.props.resultList);
     return (
       <div>
         <ReactTable

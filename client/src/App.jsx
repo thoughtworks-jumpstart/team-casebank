@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import { getUser, getUserById } from "./data_users.js";
-import { getProject, getProjectById } from "./data_projects.js";
 import "./App.css";
-import Main from "./main";
 import NavBar from "./components/navBar/navBar";
 import Home from "./components/home/home";
 import Search from "./components/search/search";

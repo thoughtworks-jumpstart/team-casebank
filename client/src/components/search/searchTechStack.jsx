@@ -17,6 +17,10 @@ class SearchTechStack extends Component {
 
   handleChange(event) {
     this.setState({ value: event.target.value.toLowerCase() });
+    const filteredData = this.getProjectByTechStack(
+      event.target.value.toLowerCase()
+    );
+    this.props.combinedResult(filteredData);
   }
 
   getProjectByTechStack(techstack) {
@@ -41,9 +45,14 @@ class SearchTechStack extends Component {
     return (
       <div>
         <span>
-          <strong>Techstack: </strong>
+          <label>Techstack </label>
         </span>
-        <select name="techstack" id="techstack" onChange={this.handleChange}>
+        <select
+          name="techstack"
+          id="techstack"
+          onChange={this.handleChange}
+          className="custom-select"
+        >
           <option>All</option>
           {listTechs}
         </select>
