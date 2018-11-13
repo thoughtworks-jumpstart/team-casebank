@@ -34,15 +34,14 @@ const users = [
     techstack: ["Java", "c++"],
     projects: ["freshfood", "beverage"]
   }
- ];
+];
 
-function getUser(){
+function getUser() {
   return users;
 }
 
-function getUserById(userId){
-  return users.find(user => user._id === userId)
+function getUserById(userId) {
+  return users.find(user => user._id === userId);
 }
 
-export {getUser, getUserById} 
- 
+export { getUser, getUserById };

@@ -6,7 +6,7 @@ const projects = [
     nda: "yes",
     description: "To create an app to track sleep data.",
     main_tw_contact: "John Mayer",
-    techstack: ["javascript", "React", "Mongoose"],
+    techstack: ["javascript", "react", "mongoose"],
     year: 2018,
     status: "Ongoing",
     region: "Southeast Asia",
@@ -42,7 +42,7 @@ const projects = [
     nda: "yes",
     description: "To create an app to cater for flight booking",
     main_tw_contact: "George",
-    techstack: ["python", "SQL"],
+    techstack: ["python", "sql"],
     year: 2017,
     status: "Completed",
     region: "Asia",
@@ -60,7 +60,7 @@ const projects = [
     description:
       "Savour Superthin Pizzeria's signature pan pizzas with scrumptious ingredients, or choose from a wide range of baked rice, pasta and Italian dishes. Try the irresistible Sweet ‘N’ Spicy Drumlets or simply order the SUPER Platter that features all your favourite sides on one plate. Enjoy Superthin's affordable food offerings!",
     main_tw_contact: "John Mayer",
-    techstack: ["Ruby", "Rails", "NoSQL"],
+    techstack: ["ruby", "rails", "nosql"],
     year: 2016,
     status: "Deployed",
     region: "China",
@@ -78,7 +78,7 @@ const projects = [
     description:
       "FreshFood People Corp is an American multinational retail corporation that operates a chain of hypermarkets, discount department stores, and grocery stores.Headquartered in Bentonville, Arkansas, the company was founded by Sam Walton in 1962 and incorporated on October 31, 1969. It also owns and operates Sam's Club retail warehouses. As of January 31, 2018, FreshFood People Corp has 11,718 stores and clubs in 28 countries, operating under 59 different names.The company operates under the name FreshFood People in the United States and Canada, as Fresh de México y Centroamérica in Mexico and Central America, as FreshFood in the United Kingdom, as the Tabemono Group in Japan, and as Cheapest in India. It has wholly owned operations in Argentina, Chile, Brazil, Canada, and South Africa.",
     main_tw_contact: "Daniel Done",
-    techstack: ["Javascript", "React"],
+    techstack: ["javascript", "react"],
     year: 2018,
     status: "Ongoing",
     region: "United States",
@@ -99,8 +99,4 @@ function getProjectById(projectId) {
   return projects.find(project => project._id === projectId);
 }
 
-function getProjectByTS(techstack) {
-  return projects.find(project => project.techstack === techstack);
-}
-
-export { getProject, getProjectById, getProjectByTS };
+export { getProject, getProjectById };
