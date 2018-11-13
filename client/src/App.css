@@ -30,3 +30,11 @@
     transform: rotate(360deg);
   }
 }
+
+.resultListingHeader {
+  text-align: left;
+}
+
+.resultListingWrap {
+  white-space: unset;
+}
