@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import SearchOptions from "./searchOptions";
-import SearchResults from "./searchResults";
-import { getProjects } from "../../data_projects";
+import SearchOptions from "./SearchOptions";
+import SearchResults from "./SearchResults";
+import { getProjects } from "../../data/projectService";
 
 export default class Search extends Component {
   state = {

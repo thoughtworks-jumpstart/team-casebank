@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getBackEndData } from "./handler/case_data_handler";
-import ResultList from "./components/search/searchResults";
+import ResultList from "./components/Search/SearchResults";
 
 class Main extends Component {
   state = {

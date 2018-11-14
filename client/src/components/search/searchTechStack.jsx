@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { getProjects } from "../../data_projects";
-import { getTechstack } from "../../data_techstacks";
+import { getProjects } from "../../data/projectService";
+import { getTechstack } from "../../data/techStackService";
 
 const _ = require("lodash");
 class SearchTechStack extends Component {

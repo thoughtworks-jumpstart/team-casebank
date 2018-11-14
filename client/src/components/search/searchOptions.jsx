@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SearchTechStack from "./searchTechStack";
+import SearchTechStack from "./SearchTechStack";
 
 export default class SearchOptions extends Component {
   render() {

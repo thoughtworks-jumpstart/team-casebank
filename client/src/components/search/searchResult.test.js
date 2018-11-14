@@ -1,4 +1,4 @@
-import SearchResults from "./searchResults";
+import SearchResults from "./SearchResults";
 import { render } from "react-testing-library";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";

@@ -1,4 +1,4 @@
-import { getProjects } from "../../data_projects";
+import { getProjects } from "../../data/projectService";
 import React, { Component } from "react";
 import CaseProperties from "./CaseProperties";
 import CaseDetails from "./CaseDetails";

@@ -1,7 +1,7 @@
 import Details from "./Details";
 import { render } from "react-testing-library";
 import React from "react";
-import { getProjects } from "../../data_projects";
+import { getProjects } from "../../data/projectService";
 
 describe("Renders Case component", () => {
   const proj = getProjects();

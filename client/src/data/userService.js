@@ -36,7 +36,7 @@ const users = [
   }
 ];
 
-function getUser() {
+function getUsers() {
   return users;
 }
 
@@ -44,4 +44,4 @@ function getUserById(userId) {
   return users.find(user => user._id === userId);
 }
 
-export { getUser, getUserById };
+export { getUsers, getUserById };

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import NavBar from "./components/navBar/navBar";
-import Home from "./components/home/home";
-import Search from "./components/search/search";
+import NavBar from "./components/NavBar/NavBar";
+import Home from "./components/Home/Home";
+import Search from "./components/Search/Search";
 import Editor from "./components/Editor/Editor";
 import Details from "./components/ViewCase/Details";
 
