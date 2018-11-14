@@ -6,14 +6,17 @@ import Title from "./Title";
 
 export default class Details extends Component {
   componentDidMount() {}
+
+  searchById = id => {
+    const proj = getProject().filter(element => {
+      return element._id === id;
+    });
+    return proj[0];
+  };
   render() {
-    let properties = { ...getProject()[0] };
+    let properties = this.searchById(this.props.id);
     let description = { ...properties };
     let title = { client: description.client, name: description.name };
-    delete properties.description;
-    delete properties._id;
-    delete properties.client;
-    delete properties.name;
     return (
       <div className="container">
         <div className="row text-center">

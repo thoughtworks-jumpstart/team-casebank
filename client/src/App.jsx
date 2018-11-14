@@ -16,7 +16,13 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/search" exact component={Search} />
           <Route path="/editor" exact component={Editor} />
-          <Route path="/details" exact component={Details} />
+          <Route
+            path="/results/details/:id"
+            exact
+            render={props => {
+              return <Details id={props.match.params.id} />;
+            }}
+          />
         </Switch>
       </div>
     );

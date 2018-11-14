@@ -7,7 +7,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.css";
 import * as serviceWorker from "./serviceWorker";
 import App from "./App.jsx";
-import Details from "./components/ViewCase/Details";
 
 ReactDOM.render(
   <Router>
