@@ -12,7 +12,7 @@ export default function CaseProperties({ properties }) {
             properties[property].map((string, index) => (
               <h6
                 className="text-danger font-weight-normal text-capitalize"
-                key="index"
+                key={index}
               >
                 {string}
               </h6>

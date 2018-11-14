@@ -1,9 +1,11 @@
 import Details from "./Details";
 import { render } from "react-testing-library";
 import React from "react";
+import { getProject } from "../../data_projects";
 
 describe("Renders Case component", () => {
-  const { getByText } = render(<Details />);
+  const proj = getProject();
+  const { getByText } = render(<Details id={proj[0]._id} />);
   it("should render the clients and project name", () => {
     expect(getByText(/Client/).textContent).toContain("Client");
     expect(getByText(/Name/).textContent).toContain("Name");
