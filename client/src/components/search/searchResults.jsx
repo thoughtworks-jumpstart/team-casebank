@@ -22,7 +22,10 @@ export default class SearchResults extends Component {
                   Header: <div className="resultListingHeader">Project</div>,
                   accessor: "name",
                   Cell: row => (
-                    <Link to={`/results/details/${row.original._id}`}>
+                    <Link
+                      to={`/results/details/${row.original._id}`}
+                      target="_blank"
+                    >
                       {row.original.name}
                     </Link>
                   )
