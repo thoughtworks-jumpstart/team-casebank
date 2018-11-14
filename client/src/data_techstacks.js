@@ -5,8 +5,8 @@ const techstacks = [
   "mongoose",
   "rails",
   "python",
-  "sql",
-  "nosql"
+  "SQL",
+  "noSQL"
 ];
 
 export const getTechstack = () => {

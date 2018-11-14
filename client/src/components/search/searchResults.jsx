@@ -9,7 +9,6 @@ export default class SearchResults extends Component {
   // state = {};
 
   render() {
-    console.log(this.props.resultList);
     return (
       <div>
         <ReactTable

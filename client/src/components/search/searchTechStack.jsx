@@ -2,24 +2,21 @@ import React, { Component } from "react";
 import { getProject } from "../../data_projects";
 import { getTechstack } from "../../data_techstacks";
 
+const _ = require("lodash");
 class SearchTechStack extends Component {
   constructor(props) {
     super(props);
     this.state = {
       project: getProject(),
-      techstack: getTechstack(),
-      value: "all"
+      techstack: ["all", ...getTechstack()]
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.getProjectByTechStack = this.getProjectByTechStack.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value.toLowerCase() });
-    const filteredData = this.getProjectByTechStack(
-      event.target.value.toLowerCase()
-    );
+  handleChange(tech) {
+    const filteredData = this.getProjectByTechStack(tech);
     this.props.combinedResult(filteredData);
   }
 
@@ -32,31 +29,36 @@ class SearchTechStack extends Component {
   }
 
   render() {
-    const filteredData = this.getProjectByTechStack(this.state.value);
-
-    const display = filteredData.map(project => {
-      return <h5 key={project.name}>Project: {project.name}</h5>;
-    });
-
     const listTechs = this.state.techstack.map(tech => {
-      return <option key={tech}>{tech}</option>;
+      return (
+        <button
+          onClick={() => {
+            this.handleChange(tech);
+          }}
+          className="dropdown-item"
+          href="#"
+          key={tech}
+        >
+          {_.startCase(tech)}
+        </button>
+      );
     });
 
     return (
-      <div>
-        <span>
-          <label>Techstack </label>
-        </span>
-        <select
-          name="techstack"
-          id="techstack"
-          onChange={this.handleChange}
-          className="custom-select"
+      <div className="dropdown">
+        <button
+          className="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
         >
-          <option>All</option>
+          Techstack
+        </button>
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
           {listTechs}
-        </select>
-        <div>{display}</div>
+        </div>
       </div>
     );
   }

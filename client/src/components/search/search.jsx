@@ -11,7 +11,6 @@ export default class Search extends Component {
   }
 
   filteredResults = filtered => {
-    console.log(filtered);
     this.setState({ resultList: filtered });
   };
 
