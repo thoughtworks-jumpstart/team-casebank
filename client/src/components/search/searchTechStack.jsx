@@ -1,48 +1,15 @@
 import React, { Component } from "react";
-import { getProject } from "../../data_projects";
+import { getProjects } from "../../data_projects";
 import { getTechstack } from "../../data_techstacks";
 
 const _ = require("lodash");
 class SearchTechStack extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      project: getProject(),
-      techstack: ["all", ...getTechstack()]
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.getProjectByTechStack = this.getProjectByTechStack.bind(this);
-  }
-
-  handleChange(tech) {
-    const filteredData = this.getProjectByTechStack(tech);
-    this.props.combinedResult(filteredData);
-  }
-
-  getProjectByTechStack(techstack) {
-    return techstack !== "all"
-      ? this.state.project.filter(project =>
-          project.techstack.find(item => item === techstack)
-        )
-      : this.state.project;
-  }
+  state = {
+    techstack: ["All", ...getTechstack().map(tech => _.startCase(tech))]
+  };
 
   render() {
-    const listTechs = this.state.techstack.map(tech => {
-      return (
-        <button
-          onClick={() => {
-            this.handleChange(tech);
-          }}
-          className="dropdown-item"
-          href="#"
-          key={tech}
-        >
-          {_.startCase(tech)}
-        </button>
-      );
-    });
+    const { onClick, selectedOptions } = this.props;
 
     return (
       <div className="dropdown">
@@ -54,10 +21,18 @@ class SearchTechStack extends Component {
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Techstack
+          Techstack: {selectedOptions}
         </button>
         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          {listTechs}
+          {this.state.techstack.map(tech => (
+            <button
+              onClick={() => onClick(tech)}
+              className="dropdown-item"
+              key={tech}
+            >
+              {tech}
+            </button>
+          ))}
         </div>
       </div>
     );

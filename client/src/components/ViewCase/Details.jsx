@@ -1,4 +1,4 @@
-import { getProject } from "../../data_projects";
+import { getProjects } from "../../data_projects";
 import React, { Component } from "react";
 import CaseProperties from "./CaseProperties";
 import CaseDetails from "./CaseDetails";
@@ -8,7 +8,7 @@ export default class Details extends Component {
   componentDidMount() {}
 
   searchById = id => {
-    const proj = getProject().filter(element => {
+    const proj = getProjects().filter(element => {
       return element._id === id;
     });
     return proj[0];

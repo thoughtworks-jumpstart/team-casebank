@@ -91,7 +91,7 @@ const projects = [
   }
 ];
 
-function getProject() {
+function getProjects() {
   return projects;
 }
 
@@ -99,4 +99,4 @@ function getProjectById(projectId) {
   return projects.find(project => project._id === projectId);
 }
 
-export { getProject, getProjectById };
+export { getProjects, getProjectById };
