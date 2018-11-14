@@ -20,6 +20,7 @@ export default class SearchResults extends Component {
               columns: [
                 {
                   Header: <div className="resultListingHeader">Project</div>,
+                  accessor: "name",
                   Cell: row => (
                     <Link to={`/results/details/${row.original._id}`}>
                       {row.original.name}
