@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchOptions from "./SearchOptions";
 import SearchResults from "./SearchResults";
+import SearchCriteria from "./SearchCriteria";
 import { getProjects } from "../../data/projectService";
 
 export default class Search extends Component {
@@ -32,8 +33,18 @@ export default class Search extends Component {
   render() {
     const { selectedOptions, resultList } = this.state;
     return (
+      <div>
+        <SearchCriteria />
+      </div>
+    );
+  }
+}
+
+/**
+ * 
+ * 
       <div className="row">
-        <div className="col-2 ml-4">
+        <div className="col ml-4">
           <SearchOptions
             onClick={this.handleSelectOption}
             selectedOptions={selectedOptions}
@@ -43,6 +54,4 @@ export default class Search extends Component {
           <SearchResults resultList={resultList} />
         </div>
       </div>
-    );
-  }
-}
+ */
