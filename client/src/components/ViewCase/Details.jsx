@@ -18,13 +18,13 @@ export default class Details extends Component {
     let description = { ...properties };
     let title = { client: description.client, name: description.name };
     return (
-      <div className="container">
+      <div className="container m-4">
         <div className="row text-center">
-          <div className="col p-4">
+          <div className="col">
             <Title properties={title} />
           </div>
         </div>
-        <div className="row">
+        <div className="row m-4">
           <div className="col-3">
             <CaseProperties properties={properties} />
           </div>
