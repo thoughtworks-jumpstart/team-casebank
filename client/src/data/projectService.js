@@ -182,7 +182,7 @@ const projects = [
     description:
       "Sembcorp Marine Limited SGX: S51 is part of Sembcorp Industries, an Asian company based in Singapore. It is listed on the Singapore Stock Exchange. The current President and CEO of Sembcorp Marine is Mr Wong Weng Sun",
     main_tw_contact: "Wong Weng Sun",
-    techstack: ["jQuery", "Swift"],
+    techstack: ["jQuery", "C++"],
     year: 2000,
     status: "Completed",
     region: "Asia",
