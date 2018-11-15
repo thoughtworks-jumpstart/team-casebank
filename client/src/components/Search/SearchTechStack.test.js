@@ -8,7 +8,7 @@ describe("Renders dropdown menu for techs", () => {
     const allItems = container.querySelectorAll(".dropdown-item");
     const itemValues = Array.from(allItems).map(item => item.textContent);
 
-    expect(allItems.length).toBe(9);
+    expect(allItems.length).toBe(16);
     expect(itemValues).toContain("NoSQL");
     expect(itemValues).toContain("Javascript");
     expect(itemValues).toContain("All");
@@ -22,7 +22,7 @@ describe("Renders dropdown menu for techs", () => {
     fireEvent.click(secondItem);
 
     expect(handleSubmit).toHaveBeenCalledTimes(1);
-    expect(handleSubmit).toHaveBeenCalledWith("Javascript");
+    expect(handleSubmit).toHaveBeenCalledWith("C");
   });
 
   it("should display 'Techstack: All' on first load", () => {

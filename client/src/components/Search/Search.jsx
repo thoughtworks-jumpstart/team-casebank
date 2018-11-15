@@ -18,10 +18,11 @@ export default class Search extends Component {
   }
 
   handleSelectOption = option => {
-    console.log("In handle select", option);
     if (option !== "All") {
       const filtered = this.state.project.filter(project =>
-        project.techstack.find(item => item === option.toLowerCase())
+        project.techstack.find(
+          item => item.toLowerCase() === option.toLowerCase()
+        )
       );
       this.setState({ resultList: filtered });
     } else {
