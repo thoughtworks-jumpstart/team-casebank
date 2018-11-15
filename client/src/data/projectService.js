@@ -110,7 +110,7 @@ const projects = [
     description:
       "Noble Group Limited is a commodities trader across a range of industrial and energy products. The company is incorporated in Bermuda and is listed in Singapore. Noble is in financial distress after defaulting on its financial obligations. ",
     main_tw_contact: "Richard Samuel",
-    techstack: ["GraphQL", "Pearl"],
+    techstack: ["GraphQL", "Perl"],
     year: 2017,
     status: "Completed",
     region: "Asia",
@@ -128,7 +128,7 @@ const projects = [
     description:
       "A Singapore-based global company headquartered in Jurong East, Singapore. The principal activities of the company and its subsidiaries consist of the design, manufacture and distribution of digitized sound and video boards, computers and related multimedia, and personal digital entertainment products.",
     main_tw_contact: "Sim Wong Hoo",
-    techstack: ["PHP", "nodejs"],
+    techstack: ["PHP", "Nodejs"],
     year: 2017,
     status: "Completed",
     region: "Asia",
