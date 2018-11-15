@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { toggle } from "../../utils/toggle";
 
 export default class NavBar extends Component {
   render() {
@@ -31,11 +32,13 @@ export default class NavBar extends Component {
                 Search
               </NavLink>
             </li>
-            {/* <li className="nav-item">
-              <NavLink className="nav-link" to="/editor">
-                Add
-              </NavLink>
-            </li> */}
+            {toggle(
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/editor">
+                  Add
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </nav>
