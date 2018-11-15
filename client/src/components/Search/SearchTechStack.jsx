@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import { getProjects } from "../../data/projectService";
 import { getTechstack } from "../../data/techStackService";
 
-const _ = require("lodash");
+let uppercaseFirstLetter = string =>
+  string.charAt(0).toUpperCase() + string.substr(1);
+
 class SearchTechStack extends Component {
   state = {
-    techstack: ["All", ...getTechstack().map(tech => _.startCase(tech))]
+    techstack: [
+      "All",
+      ...getTechstack().map(tech => uppercaseFirstLetter(tech))
+    ]
   };
 
   render() {

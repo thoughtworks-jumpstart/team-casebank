@@ -9,7 +9,7 @@ describe("Renders dropdown menu for techs", () => {
     const itemValues = Array.from(allItems).map(item => item.textContent);
 
     expect(allItems.length).toBe(9);
-    expect(itemValues).toContain("No SQL");
+    expect(itemValues).toContain("NoSQL");
     expect(itemValues).toContain("Javascript");
     expect(itemValues).toContain("All");
   });
