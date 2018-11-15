@@ -6,7 +6,7 @@ const projects = [
     nda: "yes",
     description: "To create an app to sleep well",
     main_tw_contact: "John Mayer",
-    techstack: ["javascript", "react", "mongoose"],
+    techstack: ["React", "Mongoose"],
     year: 2018,
     status: "Ongoing",
     region: "Southeast Asia",
@@ -24,7 +24,7 @@ const projects = [
     description:
       "Singapore Telecommunications Limited is a Singaporean telecommunications company. The company is the largest mobile network operators in Singapore with 4.1 million subscribers and through subsidiaries",
     main_tw_contact: "Chua Sock Koong",
-    techstack: ["ruby", "rails"],
+    techstack: ["Ruby", "Rails"],
     year: 2017,
     status: "Completed",
     region: "Asia",
@@ -41,7 +41,7 @@ const projects = [
     nda: "yes",
     description: "To create an app to cater for flight booking",
     main_tw_contact: "George",
-    techstack: ["python", "sql"],
+    techstack: ["Python", "SQL"],
     year: 2017,
     status: "Completed",
     region: "Asia",
@@ -58,7 +58,7 @@ const projects = [
     description:
       "Savour Superthin Pizzeria's signature pan pizzas with scrumptious ingredients, or choose from a wide range of baked rice, pasta and Italian dishes. Try the irresistible Sweet ‘N’ Spicy Drumlets or simply order the SUPER Platter that features all your favourite sides on one plate. Enjoy Superthin's affordable food offerings!",
     main_tw_contact: "John Mayer",
-    techstack: ["ruby", "rails", "nosql"],
+    techstack: ["Ruby", "Rails", "NoSQL"],
     year: 2016,
     status: "Deployed",
     region: "China",
@@ -75,7 +75,7 @@ const projects = [
     description:
       "FreshFood People Corp is an American multinational retail corporation that operates a chain of hypermarkets, discount department stores, and grocery stores.Headquartered in Bentonville, Arkansas, the company was founded by Sam Walton in 1962 and incorporated on October 31, 1969. It also owns and operates Sam's Club retail warehouses. As of January 31, 2018, FreshFood People Corp has 11,718 stores and clubs in 28 countries, operating under 59 different names.The company operates under the name FreshFood People in the United States and Canada, as Fresh de México y Centroamérica in Mexico and Central America, as FreshFood in the United Kingdom, as the Tabemono Group in Japan, and as Cheapest in India. It has wholly owned operations in Argentina, Chile, Brazil, Canada, and South Africa.",
     main_tw_contact: "Daniel Done",
-    techstack: ["javascript", "react"],
+    techstack: ["Javascript", "React"],
     year: 2018,
     status: "Ongoing",
     region: "United States",
@@ -93,7 +93,7 @@ const projects = [
     description:
       "The Genting Group is a company headquartered in the Wisma Genting in Kuala Lumpur, Malaysia. It comprises the holding company Genting Berhad, its listed subsidiaries Genting Malaysia Berhad, Genting Plantations Berhad, Genting Singapore Plc, as well as its wholly owned subsidiary Genting Energy Limited.",
     main_tw_contact: "Lim Goh Tung",
-    techstack: ["javascript", "PHP", "mongoose"],
+    techstack: ["Javascript", "PHP", "Mongoose"],
     year: 2018,
     status: "Ongoing",
     region: "Southeast Asia",
@@ -111,7 +111,7 @@ const projects = [
     description:
       "Noble Group Limited is a commodities trader across a range of industrial and energy products. The company is incorporated in Bermuda and is listed in Singapore. Noble is in financial distress after defaulting on its financial obligations. ",
     main_tw_contact: "Richard Samuel",
-    techstack: ["GraphQL", "rails"],
+    techstack: ["GraphQL", "Pearl"],
     year: 2017,
     status: "Completed",
     region: "Asia",
@@ -129,7 +129,7 @@ const projects = [
     description:
       "A Singapore-based global company headquartered in Jurong East, Singapore. The principal activities of the company and its subsidiaries consist of the design, manufacture and distribution of digitized sound and video boards, computers and related multimedia, and personal digital entertainment products.",
     main_tw_contact: "Sim Wong Hoo",
-    techstack: ["python", "nodejs"],
+    techstack: ["PHP", "nodejs"],
     year: 2017,
     status: "Completed",
     region: "Asia",
@@ -174,6 +174,24 @@ const projects = [
     phase: "Prototype",
     members: ["Veron", "Ken", "Russell"],
     tag: "water device App"
+  },
+  {
+    _id: "0011",
+    name: "Shipbuilding and repairing",
+    client: "Sembcorp Marine",
+    nda: "yes",
+    description:
+      "Sembcorp Marine Limited SGX: S51 is part of Sembcorp Industries, an Asian company based in Singapore. It is listed on the Singapore Stock Exchange. The current President and CEO of Sembcorp Marine is Mr Wong Weng Sun",
+    main_tw_contact: "Wong Weng Sun",
+    techstack: ["jQuery", "Swift"],
+    year: 2000,
+    status: "Completed",
+    region: "Asia",
+    office: "Thailand",
+    industry: "Shipbuilding",
+    phase: "Prototype",
+    members: ["Ivy", "John", "Vince"],
+    tag: "Shipbuilding and repairing"
   }
 ];
 

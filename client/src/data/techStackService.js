@@ -1,14 +1,19 @@
 const techstacks = [
-  "javascript",
-  "react",
-  "ruby",
-  "mongoose",
-  "rails",
-  "python",
-  "SQL",
-  "noSQL",
+  "C",
+  "C++",
   "GraphQL",
-  "PHP"
+  "Javascript",
+  "jQuery",
+  "Mongoose",
+  "NoSQL",
+  "Pearl",
+  "PHP",
+  "Python",
+  "Rails",
+  "React",
+  "Ruby",
+  "SQL",
+  "Swift"
 ];
 
 export const getTechstack = () => {
