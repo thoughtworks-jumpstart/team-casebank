@@ -6,7 +6,9 @@ const techstacks = [
   "rails",
   "python",
   "SQL",
-  "noSQL"
+  "noSQL",
+  "GraphQL",
+  "PHP"
 ];
 
 export const getTechstack = () => {
