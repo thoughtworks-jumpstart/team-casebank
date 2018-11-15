@@ -31,11 +31,11 @@ export default class NavBar extends Component {
                 Search
               </NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink className="nav-link" to="/editor">
                 Add
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>
