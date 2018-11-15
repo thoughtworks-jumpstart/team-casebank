@@ -11,6 +11,7 @@ app.use(express.json());
 
 app.use("/cases", caseRouter);
 
+//To resolve React-Router client side routing. Put all API calls above this route!
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
