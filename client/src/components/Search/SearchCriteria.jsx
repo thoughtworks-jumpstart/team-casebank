@@ -3,19 +3,24 @@ import Select from "react-select";
 
 export default class SearchCriteria extends Component {
   render() {
-    const officesArrayOfStrings = this.props.getOffices();
+    const { searchLabel, searchOptions, isMulti } = this.props;
 
-    const officesArrayOfObjects = officesArrayOfStrings.map(element => ({
+    const valueArrayOfObjects = searchOptions.map(element => ({
       value: element,
       label: element
     }));
     return (
       <div>
+        <h4>
+          <div className="badge badge-secondary">{searchLabel}</div>
+        </h4>
         <Select
-          // defaultValue={[colourOptions[2], colourOptions[3]]}
-          isMulti
-          name="offices"
-          options={officesArrayOfObjects}
+          isMulti={isMulti}
+          name={searchLabel}
+          options={valueArrayOfObjects}
+          onChange={selectedOptions =>
+            this.props.handleChange(selectedOptions, searchLabel)
+          }
           className="basic-multi-select"
           classNamePrefix="select"
         />
