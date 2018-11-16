@@ -4,6 +4,7 @@ import SearchResults from "./SearchResults";
 import SearchCriteria from "./SearchCriteria";
 import { getProjects } from "../../data/projectService";
 import { getOffices } from "../../data/officeService";
+import { getStatus } from "../../data/statusService";
 
 export default class Search extends Component {
   state = {
@@ -12,11 +13,11 @@ export default class Search extends Component {
     selectedOptions: "All",
     selectedSearch: {
       office: [],
-      techstack: []
+      status: []
     },
     selectIsMulti: {
       office: false,
-      techstack: true
+      status: false
     }
   };
 
@@ -45,18 +46,24 @@ export default class Search extends Component {
     for (let key in this.state.selectedSearch) {
       if (this.state.selectedSearch[key] !== []) {
         const options = this.state.selectedSearch[key];
-        if (this.state.selectIsMulti[key]) {
-          for (let option of options) {
-            console.log(`option is ${option.value}`);
-            console.log(`key is ${key}`);
-            filterList = filterList.filter(
-              project => project[key] === option.value
-            );
+        if (options) {
+          if (this.state.selectIsMulti[key]) {
+            for (let option of options) {
+              console.log(`option is ${option.value}`);
+              console.log(`key is ${key}`);
+              filterList = filterList.filter(
+                project => project[key] === option.value
+              );
+            }
+          } else {
+            console.log(`option non multi is ${options.value}`);
+            console.log(`key non multi is ${key}`);
+            if (options.value) {
+              filterList = filterList.filter(
+                project => project[key] === options.value
+              );
+            }
           }
-        } else {
-          filterList = filterList.filter(
-            project => project[key] === options.value
-          );
         }
       }
     }
@@ -86,6 +93,12 @@ export default class Search extends Component {
             searchLabel={"office"}
             handleChange={this.handleChange}
             isMulti={this.state.selectIsMulti["office"]}
+          />
+          <SearchCriteria
+            searchOptions={getStatus()}
+            searchLabel={"status"}
+            handleChange={this.handleChange}
+            isMulti={this.state.selectIsMulti["status"]}
           />
           {this.state.selectedSearch["office"][1] && (
             <p>
