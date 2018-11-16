@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SearchOptions from "./SearchOptions";
 import SearchResults from "./SearchResults";
 import SearchCriteria from "./SearchCriteria";
 import { getProjects } from "../../data/projectService";
@@ -16,11 +15,6 @@ export default class Search extends Component {
       office: [],
       status: [],
       techstack: []
-    },
-    selectIsMulti: {
-      office: false,
-      status: false,
-      techstack: true
     }
   };
 
@@ -29,20 +23,20 @@ export default class Search extends Component {
     this.setState({ project: projects, resultList: projects });
   }
 
-  // handleSelectOption = option => {
-  //   if (option !== "All") {
-  //     const filtered = this.state.project.filter(project =>
-  //       project.techstack.find(
-  //         item => item.toLowerCase() === option.toLowerCase()
-  //       )
-  //     );
-  //     this.setState({ resultList: filtered });
-  //   } else {
-  //     this.setState({ resultList: this.state.project });
-  //   }
-
-  //   this.setState({ selectedOptions: option });
-  // };
+  searchOptionSettings = {
+    office: {
+      searchOptions: getOffices,
+      selectIsMulti: false
+    },
+    status: {
+      searchOptions: getStatus,
+      selectIsMulti: false
+    },
+    techstack: {
+      searchOptions: getTechstack,
+      selectIsMulti: true
+    }
+  };
 
   handleSelectOption = () => {
     let filterList = [...this.state.project];
@@ -50,7 +44,7 @@ export default class Search extends Component {
       if (this.state.selectedSearch[key] !== []) {
         const options = this.state.selectedSearch[key];
         if (options) {
-          if (this.state.selectIsMulti[key]) {
+          if (this.searchOptionSettings[key].selectIsMulti) {
             for (let option of options) {
               console.log(`option is ${option.value}`);
               console.log(`key is ${key}`);
@@ -85,37 +79,19 @@ export default class Search extends Component {
   };
 
   render() {
-    const { selectedOptions, resultList } = this.state;
+    const { resultList } = this.state;
     return (
       <div className="row">
         <div className="col-2 ml-4">
-          <SearchOptions
-            onClick={this.handleSelectOption}
-            selectedOptions={selectedOptions}
-          />
-          <SearchCriteria
-            searchOptions={getOffices()}
-            searchLabel={"office"}
-            handleChange={this.handleChange}
-            isMulti={this.state.selectIsMulti["office"]}
-          />
-          <SearchCriteria
-            searchOptions={getStatus()}
-            searchLabel={"status"}
-            handleChange={this.handleChange}
-            isMulti={this.state.selectIsMulti["status"]}
-          />
-          <SearchCriteria
-            searchOptions={getTechstack()}
-            searchLabel={"techstack"}
-            handleChange={this.handleChange}
-            isMulti={this.state.selectIsMulti["techstack"]}
-          />
-          {this.state.selectedSearch["office"][1] && (
-            <p>
-              current selected: {this.state.selectedSearch["office"][1].label}
-            </p>
-          )}
+          {Object.keys(this.searchOptionSettings).map((key, index) => (
+            <SearchCriteria
+              key={index}
+              searchOptions={this.searchOptionSettings[key].searchOptions()}
+              searchLabel={key}
+              handleChange={this.handleChange}
+              isMulti={this.searchOptionSettings[key].selectIsMulti}
+            />
+          ))}
         </div>
         <div className="col mr-4">
           <SearchResults resultList={resultList} />

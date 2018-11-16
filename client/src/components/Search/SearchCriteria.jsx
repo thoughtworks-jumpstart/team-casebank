@@ -12,7 +12,9 @@ export default class SearchCriteria extends Component {
     return (
       <div>
         <h4>
-          <div className="badge badge-secondary">{searchLabel}</div>
+          <div className="badge badge-secondary">
+            {searchLabel.charAt(0).toUpperCase() + searchLabel.slice(1)}
+          </div>
         </h4>
         <Select
           isMulti={isMulti}
