@@ -2,10 +2,13 @@ const mongoose = require("mongoose");
 const crypto = require("crypto");
 
 const UserSchema = new mongoose.Schema({
-  name: String,
+  name: { type: String, index: true },
   email: { unique: true },
   passwordSalt: String,
-  passwordHash: String
+  passwordHash: String,
+  clearance: String,
+  techstack: [String],
+  role: String
 });
 
 function generateSalt() {
