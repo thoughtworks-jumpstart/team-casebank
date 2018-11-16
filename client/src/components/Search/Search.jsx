@@ -5,6 +5,7 @@ import SearchCriteria from "./SearchCriteria";
 import { getProjects } from "../../data/projectService";
 import { getOffices } from "../../data/officeService";
 import { getStatus } from "../../data/statusService";
+import { getTechstack } from "../../data/techStackService";
 
 export default class Search extends Component {
   state = {
@@ -13,11 +14,13 @@ export default class Search extends Component {
     selectedOptions: "All",
     selectedSearch: {
       office: [],
-      status: []
+      status: [],
+      techstack: []
     },
     selectIsMulti: {
       office: false,
-      status: false
+      status: false,
+      techstack: true
     }
   };
 
@@ -51,8 +54,10 @@ export default class Search extends Component {
             for (let option of options) {
               console.log(`option is ${option.value}`);
               console.log(`key is ${key}`);
-              filterList = filterList.filter(
-                project => project[key] === option.value
+              filterList = filterList.filter(project =>
+                project[key].find(
+                  item => item.toLowerCase() === option.value.toLowerCase()
+                )
               );
             }
           } else {
@@ -99,6 +104,12 @@ export default class Search extends Component {
             searchLabel={"status"}
             handleChange={this.handleChange}
             isMulti={this.state.selectIsMulti["status"]}
+          />
+          <SearchCriteria
+            searchOptions={getTechstack()}
+            searchLabel={"techstack"}
+            handleChange={this.handleChange}
+            isMulti={this.state.selectIsMulti["techstack"]}
           />
           {this.state.selectedSearch["office"][1] && (
             <p>
