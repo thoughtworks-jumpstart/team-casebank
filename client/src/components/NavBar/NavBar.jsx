@@ -33,7 +33,13 @@ export default class NavBar extends Component {
                 Search
               </NavLink>
             </li>
-           <li>{process.env.REACT_APP_SERVER_ENV}</li>
+            {isProduction ? null : (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/editor">
+                  Add
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </nav>
