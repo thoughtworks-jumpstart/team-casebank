@@ -5,17 +5,15 @@ const CaseSchema = new mongoose.Schema({
   client: { type: String },
   nda: { type: String },
   description: { type: String },
-  main_tw_contact: { type: mongoose.Types.ObjectId, ref: "Property" },
-  techstack: [{ type: mongoose.Types.ObjectId, ref: "Techstack" }],
+  main_tw_contact: { type: mongoose.Types.ObjectId, ref: "User" },
+  techstack: [{ type: String }],
   year: { type: Number },
   status: { type: String },
-  region: { type: mongoose.Types.ObjectId, ref: "Property" },
-  country: { type: mongoose.Types.ObjectId, ref: "Property" },
-  office: { type: mongoose.Types.ObjectId, ref: "Property" },
-  industry: { type: mongoose.Types.ObjectId, ref: "Property" },
-  phase: { type: mongoose.Types.ObjectId, ref: "Property" },
-  members: [{ type: mongoose.Types.ObjectId, ref: "Property" }],
-  tag: { type: mongoose.Types.ObjectId, ref: "Property" }
+  office: { type: String },
+  industry: { type: String },
+  phase: { type: String },
+  members: [{ type: mongoose.Types.ObjectId, ref: "User" }],
+  tag: { type: String }
 });
 
 module.exports = mongoose.model("Case", CaseSchema);

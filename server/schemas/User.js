@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const crypto = require("crypto");
 
 const UserSchema = new mongoose.Schema({
   name: String,
@@ -6,3 +7,24 @@ const UserSchema = new mongoose.Schema({
   passwordSalt: String,
   passwordHash: String
 });
+
+function generateSalt() {
+  return crypto.randomBytes(16).toString("hex");
+}
+
+function hashPassword(password, salt) {
+  return crypto
+    .pbkdf2Sync(password, salt, 10000, 512, "sha512")
+    .toString("hex");
+}
+
+UserSchema.methods.setPassword = function(password) {
+  this.passwordSalt = generateSalt();
+  this.passwordHash = hashPassword(password, this.passwordSalt);
+};
+
+UserSchema.methods.validPassword = function(password) {
+  return this.passwordHash === hashPassword(password, this.passwordSalt);
+};
+
+module.exports = mongoose.model(UserSchema);
