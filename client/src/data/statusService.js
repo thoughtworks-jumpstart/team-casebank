@@ -1,10 +1,15 @@
 const status = [
   "Cancelled",
-  "Closed",
   "Completed",
-  "Discovery",
-  "Live",
+  "Ongoing",
   "Planning"
+
+  // "Cancelled",
+  // "Closed",
+  // "Completed",
+  // "Discovery",
+  // "Live",
+  // "Planning"
 ];
 
 export const getStatus = () => {

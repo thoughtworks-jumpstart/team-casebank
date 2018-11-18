@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearchResults from "./SearchResults";
 import SearchCriteria from "./SearchCriteria";
 import { getProjects } from "../../data/projectService";
+import { getRegions } from "../../data/regionService";
 import { getOffices } from "../../data/officeService";
 import { getStatus } from "../../data/statusService";
 import { getTechstack } from "../../data/techStackService";
@@ -12,6 +13,7 @@ export default class Search extends Component {
     resultList: [],
     selectedOptions: "All",
     selectedSearch: {
+      region: [],
       office: [],
       status: [],
       techstack: []
@@ -24,6 +26,10 @@ export default class Search extends Component {
   }
 
   searchOptionSettings = {
+    region: {
+      searchOptions: getRegions,
+      selectIsMulti: false
+    },
     office: {
       searchOptions: getOffices,
       selectIsMulti: false
