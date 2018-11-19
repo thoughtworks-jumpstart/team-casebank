@@ -1,4 +1,5 @@
 import SearchResults from "./SearchResults";
+import "jest-dom/extend-expect";
 import { render } from "react-testing-library";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -6,27 +7,27 @@ import { BrowserRouter as Router } from "react-router-dom";
 describe("Renders Case component with no data", () => {
   const { getByText } = render(<SearchResults />);
   it("should render the Project property name", () => {
-    expect(getByText(/Project/).textContent).toContain("Project");
+    expect(getByText(/Project/)).toBeInTheDocument();
   });
 
   it("Should render Client property name", () => {
-    expect(getByText(/Client/).textContent).toContain("Client");
+    expect(getByText(/Client/)).toBeInTheDocument();
   });
 
   it("Should render Region property name", () => {
-    expect(getByText(/Region/).textContent).toContain("Region");
+    expect(getByText(/Region/)).toBeInTheDocument();
   });
 
   it("Should render Year property name", () => {
-    expect(getByText(/Year/).textContent).toContain("Year");
+    expect(getByText(/Year/)).toBeInTheDocument();
   });
 
   it("Should render Industry property name", () => {
-    expect(getByText(/Industry/).textContent).toContain("Industry");
+    expect(getByText(/Industry/)).toBeInTheDocument();
   });
 
   it("Should render No results", () => {
-    expect(getByText(/No results/).textContent).toContain("No results");
+    expect(getByText(/No results/)).toBeInTheDocument();
   });
 });
 
@@ -76,24 +77,22 @@ describe("Renders Case component with sample data", () => {
   );
 
   it("Should render sample data project Sleep-app", () => {
-    expect(getByText(/Sleep-app/).textContent).toContain("Sleep-app");
+    expect(getByText(/Sleep-app/)).toBeInTheDocument();
   });
 
   it("Should render sample data client Sleep Well Inc", () => {
-    expect(getByText(/Sleep Well Inc/).textContent).toContain("Sleep Well Inc");
+    expect(getByText(/Sleep Well Inc/)).toBeInTheDocument();
   });
 
   it("Should render sample data region Southeast Asia", () => {
-    expect(getByText(/Southeast Asia/).textContent).toContain("Southeast Asia");
+    expect(getByText(/Southeast Asia/)).toBeInTheDocument();
   });
 
   it("Should render sample data year 2018", () => {
-    expect(getByText(/2018/).textContent).toContain("2018");
+    expect(getByText(/2018/)).toBeInTheDocument();
   });
 
   it("Should render sample data industry 2018", () => {
-    expect(getByText(/general services/).textContent).toContain(
-      "general services"
-    );
+    expect(getByText(/general services/)).toBeInTheDocument();
   });
 });
