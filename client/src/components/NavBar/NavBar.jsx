@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { toggle } from "../../utils/toggle";
 
 export default class NavBar extends Component {
   render() {
-    const isProduction = process.env.REACT_APP_SERVER_ENV === "production";
-
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
         <NavLink className="navbar-brand " to="/">
@@ -33,7 +32,7 @@ export default class NavBar extends Component {
                 Search
               </NavLink>
             </li>
-            {isProduction ? null : (
+            {toggle(
               <li className="nav-item">
                 <NavLink className="nav-link" to="/editor">
                   Add
