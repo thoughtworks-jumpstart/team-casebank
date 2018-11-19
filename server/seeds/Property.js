@@ -122,6 +122,10 @@ const properties = [
       "Leisure & Travel",
       "Libraries"
     ]
+  },
+  {
+    attribute: "nda",
+    list: ["Internal only", "External can", "Not sure, please check"]
   }
 ];
 
