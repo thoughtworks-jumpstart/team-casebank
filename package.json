@@ -11,7 +11,10 @@
     "start": "concurrently \"npm run start:dev:client\" \"npm run start:dev:server\"",
     "start:prod:server": "cd server&&npm run start",
     "build": "cd client&&npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "seed": "cd server&&npm run seed",
+    "seed-setup": "cd server&&npm run seed-setup"
+
   },
   "author": "",
   "license": "ISC",

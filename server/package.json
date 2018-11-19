@@ -7,7 +7,9 @@
     "start": "node server.js",
     "dev": "cross-env NODE_ENV=local nodemon server.js",
     "test": "cross-env NODE_ENV=test jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "seed": "seed",
+    "seed-setup": "seed-setup"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +20,9 @@
     "express": "^4.16.4",
     "mongodb": "^3.1.9",
     "mongoose": "^5.3.11",
-    "mongoose-unique-validator": "^2.0.2"
+    "mongoose-unique-validator": "^2.0.2",
+    "node-mongo-seeds": "^3.1.0",
+    "save-dev": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
