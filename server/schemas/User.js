@@ -6,9 +6,10 @@ const UserSchema = new mongoose.Schema({
   email: { unique: true },
   passwordSalt: String,
   passwordHash: String,
-  clearance: String,
+  // clearance: String,
   techstack: [String],
-  role: String
+  role: String,
+  projects: [{ type: mongoose.Schema.Types.ObjectId, ref: "Case" }]
 });
 
 function generateSalt() {

@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-
+const Project = require("../schemas/Project");
 // Cases API
 
-router.get("/test", (req, res) => {
+router.get("/", async (req, res) => {
+  let projects = await Project.find({});
   res.status(200).json({
-    message: "Welcome to casebank project"
+    projects
   });
 });
 

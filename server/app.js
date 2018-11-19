@@ -5,11 +5,12 @@ const path = require("path");
 const staticFiles = express.static(path.join(__dirname, "../client/build"));
 app.use(staticFiles);
 
-const caseRouter = require("./routes/cases");
 
 app.use(express.json());
 
-app.use("/cases", caseRouter);
+// Routes
+const projectRouter = require("./routes/projects");
+app.use("/projects", projectRouter);
 
 //To resolve React-Router client side routing. Put all API calls above this route!
 app.get("*", function(req, res) {

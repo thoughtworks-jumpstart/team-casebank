@@ -1,7 +1,7 @@
 const ObjectID = require("mongodb").ObjectID;
 const crypto = require("crypto");
 const users = require("./Users");
-const projects = require("./Cases");
+const projects = require("./Project");
 
 function generateSalt() {
   return crypto.randomBytes(16).toString("hex");
