@@ -2,16 +2,25 @@ import React, { Component } from "react";
 import SearchResults from "./SearchResults";
 import SearchCriteria from "./SearchCriteria";
 import { getProjects } from "../../data/projectService";
-import { getRegions } from "../../data/regionService";
-import { getOffices } from "../../data/officeService";
-import { getStatus } from "../../data/statusService";
-import { getTechstack } from "../../data/techStackService";
+import { getRegions, getFilteredRegions } from "../../data/regionService";
+import { getOffices, getFilteredOffices } from "../../data/officeService";
+import { getStatus, getFilteredStatus } from "../../data/statusService";
+import {
+  getTechstack,
+  getFilteredTechstack
+} from "../../data/techStackService";
 
 export default class Search extends Component {
   state = {
     project: [],
     resultList: [],
     selectedOptions: "All",
+    filterOptions: {
+      region: getFilteredRegions(getProjects()),
+      office: getFilteredOffices(getProjects()),
+      status: getFilteredStatus(getProjects()),
+      techstack: getFilteredTechstack(getProjects())
+    },
     selectedSearch: {
       region: [],
       office: [],
@@ -72,7 +81,15 @@ export default class Search extends Component {
         }
       }
     }
-    this.setState({ resultList: filterList });
+    this.setState({
+      resultList: filterList,
+      filterOptions: {
+        region: getFilteredRegions(filterList),
+        office: getFilteredOffices(filterList),
+        status: getFilteredStatus(filterList),
+        techstack: getFilteredTechstack(filterList)
+      }
+    });
   };
 
   handleChange = (selectedOption, selectedLabel) => {
@@ -84,6 +101,24 @@ export default class Search extends Component {
     this.handleSelectOption();
   };
 
+  clearFilter = () => {
+    this.setState({
+      resultList: this.state.project,
+      filterOptions: {
+        region: getFilteredRegions(this.state.project),
+        office: getFilteredOffices(this.state.project),
+        status: getFilteredStatus(this.state.project),
+        techstack: getFilteredTechstack(this.state.project)
+      },
+      selectedSearch: {
+        region: [],
+        office: [],
+        status: [],
+        techstack: []
+      }
+    });
+  };
+
   render() {
     const { resultList } = this.state;
     return (
@@ -92,13 +127,27 @@ export default class Search extends Component {
           {Object.keys(this.searchOptionSettings).map((key, index) => (
             <SearchCriteria
               key={index}
-              searchOptions={this.searchOptionSettings[key].searchOptions()}
+              searchOptions={this.state.filterOptions[key]}
+              // searchOptions={this.searchOptionSettings[key].searchOptions()}
               searchLabel={key}
               handleChange={this.handleChange}
               isMulti={this.searchOptionSettings[key].selectIsMulti}
+              selectedValue={this.state.selectedSearch[key]}
             />
           ))}
+          <br />
+          <br />
+          <br />
+          <br />
+          <button
+            onClick={this.clearFilter}
+            type="button"
+            className="btn btn-secondary"
+          >
+            Clear All
+          </button>
         </div>
+
         <div className="col mr-4">
           <SearchResults resultList={resultList} />
         </div>

@@ -3,7 +3,7 @@ import Select from "react-select";
 
 export default class SearchCriteria extends Component {
   render() {
-    const { searchLabel, searchOptions, isMulti } = this.props;
+    const { searchLabel, searchOptions, isMulti, selectedValue } = this.props;
 
     const valueArrayOfObjects = searchOptions.map(element => ({
       value: element,
@@ -18,6 +18,7 @@ export default class SearchCriteria extends Component {
         </h4>
         <Select
           isMulti={isMulti}
+          isClearable={true}
           name={searchLabel}
           options={valueArrayOfObjects}
           onChange={selectedOptions =>
@@ -25,6 +26,7 @@ export default class SearchCriteria extends Component {
           }
           className="basic-multi-select"
           classNamePrefix="select"
+          value={selectedValue}
         />
       </div>
     );
