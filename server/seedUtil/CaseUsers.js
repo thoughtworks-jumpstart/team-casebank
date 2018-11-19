@@ -21,24 +21,21 @@ for (let user of users) {
 
 for (let project of projects) {
   project._id = new ObjectID();
-  project.main_tw_contact = {
-    $id: users.filter(object => object.name === project.main_tw_contact)[0]._id,
-    $ref: "User"
-  };
+  project.main_tw_contact = users.filter(
+    object => object.name === project.main_tw_contact
+  )[0]._id;
   for (let i = 0; i < project.members.length; i++) {
-    project.members[i] = {
-      $id: users.filter(object => object.name === project.members[i])[0]._id,
-      $ref: "User"
-    };
+    project.members[i] = users.filter(
+      object => object.name === project.members[i]
+    )[0]._id;
   }
 }
 
 for (let user of users) {
   for (let i = 0; i < user.projects.length; i++) {
-    user.projects[i] = {
-      $id: projects.filter(project => project.name === user.projects[i])[0]._id,
-      $ref: "Case"
-    };
+    user.projects[i] = projects.filter(
+      project => project.name === user.projects[i]
+    )[0]._id;
   }
 }
 

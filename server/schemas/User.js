@@ -3,13 +3,13 @@ const crypto = require("crypto");
 
 const UserSchema = new mongoose.Schema({
   name: { type: String, index: true },
-  email: { unique: true },
+  email: { type: String, unique: true },
   passwordSalt: String,
   passwordHash: String,
   // clearance: String,
   techstack: [String],
   role: String,
-  projects: [{ type: mongoose.Schema.Types.ObjectId, ref: "Case" }]
+  projects: [{ type: mongoose.Schema.Types.ObjectId, ref: "Project" }]
 });
 
 function generateSalt() {
@@ -31,4 +31,4 @@ UserSchema.methods.validPassword = function(password) {
   return this.passwordHash === hashPassword(password, this.passwordSalt);
 };
 
-module.exports = mongoose.model(UserSchema);
+module.exports = mongoose.model("User", UserSchema);
