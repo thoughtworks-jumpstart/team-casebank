@@ -1,5 +1,7 @@
+require("dotenv").config();
+
 module.exports = {
-  undefined: "localhost/projecthub",
-  testing: "localhost/DEV_DB_NAME",
-  production: "localhost/PROD_DB_NAME"
+  development: process.env.MONGODB_URI,
+  testing: process.env.MONGODB_URI,
+  production: process.env.MONGODB_URI
 };
