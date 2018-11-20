@@ -194,8 +194,19 @@ const projects = [
   }
 ];
 
-function getProjects() {
-  return projects;
+async function getProjects() {
+  try {
+    const message = await fetch("/projects", {
+      method: "get",
+      headers: { "Content-Type": "application/json" }
+    });
+    const jsonResult = await message.json();
+    console.log(jsonResult);
+    return jsonResult;
+  } catch (error) {
+    console.log(error.message);
+  }
+  //return projects;
 }
 
 function getProjectById(projectId) {

@@ -16,10 +16,10 @@ export default class Search extends Component {
     resultList: [],
     selectedOptions: "All",
     filterOptions: {
-      region: getFilteredRegions(getProjects()),
-      office: getFilteredOffices(getProjects()),
-      status: getFilteredStatus(getProjects()),
-      techstack: getFilteredTechstack(getProjects())
+      region: [],
+      office: [],
+      status: [],
+      techstack: []
     },
     selectedSearch: {
       region: [],
@@ -29,9 +29,18 @@ export default class Search extends Component {
     }
   };
 
-  componentDidMount() {
-    const projects = getProjects();
-    this.setState({ project: projects, resultList: projects });
+  async componentDidMount() {
+    const projects = await getProjects();
+    this.setState({
+      project: projects,
+      filterOptions: {
+        region: getFilteredRegions(projects),
+        office: getFilteredOffices(projects),
+        status: getFilteredStatus(projects),
+        techstack: getFilteredTechstack(projects)
+      },
+      resultList: projects
+    });
   }
 
   searchOptionSettings = {
