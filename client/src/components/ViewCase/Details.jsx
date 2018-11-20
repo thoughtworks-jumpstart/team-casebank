@@ -5,34 +5,45 @@ import CaseDetails from "./CaseDetails";
 import Title from "./Title";
 
 export default class Details extends Component {
-  componentDidMount() {}
+  constructor(props) {
+    super(props);
 
-  searchById = id => {
-    const proj = getProjects().filter(element => {
-      return element._id === id;
+    this.state = {};
+  }
+
+  async componentDidMount() {
+    let response = await fetch(`/projects/${this.props.id}`, {
+      method: "get",
+      headers: { "Content-Type": "application/json" }
     });
-    return proj[0];
-  };
+    let project = await response.json();
+    project.members = project.members.map(member => member.name);
+    project["Main TW Contact"] = project.main_tw_contact.name;
+    delete project.main_tw_contact;
+    this.setState({ project });
+  }
+
   render() {
-    let properties = this.searchById(this.props.id);
-    let description = { ...properties };
-    let title = { client: description.client, name: description.name };
-    return (
-      <div className="container-fluid p-4">
-        <div className="row text-center">
-          <div className="col">
-            <Title properties={title} />
+    if (this.state.project) {
+      let properties = this.state.project;
+      let title = { client: properties.client, name: properties.name };
+      return (
+        <div className="container-fluid p-4">
+          <div className="row text-center">
+            <div className="col">
+              <Title properties={title} />
+            </div>
+          </div>
+          <div className="row m-4">
+            <div className="col-3">
+              <CaseProperties properties={properties} />
+            </div>
+            <div className="col-9">
+              <CaseDetails description={properties.description} />
+            </div>
           </div>
         </div>
-        <div className="row m-4">
-          <div className="col-3">
-            <CaseProperties properties={properties} />
-          </div>
-          <div className="col-9">
-            <CaseDetails description={description.description} />
-          </div>
-        </div>
-      </div>
-    );
+      );
+    } else return null;
   }
 }
