@@ -18,7 +18,10 @@ export default class Search extends Component {
       office: [],
       status: [],
       industry: [],
-      techstack: []
+      techstack: [],
+      year: [],
+      project: [],
+      tag: []
     },
     selectedSearch: {
       client: [],
@@ -26,7 +29,10 @@ export default class Search extends Component {
       office: [],
       status: [],
       industry: [],
-      techstack: []
+      techstack: [],
+      year: [],
+      project: [],
+      tag: []
     }
   };
 
@@ -40,7 +46,10 @@ export default class Search extends Component {
         office: getFilteredProperties(projects, "office"),
         status: getFilteredProperties(projects, "status"),
         industry: getFilteredProperties(projects, "industry"),
-        techstack: getFilteredMultiProperties(projects, "techstack")
+        techstack: getFilteredMultiProperties(projects, "techstack"),
+        year: getFilteredProperties(projects, "year"),
+        project: getFilteredProperties(projects, "project"),
+        tag: getFilteredMultiProperties(projects, "tag")
       },
       resultList: projects
     });
@@ -63,6 +72,15 @@ export default class Search extends Component {
       selectIsMulti: false
     },
     techstack: {
+      selectIsMulti: true
+    },
+    year: {
+      selectIsMulti: false
+    },
+    project: {
+      selectIsMulti: false
+    },
+    tag: {
       selectIsMulti: true
     }
   };
@@ -103,7 +121,10 @@ export default class Search extends Component {
         office: getFilteredProperties(filterList, "office"),
         status: getFilteredProperties(filterList, "status"),
         industry: getFilteredProperties(filterList, "industry"),
-        techstack: getFilteredMultiProperties(filterList, "techstack")
+        techstack: getFilteredMultiProperties(filterList, "techstack"),
+        year: getFilteredProperties(filterList, "year"),
+        project: getFilteredProperties(filterList, "project"),
+        tag: getFilteredMultiProperties(filterList, "tag")
       }
     });
   };
@@ -126,7 +147,10 @@ export default class Search extends Component {
         office: getFilteredProperties(this.state.project, "office"),
         status: getFilteredProperties(this.state.project, "status"),
         industry: getFilteredProperties(this.state.project, "industry"),
-        techstack: getFilteredMultiProperties(this.state.project, "techstack")
+        techstack: getFilteredMultiProperties(this.state.project, "techstack"),
+        year: getFilteredProperties(this.state.project, "year"),
+        project: getFilteredProperties(this.state.project, "project"),
+        tag: getFilteredMultiProperties(this.state.project, "tag")
       },
       selectedSearch: {
         client: [],
@@ -134,7 +158,10 @@ export default class Search extends Component {
         office: [],
         status: [],
         industry: [],
-        techstack: []
+        techstack: [],
+        year: [],
+        project: [],
+        tag: []
       }
     });
   };
