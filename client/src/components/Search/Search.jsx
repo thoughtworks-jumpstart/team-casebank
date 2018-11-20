@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import SearchResults from "./SearchResults";
 import SearchCriteria from "./SearchCriteria";
 import { getProjects } from "../../data/projectService";
-import { getRegions, getFilteredRegions } from "../../data/regionService";
-import { getOffices, getFilteredOffices } from "../../data/officeService";
-import { getStatus, getFilteredStatus } from "../../data/statusService";
 import {
-  getTechstack,
-  getFilteredTechstack
-} from "../../data/techStackService";
+  getFilteredProperties,
+  getFilteredMultiProperties
+} from "../../data/propertyService";
 
 export default class Search extends Component {
   state = {
@@ -16,15 +13,19 @@ export default class Search extends Component {
     resultList: [],
     selectedOptions: "All",
     filterOptions: {
+      client: [],
       region: [],
       office: [],
       status: [],
+      industry: [],
       techstack: []
     },
     selectedSearch: {
+      client: [],
       region: [],
       office: [],
       status: [],
+      industry: [],
       techstack: []
     }
   };
@@ -34,30 +35,34 @@ export default class Search extends Component {
     this.setState({
       project: projects,
       filterOptions: {
-        region: getFilteredRegions(projects),
-        office: getFilteredOffices(projects),
-        status: getFilteredStatus(projects),
-        techstack: getFilteredTechstack(projects)
+        client: getFilteredProperties(projects, "client"),
+        region: getFilteredProperties(projects, "region"),
+        office: getFilteredProperties(projects, "office"),
+        status: getFilteredProperties(projects, "status"),
+        industry: getFilteredProperties(projects, "industry"),
+        techstack: getFilteredMultiProperties(projects, "techstack")
       },
       resultList: projects
     });
   }
 
   searchOptionSettings = {
+    client: {
+      selectIsMulti: false
+    },
     region: {
-      searchOptions: getRegions,
       selectIsMulti: false
     },
     office: {
-      searchOptions: getOffices,
       selectIsMulti: false
     },
     status: {
-      searchOptions: getStatus,
+      selectIsMulti: false
+    },
+    industry: {
       selectIsMulti: false
     },
     techstack: {
-      searchOptions: getTechstack,
       selectIsMulti: true
     }
   };
@@ -93,10 +98,12 @@ export default class Search extends Component {
     this.setState({
       resultList: filterList,
       filterOptions: {
-        region: getFilteredRegions(filterList),
-        office: getFilteredOffices(filterList),
-        status: getFilteredStatus(filterList),
-        techstack: getFilteredTechstack(filterList)
+        client: getFilteredProperties(filterList, "client"),
+        region: getFilteredProperties(filterList, "region"),
+        office: getFilteredProperties(filterList, "office"),
+        status: getFilteredProperties(filterList, "status"),
+        industry: getFilteredProperties(filterList, "industry"),
+        techstack: getFilteredMultiProperties(filterList, "techstack")
       }
     });
   };
@@ -114,15 +121,19 @@ export default class Search extends Component {
     this.setState({
       resultList: this.state.project,
       filterOptions: {
-        region: getFilteredRegions(this.state.project),
-        office: getFilteredOffices(this.state.project),
-        status: getFilteredStatus(this.state.project),
-        techstack: getFilteredTechstack(this.state.project)
+        client: getFilteredProperties(this.state.project, "client"),
+        region: getFilteredProperties(this.state.project, "region"),
+        office: getFilteredProperties(this.state.project, "office"),
+        status: getFilteredProperties(this.state.project, "status"),
+        industry: getFilteredProperties(this.state.project, "industry"),
+        techstack: getFilteredMultiProperties(this.state.project, "techstack")
       },
       selectedSearch: {
+        client: [],
         region: [],
         office: [],
         status: [],
+        industry: [],
         techstack: []
       }
     });

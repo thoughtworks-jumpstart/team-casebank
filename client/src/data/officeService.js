@@ -53,13 +53,3 @@ const offices = [
 export const getOffices = () => {
   return offices;
 };
-
-export const getFilteredOffices = projects => {
-  let offices = [];
-  offices = projects.map(item => {
-    return item["office"];
-  });
-  let uniqueOffices = [...new Set(offices)];
-  uniqueOffices.sort();
-  return uniqueOffices;
-};
