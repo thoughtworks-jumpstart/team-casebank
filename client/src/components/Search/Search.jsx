@@ -193,6 +193,7 @@ export default class Search extends Component {
         <div className="col-2 ml-4">
           {Object.keys(this.searchOptionSettings).map((key, index) => (
             <SearchCriteria
+              selectId={`${key}-dropdown`}
               key={index}
               searchOptions={this.state.filterOptions[key]}
               searchLabel={key}

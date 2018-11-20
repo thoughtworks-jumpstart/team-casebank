@@ -3,7 +3,13 @@ import Select from "react-select";
 
 export default class SearchCriteria extends Component {
   render() {
-    const { searchLabel, searchOptions, isMulti, selectedValue } = this.props;
+    const {
+      searchLabel,
+      searchOptions,
+      isMulti,
+      selectedValue,
+      selectId
+    } = this.props;
 
     const valueArrayOfObjects = searchOptions.map(element => ({
       value: element,
@@ -12,11 +18,12 @@ export default class SearchCriteria extends Component {
     return (
       <div>
         <h4>
-          <div className="badge badge-secondary">
+          <div className="badge badge-secondary dropdown-label">
             {searchLabel.charAt(0).toUpperCase() + searchLabel.slice(1)}
           </div>
         </h4>
         <Select
+          id={selectId}
           isMulti={isMulti}
           isClearable={true}
           name={searchLabel}

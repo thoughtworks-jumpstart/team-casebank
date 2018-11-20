@@ -13,12 +13,16 @@
     "build": "cd client&&npm run build",
     "heroku-postbuild": "npm run build",
     "seed": "cd server&&npm run seed",
-    "seed-setup": "cd server&&npm run seed-setup"
+    "seed-setup": "cd server&&npm run seed-setup",
+    "cypress:open": "cypress open"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^4.0.1",
     "cross-env": "^5.2.0"
+  },
+  "devDependencies": {
+    "cypress": "^3.1.2"
   }
 }
