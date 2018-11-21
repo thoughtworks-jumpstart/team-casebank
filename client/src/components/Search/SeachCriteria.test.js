@@ -10,6 +10,7 @@ describe("Renders SelectCriteria component with sample data", () => {
       <Router>
         <SearchCriteria
           searchOptions={["Australia", "Southeast Asia"]}
+          textLabel="Region"
           searchLabel="Region"
           handleChange={""}
           isMulti={false}
