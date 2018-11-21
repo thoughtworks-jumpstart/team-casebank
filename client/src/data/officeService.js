@@ -1,6 +1,8 @@
 const offices = [
-  { Australia: ["Brisbane", "Melbourne", "Sydney"] },
-  { China: ["Beijing", "Chengdu", "Shanghai", "Shenzhen", "Wuhan", "Xi' An"] },
+  { Australia: ["Brisbane", "Melbourne", "Perth", "Sydney"] },
+  {
+    China: ["Beijing", "Chengdu", "Shanghai", "Shenzhen", "Wuhan", "Xi' An"]
+  },
   {
     Europe: [
       "Barcelona",
@@ -8,9 +10,11 @@ const offices = [
       "Bologna",
       "Cologne",
       "Hamburg",
+      "Istanbul",
       "London",
       "Madrid",
       "Manchester",
+      "Milan",
       "Munich"
     ]
   },
@@ -22,6 +26,7 @@ const offices = [
       "Gurgaon",
       "Hyderabad",
       "Mumbai",
+      "Noida",
       "Pune"
     ]
   },
@@ -33,10 +38,10 @@ const offices = [
       "Denver",
       "New York",
       "San Francisco",
-      "Toronto"
+      "Toronto",
+      "Calgary"
     ]
   },
-
   {
     LatinAmerica: [
       "Belo Horizonte",
@@ -47,8 +52,8 @@ const offices = [
       "São Paulo"
     ]
   },
-
-  { SoutheastAsia: ["Bangkok", "Singapore"] }
+  { SoutheastAsia: ["Bangkok", "Singapore"] },
+  { Africa: ["Johannesburg", "Kampala"] }
 ];
 export const getOffices = () => {
   return offices;

@@ -23,8 +23,6 @@ const properties = [
       "Swift"
     ]
   },
-  { attribute: "Status", list: ["Proposal", "Live"] },
-  { attribute: "Phase", list: ["Prototype", "Delivery"] },
   {
     attribute: "Region",
     list: [
@@ -34,93 +32,89 @@ const properties = [
       "India",
       "North America",
       "Latin America",
-      "Souteast Asia"
+      "Southeast Asia",
+      "Africa"
     ]
   },
   {
     attribute: "Office",
-    list: []
+    list: [
+      { Australia: ["Brisbane", "Melbourne", "Perth", "Sydney"] },
+      {
+        China: ["Beijing", "Chengdu", "Shanghai", "Shenzhen", "Wuhan", "Xi' An"]
+      },
+      {
+        Europe: [
+          "Barcelona",
+          "Berlin",
+          "Bologna",
+          "Cologne",
+          "Hamburg",
+          "Istanbul",
+          "London",
+          "Madrid",
+          "Manchester",
+          "Milan",
+          "Munich"
+        ]
+      },
+      {
+        India: [
+          "Bangalore",
+          "Chennai",
+          "Coimbatore",
+          "Gurgaon",
+          "Hyderabad",
+          "Mumbai",
+          "Noida",
+          "Pune"
+        ]
+      },
+      {
+        NorthAmerica: [
+          "Atlanta",
+          "Chicago",
+          "Dallas",
+          "Denver",
+          "New York",
+          "San Francisco",
+          "Toronto",
+          "Calgary"
+        ]
+      },
+      {
+        LatinAmerica: [
+          "Belo Horizonte",
+          "Porto Alegre",
+          "Quito",
+          "Recife",
+          "Santiago",
+          "São Paulo"
+        ]
+      },
+      { SoutheastAsia: ["Bangkok", "Singapore"] },
+      { Africa: ["Johannesburg", "Kampala"] }
+    ]
   },
   {
     attribute: "Industry",
     list: [
-      "Accounting",
-      "Airlines/Aviation",
-      "Alternative Dispute Resolution",
-      "Alternative Medicine",
-      "Animation",
-      "Apparel & Fashion",
-      "Architecture & Planning",
-      "Arts & Crafts",
+      "F&B",
+      "Retail",
+      "Financial",
+      "Travel",
+      "Pharmaceutical",
       "Automotive",
-      "Aviation & Aerospace",
-      "Banking",
-      "Biotechnology",
-      "Broadcast Media",
-      "Building Materials",
-      "Business Supplies & Equipment",
-      "Capital Markets",
-      "Chemicals",
-      "Civic & Social Organization",
-      "Civil Engineering",
-      "Commercial Real Estate",
-      "Computer & Network Security",
-      "Computer Games",
-      "Computer Hardware",
-      "Computer Networking",
-      "Computer Software",
-      "Construction",
-      "Consumer Electronics",
-      "Consumer Goods",
-      "Consumer Services",
-      "Cosmetics",
-      "Dairy",
-      "Defense & Space",
-      "Design",
-      "Education Management",
-      "E-learning",
-      "Electrical & Electronic Manufacturing",
+      "Government",
+      "Telecommunications",
+      "Charity",
+      "B2B",
+      "B2C",
+      "Real estate",
       "Entertainment",
-      "Environmental Services",
-      "Events Services",
-      "Executive Office",
-      "Facilities Services",
-      "Farming",
-      "Financial Services",
-      "Fine Art",
-      "Fishery",
-      "Food & Beverages",
-      "Food Production",
-      "Fundraising",
-      "Furniture",
-      "Gambling & Casinos",
-      "Glass, Ceramics & Concrete",
-      "Government Administration",
-      "Government Relations",
-      "Graphic Design",
-      "Health, Wellness & Fitness",
-      "Higher Education",
-      "Hospital & Health Care",
       "Hospitality",
-      "Human Resources",
-      "Import & Export",
-      "Individual & Family Services",
-      "Industrial Automation",
-      "Information Services",
-      "Information Technology & Services",
-      "Insurance",
-      "International Affairs",
-      "International Trade & Development",
-      "Internet",
-      "Investment Banking/Venture",
-      "Investment Management",
-      "Judiciary",
-      "Law Enforcement",
-      "Law Practice",
-      "Legal Services",
-      "Legislative Office",
-      "Leisure & Travel",
-      "Libraries"
+      "Media",
+      "Mining"
     ]
   },
   {

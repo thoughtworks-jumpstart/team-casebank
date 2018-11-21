@@ -8,12 +8,10 @@ export default function CaseProperties({ properties }) {
       Region: properties.region,
       Office: properties.office,
       Year: properties.year,
-      Status: properties.status,
       "NDA Status": properties.nda,
       Industry: properties.industry,
-      Tags: properties.tag,
+      // Tags: properties.tag,
       Techstack: properties.techstack,
-      "Phase of Project": properties.phase,
       "Main TW Contact": properties.main_tw_contact.name,
       Team: properties.members.map(member => member.name)
     };
