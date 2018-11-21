@@ -57,7 +57,14 @@ const projects = [
     region: "China",
     office: "Beijing",
     industry: "F&B",
-    members: ["John Mayer", "Mary Lamb", "Daniel Done", "Vlad", "Russell"]
+    members: [
+      "John Mayer",
+      "Mary Lamb",
+      "Daniel Done",
+      "Vlad",
+      "Russell",
+      "Roth"
+    ]
     //tag: ["Digital", "Food Ordering"]
   },
   {
@@ -137,7 +144,7 @@ const projects = [
     region: "Southeast Asia",
     office: "Singapore",
     industry: "Retail",
-    members: ["John Mayer", "Daniel Done", "Russell"]
+    members: ["John Mayer", "Daniel Done", "Russell", "Roth"]
     //tag: ["Fitness", "Retail"]
   },
   {
@@ -153,7 +160,7 @@ const projects = [
     region: "Southeast Asia",
     office: "Singapore",
     industry: "B2C",
-    members: ["Veron", "Ken", "Russell"]
+    members: ["Veron", "Ken", "Russell", "Roth"]
     //tag: ["Water", "Desalination", "Tracking"]
   },
   {
