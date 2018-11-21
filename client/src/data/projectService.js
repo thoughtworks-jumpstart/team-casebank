@@ -209,8 +209,17 @@ async function getProjects() {
   //return projects;
 }
 
-function getProjectById(projectId) {
-  return projects.find(project => project._id === projectId);
+async function getProjectById(projectId) {
+  try {
+    let response = await fetch(`/projects/${projectId}`, {
+      method: "get",
+      headers: { "Content-Type": "application/json" }
+    });
+    let project = await response.json();
+    return project;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export { getProjects, getProjectById };

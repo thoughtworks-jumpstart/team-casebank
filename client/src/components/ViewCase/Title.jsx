@@ -2,9 +2,9 @@ import React from "react";
 
 function Title({ properties: { client, name } }) {
   return (
-    <div>
-      <h1>Client: {client}</h1>
-      <h2>Name: {name}</h2>
+    <div className="text-left pl-5">
+      <h1 className="font-weight-bold">{client}</h1>
+      <h2>{name}</h2>
     </div>
   );
 }

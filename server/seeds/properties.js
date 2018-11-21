@@ -23,7 +23,7 @@ const properties = [
       "Swift"
     ]
   },
-  { attribute: "Status", list: ["Ongoing", "Completed"] },
+  { attribute: "Status", list: ["Proposal", "Live"] },
   { attribute: "Phase", list: ["Prototype", "Delivery"] },
   {
     attribute: "Region",

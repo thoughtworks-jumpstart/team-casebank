@@ -1,4 +1,4 @@
-import { getProjects } from "../../data/projectService";
+import { getProjectById } from "../../data/projectService";
 import React, { Component } from "react";
 import CaseProperties from "./CaseProperties";
 import CaseDetails from "./CaseDetails";
@@ -12,14 +12,7 @@ export default class Details extends Component {
   }
 
   async componentDidMount() {
-    let response = await fetch(`/projects/${this.props.id}`, {
-      method: "get",
-      headers: { "Content-Type": "application/json" }
-    });
-    let project = await response.json();
-    project.members = project.members.map(member => member.name);
-    project["Main TW Contact"] = project.main_tw_contact.name;
-    delete project.main_tw_contact;
+    let project = await getProjectById(this.props.id)
     this.setState({ project });
   }
 
@@ -35,7 +28,7 @@ export default class Details extends Component {
             </div>
           </div>
           <div className="row m-4">
-            <div className="col-3">
+            <div className="col-3 pl-4">
               <CaseProperties properties={properties} />
             </div>
             <div className="col-9">
