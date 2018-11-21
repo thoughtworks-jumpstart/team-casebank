@@ -9,6 +9,7 @@ export default function CaseProperties({ properties }) {
       Office: properties.office,
       Year: properties.year,
       Status: properties.status,
+      "NDA Status": properties.nda,
       Industry: properties.industry,
       Tags: properties.tag,
       Techstack: properties.techstack,
