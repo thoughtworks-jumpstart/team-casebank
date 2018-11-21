@@ -8,7 +8,7 @@ describe("Renders Title component", () => {
     <Title properties={{ name: "Something", client: "Someone" }} />
   );
   it("should render the clients and project name", () => {
-    expect(getByText(/Client/).textContent).toContain("Someone");
-    expect(getByText(/Name/).textContent).toContain("Something");
+    expect(getByText(/Someone/).textContent).toContain("Someone");
+    expect(getByText(/Something/).textContent).toContain("Something");
   });
 });
