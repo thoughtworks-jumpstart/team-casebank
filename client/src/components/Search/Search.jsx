@@ -13,26 +13,24 @@ export default class Search extends Component {
     resultList: [],
     selectedOptions: "All",
     filterOptions: {
+      nda: [],
       client: [],
       region: [],
       office: [],
-      status: [],
       industry: [],
       techstack: [],
       year: [],
-      project: [],
-      tags: []
+      project: []
     },
     selectedSearch: {
+      nda: [],
       client: [],
       region: [],
       office: [],
-      status: [],
       industry: [],
       techstack: [],
       year: [],
-      project: [],
-      tags: []
+      project: []
     }
   };
 
@@ -41,59 +39,83 @@ export default class Search extends Component {
     this.setState({
       project: projects,
       filterOptions: {
-        client: getFilteredProperties(projects, this.searchOptionSettings["client"].searchFieldName),
-        region: getFilteredProperties(projects, this.searchOptionSettings["region"].searchFieldName),
-        office: getFilteredProperties(projects, this.searchOptionSettings["office"].searchFieldName),
-        status: getFilteredProperties(projects, this.searchOptionSettings["status"].searchFieldName),
-        industry: getFilteredProperties(projects, this.searchOptionSettings["industry"].searchFieldName),
-        techstack: getFilteredMultiProperties(projects, this.searchOptionSettings["techstack"].searchFieldName),
-        year: getFilteredProperties(projects, this.searchOptionSettings["year"].searchFieldName),
+        nda: getFilteredProperties(
+          projects,
+          this.searchOptionSettings["nda"].searchFieldName
+        ),
+        client: getFilteredProperties(
+          projects,
+          this.searchOptionSettings["client"].searchFieldName
+        ),
+        region: getFilteredProperties(
+          projects,
+          this.searchOptionSettings["region"].searchFieldName
+        ),
+        office: getFilteredProperties(
+          projects,
+          this.searchOptionSettings["office"].searchFieldName
+        ),
+        industry: getFilteredProperties(
+          projects,
+          this.searchOptionSettings["industry"].searchFieldName
+        ),
+        techstack: getFilteredMultiProperties(
+          projects,
+          this.searchOptionSettings["techstack"].searchFieldName
+        ),
+        year: getFilteredProperties(
+          projects,
+          this.searchOptionSettings["year"].searchFieldName
+        ),
         project: getFilteredProperties(
           projects,
           this.searchOptionSettings["project"].searchFieldName
-        ),
-        tags: getFilteredMultiProperties(projects, this.searchOptionSettings["tags"].searchFieldName)
+        )
       },
       resultList: projects
     });
   }
 
   searchOptionSettings = {
+    nda: {
+      selectIsMulti: false,
+      searchFieldName: "nda",
+      displayName: "NDA status"
+    },
     client: {
       selectIsMulti: false,
-      searchFieldName: "client"
+      searchFieldName: "client",
+      displayName: "Client"
     },
     project: {
       selectIsMulti: false,
-      searchFieldName: "name"
+      searchFieldName: "name",
+      displayName: "Project"
     },
     region: {
       selectIsMulti: false,
-      searchFieldName: "region"
+      searchFieldName: "region",
+      displayName: "Region"
     },
     office: {
       selectIsMulti: false,
-      searchFieldName: "office"
+      searchFieldName: "office",
+      displayName: "Office"
     },
     year: {
       selectIsMulti: false,
-      searchFieldName: "year"
-    },
-    status: {
-      selectIsMulti: false,
-      searchFieldName: "status"
+      searchFieldName: "year",
+      displayName: "Year"
     },
     industry: {
       selectIsMulti: false,
-      searchFieldName: "industry"
-    },
-    tags: {
-      selectIsMulti: true,
-      searchFieldName: "tag"
+      searchFieldName: "industry",
+      displayName: "Industry"
     },
     techstack: {
       selectIsMulti: true,
-      searchFieldName: "techstack"
+      searchFieldName: "techstack",
+      displayName: "Tech stack"
     }
   };
 
@@ -130,18 +152,38 @@ export default class Search extends Component {
     this.setState({
       resultList: filterList,
       filterOptions: {
-        client: getFilteredProperties(filterList, this.searchOptionSettings["client"].searchFieldName),
-        region: getFilteredProperties(filterList, this.searchOptionSettings["region"].searchFieldName),
-        office: getFilteredProperties(filterList, this.searchOptionSettings["office"].searchFieldName),
-        status: getFilteredProperties(filterList, this.searchOptionSettings["status"].searchFieldName),
-        industry: getFilteredProperties(filterList, this.searchOptionSettings["industry"].searchFieldName),
-        techstack: getFilteredMultiProperties(filterList, this.searchOptionSettings["techstack"].searchFieldName),
-        year: getFilteredProperties(filterList, this.searchOptionSettings["year"].searchFieldName),
+        nda: getFilteredProperties(
+          filterList,
+          this.searchOptionSettings["nda"].searchFieldName
+        ),
+        client: getFilteredProperties(
+          filterList,
+          this.searchOptionSettings["client"].searchFieldName
+        ),
+        region: getFilteredProperties(
+          filterList,
+          this.searchOptionSettings["region"].searchFieldName
+        ),
+        office: getFilteredProperties(
+          filterList,
+          this.searchOptionSettings["office"].searchFieldName
+        ),
+        industry: getFilteredProperties(
+          filterList,
+          this.searchOptionSettings["industry"].searchFieldName
+        ),
+        techstack: getFilteredMultiProperties(
+          filterList,
+          this.searchOptionSettings["techstack"].searchFieldName
+        ),
+        year: getFilteredProperties(
+          filterList,
+          this.searchOptionSettings["year"].searchFieldName
+        ),
         project: getFilteredProperties(
           filterList,
           this.searchOptionSettings["project"].searchFieldName
-        ),
-        tags: getFilteredMultiProperties(filterList, this.searchOptionSettings["tags"].searchFieldName)
+        )
       }
     });
   };
@@ -150,8 +192,6 @@ export default class Search extends Component {
     let previousSelected = this.state.selectedSearch;
     previousSelected[selectedLabel] = selectedOption;
     this.setState({ selectedSearch: previousSelected });
-    console.log(`Option selected:`, selectedOption);
-    console.log(`label selected:`, selectedLabel);
     this.handleSelectOption();
   };
 
@@ -159,29 +199,48 @@ export default class Search extends Component {
     this.setState({
       resultList: this.state.project,
       filterOptions: {
-        client: getFilteredProperties(this.state.project, this.searchOptionSettings["client"].searchFieldName),
-        region: getFilteredProperties(this.state.project, this.searchOptionSettings["region"].searchFieldName),
-        office: getFilteredProperties(this.state.project, this.searchOptionSettings["office"].searchFieldName),
-        status: getFilteredProperties(this.state.project, this.searchOptionSettings["status"].searchFieldName),
-        industry: getFilteredProperties(this.state.project, this.searchOptionSettings["industry"].searchFieldName),
-        techstack: getFilteredMultiProperties(this.state.project, this.searchOptionSettings["techstack"].searchFieldName),
-        year: getFilteredProperties(this.state.project, this.searchOptionSettings["year"].searchFieldName),
+        nda: getFilteredProperties(
+          this.state.project,
+          this.searchOptionSettings["nda"].searchFieldName
+        ),
+        client: getFilteredProperties(
+          this.state.project,
+          this.searchOptionSettings["client"].searchFieldName
+        ),
+        region: getFilteredProperties(
+          this.state.project,
+          this.searchOptionSettings["region"].searchFieldName
+        ),
+        office: getFilteredProperties(
+          this.state.project,
+          this.searchOptionSettings["office"].searchFieldName
+        ),
+        industry: getFilteredProperties(
+          this.state.project,
+          this.searchOptionSettings["industry"].searchFieldName
+        ),
+        techstack: getFilteredMultiProperties(
+          this.state.project,
+          this.searchOptionSettings["techstack"].searchFieldName
+        ),
+        year: getFilteredProperties(
+          this.state.project,
+          this.searchOptionSettings["year"].searchFieldName
+        ),
         project: getFilteredProperties(
           this.state.project,
           this.searchOptionSettings["project"].searchFieldName
-        ),
-        tags: getFilteredMultiProperties(this.state.project, this.searchOptionSettings["tags"].searchFieldName)
+        )
       },
       selectedSearch: {
+        nda: [],
         client: [],
         region: [],
         office: [],
-        status: [],
         industry: [],
         techstack: [],
         year: [],
-        project: [],
-        tags: []
+        project: []
       }
     });
   };
@@ -196,6 +255,7 @@ export default class Search extends Component {
               selectId={`${key}-dropdown`}
               key={index}
               searchOptions={this.state.filterOptions[key]}
+              textLabel={this.searchOptionSettings[key].displayName}
               searchLabel={key}
               handleChange={this.handleChange}
               isMulti={this.searchOptionSettings[key].selectIsMulti}
