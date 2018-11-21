@@ -19,7 +19,7 @@ export default class SearchCriteria extends Component {
     return (
       <div>
         <h4>
-          <div className="badge badge-secondary">{textLabel}</div>
+          <div className="badge badge-secondary dropdown-label">{textLabel}</div>
         </h4>
         <Select
           id={selectId}

@@ -77,11 +77,6 @@ export default class Search extends Component {
   }
 
   searchOptionSettings = {
-    nda: {
-      selectIsMulti: false,
-      searchFieldName: "nda",
-      displayName: "NDA status"
-    },
     client: {
       selectIsMulti: false,
       searchFieldName: "client",
@@ -107,6 +102,11 @@ export default class Search extends Component {
       searchFieldName: "year",
       displayName: "Year"
     },
+    nda: {
+      selectIsMulti: false,
+      searchFieldName: "nda",
+      displayName: "NDA Status"
+    },
     industry: {
       selectIsMulti: false,
       searchFieldName: "industry",
@@ -115,7 +115,7 @@ export default class Search extends Component {
     techstack: {
       selectIsMulti: true,
       searchFieldName: "techstack",
-      displayName: "Tech stack"
+      displayName: "Tech Stack"
     }
   };
 
