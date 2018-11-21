@@ -9,7 +9,7 @@
     "start:dev:client": "cd client&&npm start",
     "start:dev:server": "cd server&&npm run dev",
     "start": "concurrently \"npm run start:dev:client\" \"npm run start:dev:server\"",
-    "start:prod:server": "cd server&&npm run start",
+    "start:prod:server": "cd server&&npm run seed&&npm run start",
     "build": "cd client&&npm run build",
     "heroku-postbuild": "npm run build",
     "seed": "cd server&&npm run seed",
