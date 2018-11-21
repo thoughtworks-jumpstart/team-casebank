@@ -3,7 +3,7 @@ import { render } from "react-testing-library";
 import React from "react";
 import { getProjects } from "../../data/projectService";
 
-describe("Renders Case component", () => {
+describe.skip("Renders Case component", () => {
   const proj = getProjects();
   const { getByText } = render(<Details id={proj[0]._id} />);
   it("should render the clients and project name", () => {
