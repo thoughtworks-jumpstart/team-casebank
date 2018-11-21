@@ -21,7 +21,7 @@ export default class Search extends Component {
       techstack: [],
       year: [],
       project: [],
-      tag: []
+      tags: []
     },
     selectedSearch: {
       client: [],
@@ -32,7 +32,7 @@ export default class Search extends Component {
       techstack: [],
       year: [],
       project: [],
-      tag: []
+      tags: []
     }
   };
 
@@ -41,15 +41,18 @@ export default class Search extends Component {
     this.setState({
       project: projects,
       filterOptions: {
-        client: getFilteredProperties(projects, "client"),
-        region: getFilteredProperties(projects, "region"),
-        office: getFilteredProperties(projects, "office"),
-        status: getFilteredProperties(projects, "status"),
-        industry: getFilteredProperties(projects, "industry"),
-        techstack: getFilteredMultiProperties(projects, "techstack"),
-        year: getFilteredProperties(projects, "year"),
-        project: getFilteredProperties(projects, "project"),
-        tag: getFilteredMultiProperties(projects, "tag")
+        client: getFilteredProperties(projects, this.searchOptionSettings["client"].searchFieldName),
+        region: getFilteredProperties(projects, this.searchOptionSettings["region"].searchFieldName),
+        office: getFilteredProperties(projects, this.searchOptionSettings["office"].searchFieldName),
+        status: getFilteredProperties(projects, this.searchOptionSettings["status"].searchFieldName),
+        industry: getFilteredProperties(projects, this.searchOptionSettings["industry"].searchFieldName),
+        techstack: getFilteredMultiProperties(projects, this.searchOptionSettings["techstack"].searchFieldName),
+        year: getFilteredProperties(projects, this.searchOptionSettings["year"].searchFieldName),
+        project: getFilteredProperties(
+          projects,
+          this.searchOptionSettings["project"].searchFieldName
+        ),
+        tags: getFilteredMultiProperties(projects, this.searchOptionSettings["tags"].searchFieldName)
       },
       resultList: projects
     });
@@ -57,31 +60,40 @@ export default class Search extends Component {
 
   searchOptionSettings = {
     client: {
-      selectIsMulti: false
-    },
-    region: {
-      selectIsMulti: false
-    },
-    office: {
-      selectIsMulti: false
-    },
-    status: {
-      selectIsMulti: false
-    },
-    industry: {
-      selectIsMulti: false
-    },
-    techstack: {
-      selectIsMulti: true
-    },
-    year: {
-      selectIsMulti: false
+      selectIsMulti: false,
+      searchFieldName: "client"
     },
     project: {
-      selectIsMulti: false
+      selectIsMulti: false,
+      searchFieldName: "name"
     },
-    tag: {
-      selectIsMulti: true
+    region: {
+      selectIsMulti: false,
+      searchFieldName: "region"
+    },
+    office: {
+      selectIsMulti: false,
+      searchFieldName: "office"
+    },
+    year: {
+      selectIsMulti: false,
+      searchFieldName: "year"
+    },
+    status: {
+      selectIsMulti: false,
+      searchFieldName: "status"
+    },
+    industry: {
+      selectIsMulti: false,
+      searchFieldName: "industry"
+    },
+    tags: {
+      selectIsMulti: true,
+      searchFieldName: "tag"
+    },
+    techstack: {
+      selectIsMulti: true,
+      searchFieldName: "techstack"
     }
   };
 
@@ -96,7 +108,7 @@ export default class Search extends Component {
               console.log(`option is ${option.value}`);
               console.log(`key is ${key}`);
               filterList = filterList.filter(project =>
-                project[key].find(
+                project[this.searchOptionSettings[key].searchFieldName].find(
                   item => item.toLowerCase() === option.value.toLowerCase()
                 )
               );
@@ -106,7 +118,9 @@ export default class Search extends Component {
             console.log(`key non multi is ${key}`);
             if (options.value) {
               filterList = filterList.filter(
-                project => project[key] === options.value
+                project =>
+                  project[this.searchOptionSettings[key].searchFieldName] ===
+                  options.value
               );
             }
           }
@@ -116,15 +130,18 @@ export default class Search extends Component {
     this.setState({
       resultList: filterList,
       filterOptions: {
-        client: getFilteredProperties(filterList, "client"),
-        region: getFilteredProperties(filterList, "region"),
-        office: getFilteredProperties(filterList, "office"),
-        status: getFilteredProperties(filterList, "status"),
-        industry: getFilteredProperties(filterList, "industry"),
-        techstack: getFilteredMultiProperties(filterList, "techstack"),
-        year: getFilteredProperties(filterList, "year"),
-        project: getFilteredProperties(filterList, "project"),
-        tag: getFilteredMultiProperties(filterList, "tag")
+        client: getFilteredProperties(filterList, this.searchOptionSettings["client"].searchFieldName),
+        region: getFilteredProperties(filterList, this.searchOptionSettings["region"].searchFieldName),
+        office: getFilteredProperties(filterList, this.searchOptionSettings["office"].searchFieldName),
+        status: getFilteredProperties(filterList, this.searchOptionSettings["status"].searchFieldName),
+        industry: getFilteredProperties(filterList, this.searchOptionSettings["industry"].searchFieldName),
+        techstack: getFilteredMultiProperties(filterList, this.searchOptionSettings["techstack"].searchFieldName),
+        year: getFilteredProperties(filterList, this.searchOptionSettings["year"].searchFieldName),
+        project: getFilteredProperties(
+          filterList,
+          this.searchOptionSettings["project"].searchFieldName
+        ),
+        tags: getFilteredMultiProperties(filterList, this.searchOptionSettings["tags"].searchFieldName)
       }
     });
   };
@@ -142,15 +159,18 @@ export default class Search extends Component {
     this.setState({
       resultList: this.state.project,
       filterOptions: {
-        client: getFilteredProperties(this.state.project, "client"),
-        region: getFilteredProperties(this.state.project, "region"),
-        office: getFilteredProperties(this.state.project, "office"),
-        status: getFilteredProperties(this.state.project, "status"),
-        industry: getFilteredProperties(this.state.project, "industry"),
-        techstack: getFilteredMultiProperties(this.state.project, "techstack"),
-        year: getFilteredProperties(this.state.project, "year"),
-        project: getFilteredProperties(this.state.project, "project"),
-        tag: getFilteredMultiProperties(this.state.project, "tag")
+        client: getFilteredProperties(this.state.project, this.searchOptionSettings["client"].searchFieldName),
+        region: getFilteredProperties(this.state.project, this.searchOptionSettings["region"].searchFieldName),
+        office: getFilteredProperties(this.state.project, this.searchOptionSettings["office"].searchFieldName),
+        status: getFilteredProperties(this.state.project, this.searchOptionSettings["status"].searchFieldName),
+        industry: getFilteredProperties(this.state.project, this.searchOptionSettings["industry"].searchFieldName),
+        techstack: getFilteredMultiProperties(this.state.project, this.searchOptionSettings["techstack"].searchFieldName),
+        year: getFilteredProperties(this.state.project, this.searchOptionSettings["year"].searchFieldName),
+        project: getFilteredProperties(
+          this.state.project,
+          this.searchOptionSettings["project"].searchFieldName
+        ),
+        tags: getFilteredMultiProperties(this.state.project, this.searchOptionSettings["tags"].searchFieldName)
       },
       selectedSearch: {
         client: [],
@@ -161,7 +181,7 @@ export default class Search extends Component {
         techstack: [],
         year: [],
         project: [],
-        tag: []
+        tags: []
       }
     });
   };
@@ -175,7 +195,6 @@ export default class Search extends Component {
             <SearchCriteria
               key={index}
               searchOptions={this.state.filterOptions[key]}
-              // searchOptions={this.searchOptionSettings[key].searchOptions()}
               searchLabel={key}
               handleChange={this.handleChange}
               isMulti={this.searchOptionSettings[key].selectIsMulti}

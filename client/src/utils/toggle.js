@@ -1,4 +1,4 @@
-import React from "react";
+//import React from "react";
 
 //Toggle element off if current env is production
 export function toggle(element) {
