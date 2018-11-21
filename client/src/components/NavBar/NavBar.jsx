@@ -7,7 +7,7 @@ export default class NavBar extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
         <NavLink className="navbar-brand " to="/">
-          CaseBank
+          ProjectHub
         </NavLink>
         <button
           className="navbar-toggler"
