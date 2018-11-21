@@ -12,11 +12,11 @@ const getResultRows = () => {
   return cy.get(".rt-tr-group");
 };
 
-const checkDropdownIsDisplayed = (index, labelName) => {
+const checkDropdownIsDisplayed = (index, labelName, idName) => {
   cy.get(".dropdown-label")
     .eq(index)
     .should("have.text", labelName);
-  cy.get(`#${labelName.toLowerCase()}-dropdown`).should("be.visible");
+  cy.get(`#${idName}-dropdown`).should("be.visible");
 };
 
 describe("Search For Project", () => {
@@ -38,15 +38,14 @@ describe("Search For Project", () => {
   });
 
   it("Check that drop downs are visible", () => {
-    checkDropdownIsDisplayed(0, "Client");
-    checkDropdownIsDisplayed(1, "Project");
-    checkDropdownIsDisplayed(2, "Region");
-    checkDropdownIsDisplayed(3, "Office");
-    checkDropdownIsDisplayed(4, "Year");
-    checkDropdownIsDisplayed(5, "Status");
-    checkDropdownIsDisplayed(6, "Industry");
-    checkDropdownIsDisplayed(7, "Tags");
-    checkDropdownIsDisplayed(8, "Techstack");
+    checkDropdownIsDisplayed(0, "Client", "client");
+    checkDropdownIsDisplayed(1, "Project", "project");
+    checkDropdownIsDisplayed(2, "Region", "region");
+    checkDropdownIsDisplayed(3, "Office", "office");
+    checkDropdownIsDisplayed(4, "Year", "year");
+    checkDropdownIsDisplayed(5, "NDA Status", "nda");
+    checkDropdownIsDisplayed(6, "Industry", "industry");
+    checkDropdownIsDisplayed(7, "Tech Stack", "techstack");
   });
 
   it("Check that region filter is working", () => {
