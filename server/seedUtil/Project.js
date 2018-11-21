@@ -70,7 +70,7 @@ const projects = [
     main_tw_contact: "Russell",
     techstack: ["Javascript", "React"],
     year: 2018,
-    on: "North America",
+    region: "North America",
     office: "New York",
     industry: "F&B",
     members: ["Daniel Done", "Mary Lamb", "Vlad", "Russell"]
@@ -86,7 +86,7 @@ const projects = [
     main_tw_contact: "John Mayer",
     techstack: ["Javascript", "PHP", "Mongoose"],
     year: 2018,
-    on: "Southeast Asia",
+    region: "Southeast Asia",
     office: "Singapore",
     industry: "Hospitality",
     members: ["John Mayer", "Mary Lamb", "Betty", "James"]
@@ -150,7 +150,7 @@ const projects = [
     main_tw_contact: "Russell",
     techstack: ["jQuery", "PostgreSQL"],
     year: 2000,
-    on: "Southeast Asia",
+    region: "Southeast Asia",
     office: "Singapore",
     industry: "B2C",
     members: ["Veron", "Ken", "Russell"]

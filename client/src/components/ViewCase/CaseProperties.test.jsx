@@ -9,17 +9,14 @@ describe("Name of the group", () => {
     client: "Sleep Well Inc",
     nda: "yes",
     description: `To create an app to sleep well`,
-    main_tw_contact: {name: "John Mayer"},
+    main_tw_contact: { name: "John Mayer" },
     techstack: ["javascript", "react", "mongoose"],
     year: 2018,
-    status: "Ongoing",
     region: "Southeast Asia",
     country: "Singapore",
     office: "Singapore",
     industry: "general services",
-    phase: "Prototype",
-    members: [{name: "John Mayer"}, {name: "Mary Lamb"}, {name:"Betty"}],
-    tag: ""
+    members: [{ name: "John Mayer" }, { name: "Mary Lamb" }, { name: "Betty" }]
   };
   const { getByText } = render(<CaseProperties properties={project} />);
   it("Should render techstack property name", () => {

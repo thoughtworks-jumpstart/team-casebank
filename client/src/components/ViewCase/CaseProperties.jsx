@@ -8,11 +8,11 @@ export default function CaseProperties({ properties }) {
       Region: properties.region,
       Office: properties.office,
       Year: properties.year,
-      "NDA Status": properties.nda,
+      "NDA status": properties.nda,
       Industry: properties.industry,
       // Tags: properties.tag,
-      Techstack: properties.techstack,
-      "Main TW Contact": properties.main_tw_contact.name,
+      "Tech stack": properties.techstack,
+      "Main TW contact": properties.main_tw_contact.name,
       Team: properties.members.map(member => member.name)
     };
   }
