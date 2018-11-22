@@ -15,6 +15,7 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+            - /home/circleci/.cache/Cypress
       - run: # run tests
           name: Run Test
           command: npm test
@@ -35,11 +36,12 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Setup Dependencies
-          command: npm install
+          command: npm install cypress
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+            - /home/circleci/.cache/Cypress
       - run: # run Cypress tests
           name: Run Test
           command: npm run cypress:run:auto
