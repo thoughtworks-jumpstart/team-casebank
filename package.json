@@ -14,7 +14,11 @@
     "heroku-postbuild": "npm run build",
     "seed": "cd server&&npm run seed",
     "seed-setup": "cd server&&npm run seed-setup",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --env server=http://localhost:3000",
+    "cypress:run:auto": "cypress run --env server=http://auto-team-projecthub.herokuapp.com",
+    "cypress:run:test": "cypress run --env server=http://test-team-projecthub.herokuapp.com",
+    "cypress:run:prod": "cypress run --env server=http://teprodt-team-projecthub.herokuapp.com"
   },
   "author": "",
   "license": "ISC",

@@ -21,8 +21,7 @@ const checkDropdownIsDisplayed = (index, labelName, idName) => {
 
 describe("Search For Project", () => {
   it("Check that home page loads", () => {
-    // cy.visit('https://auto-team-casebank.herokuapp.com/')
-    cy.visit("http://localhost:3000");
+    cy.visit(Cypress.env("server"));
 
     cy.get("h1")
       .should("contain", "Home")
