@@ -5,7 +5,7 @@ import { toggle } from "../../utils/toggle";
 export default class NavBar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <NavLink className="navbar-brand " to="/">
           ProjectHub
         </NavLink>

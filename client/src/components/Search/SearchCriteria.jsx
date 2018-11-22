@@ -17,10 +17,10 @@ export default class SearchCriteria extends Component {
       label: element
     }));
     return (
-      <div>
-        <h4>
-          <div className="badge badge-secondary dropdown-label">{textLabel}</div>
-        </h4>
+      <div className="mb-3">
+        <h6>
+          <div className="dropdown-label">{textLabel}</div>
+        </h6>
         <Select
           id={selectId}
           isMulti={isMulti}

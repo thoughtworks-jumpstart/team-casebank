@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import HomeCarousel from "./HomeCarousel";
+import HomeHighlights from "./HomeHighlights";
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Home</h1>
+        <HomeCarousel />
+        <div className="container">
+          <HomeHighlights />
+        </div>
       </div>
     );
   }

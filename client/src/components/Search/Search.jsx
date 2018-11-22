@@ -248,7 +248,7 @@ export default class Search extends Component {
   render() {
     const { resultList } = this.state;
     return (
-      <div className="row">
+      <div className="row mt-4">
         <div className="col-2 ml-4">
           {Object.keys(this.searchOptionSettings).map((key, index) => (
             <SearchCriteria
@@ -262,14 +262,10 @@ export default class Search extends Component {
               selectedValue={this.state.selectedSearch[key]}
             />
           ))}
-          <br />
-          <br />
-          <br />
-          <br />
           <button
             onClick={this.clearFilter}
             type="button"
-            className="btn btn-secondary"
+            className="btn btn-secondary mt-2"
           >
             Clear All
           </button>
