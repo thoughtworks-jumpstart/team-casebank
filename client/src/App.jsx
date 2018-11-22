@@ -25,7 +25,7 @@ class App extends Component {
             }}
           />
           <Route
-            path="/users/:id"
+            path="/userdetails/:id"
             exact
             render={props => {
               return <UserDetails id={props.match.params.id} />;
