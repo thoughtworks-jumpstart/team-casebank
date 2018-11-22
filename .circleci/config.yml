@@ -26,14 +26,14 @@ jobs:
       - run:
           name: Deploy Master to Automation
           command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$AUTO_HEROKU_APP_NAME.git master --force
-   auto-end-to-end-test:
-     docker:
-       - image: buildpack-deps:trusty
-     steps:
-       - checkout
-       - run:
-           name: Run Cypress Tests
-           command: npm run cypress:run:auto
+  auto-end-to-end-test:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Run Cypress Tests
+          command: npm run cypress:run:auto
   deploy-test:
     docker:
       - image: buildpack-deps:trusty
@@ -59,8 +59,8 @@ workflows:
           requires:
             - build
       - auto-end-to-end-test:
-           requires:
-             - deploy-auto
+          requires:
+            - deploy-auto
       - hold-deploy-test:
           type: approval
           requires:
