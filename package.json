@@ -14,10 +14,10 @@
     "heroku-postbuild": "npm run build",
     "seed": "cd server&&npm run seed",
     "seed-setup": "cd server&&npm run seed-setup",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run --env server=http://localhost:3000",
-    "cypress:run:auto": "cypress run --env server=http://auto-team-projecthub.herokuapp.com",
-    "cypress:run:test": "cypress run --env server=http://test-team-projecthub.herokuapp.com"
+    "cypress:open": "cypress open --env server=http://localhost:3000 --browser chrome",
+    "cypress:run": "cypress run --env server=http://localhost:3000 --browser chrome",
+    "cypress:run:auto": "cypress run --env server=http://auto-team-projecthub.herokuapp.com --browser chrome",
+    "cypress:run:test": "cypress run --env server=http://test-team-projecthub.herokuapp.com --browser chrome"
   },
   "author": "",
   "license": "ISC",

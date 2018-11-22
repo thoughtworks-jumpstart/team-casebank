@@ -57,7 +57,7 @@ describe("Search For Project", () => {
     getResultRows().within(() => {
       cy.get("a")
         .eq(0)
-        .should("have.text", "Resort Website");
+        .should("have.text", "Flexible Digital Food Ordering Platform");
       cy.get("a")
         .eq(2)
         .should("have.text", "Creative Retail Platform");
