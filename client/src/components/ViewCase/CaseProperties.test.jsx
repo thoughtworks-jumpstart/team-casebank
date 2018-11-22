@@ -1,6 +1,7 @@
 import CaseProperties from "./CaseProperties";
 import { render } from "react-testing-library";
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 
 describe("Name of the group", () => {
   const project = {
@@ -18,7 +19,11 @@ describe("Name of the group", () => {
     industry: "general services",
     members: [{ name: "John Mayer" }, { name: "Mary Lamb" }, { name: "Betty" }]
   };
-  const { getByText } = render(<CaseProperties properties={project} />);
+  const { getByText } = render(
+    <Router>
+      <CaseProperties properties={project} />
+    </Router>
+  );
   it("Should render techstack property name", () => {
     expect(getByText(/javascript/).textContent).toContain("javascript");
   });
