@@ -32,6 +32,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Setup Dependencies
+          command: npm install
+      - run:
           name: Run Cypress Tests
           command: npm run cypress:run:auto
   deploy-test:
