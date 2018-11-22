@@ -23,8 +23,8 @@ describe("Search For Project", () => {
   it("Check that home page loads", () => {
     cy.visit(Cypress.env("server"));
 
-    cy.get("h1")
-      .should("contain", "Home")
+    cy.get("h2")
+      .should("contain", "Heading")
       .and("be.visible");
   });
 
@@ -57,7 +57,7 @@ describe("Search For Project", () => {
     getResultRows().within(() => {
       cy.get("a")
         .eq(0)
-        .should("have.text", "Flexible Digital Food Ordering Platform");
+        .should("have.text", "Resort Website");
       cy.get("a")
         .eq(2)
         .should("have.text", "Creative Retail Platform");
