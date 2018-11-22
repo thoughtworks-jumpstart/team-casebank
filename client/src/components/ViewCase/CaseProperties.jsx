@@ -14,12 +14,15 @@ export default function CaseProperties({ properties }) {
       // Tags: properties.tag,
       "Tech stack": properties.techstack,
       "Main TW contact": (
-        <Link to={`/users/${properties.main_tw_contact._id}`} target="_blank">
+        <Link
+          to={`/userdetails/${properties.main_tw_contact._id}`}
+          target="_blank"
+        >
           {properties.main_tw_contact.name}
         </Link>
       ),
       Team: properties.members.map((member, index) => (
-        <Link key={index} to={`/usersdetails/${member._id}`} target="_blank">
+        <Link key={index} to={`/userdetails/${member._id}`} target="_blank">
           {member.name}
         </Link>
       ))
