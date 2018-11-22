@@ -40,8 +40,18 @@ function getUsers() {
   return users;
 }
 
-function getUserById(userId) {
-  return users.find(user => user._id === userId);
+async function getUserById(userId) {
+  try {
+    let response = await fetch(`/users/${userId}`, {
+      method: "get",
+      headers: { "Content-Type": "application/json" }
+    });
+    let user = await response.json();
+    console.log(user);
+    return user;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export { getUsers, getUserById };

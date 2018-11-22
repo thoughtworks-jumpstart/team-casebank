@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import Search from "./components/Search/Search";
 import Editor from "./components/Editor/Editor";
 import Details from "./components/ViewCase/Details";
+import UserDetails from "./components/UserDetails/UserDetails";
 
 class App extends Component {
   render() {
@@ -21,6 +22,13 @@ class App extends Component {
             exact
             render={props => {
               return <Details id={props.match.params.id} />;
+            }}
+          />
+          <Route
+            path="/users/:id"
+            exact
+            render={props => {
+              return <UserDetails id={props.match.params.id} />;
             }}
           />
         </Switch>

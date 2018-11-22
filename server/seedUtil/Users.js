@@ -187,7 +187,7 @@ const users = [
     joindate: "January 2012",
     office: "Singapore",
     role: "UI/UX Designer",
-    email: "vince@thoughtworks.com",
+    email: "roth@thoughtworks.com",
     techstack: ["Swift", "Javsscript"],
     projects: ["Water Treatment Tracker", "HSEQ Incident Reporting App"],
     passwordSalt: "",

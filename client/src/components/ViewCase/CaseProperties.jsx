@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function CaseProperties({ properties }) {
   let array = [];
@@ -12,8 +13,16 @@ export default function CaseProperties({ properties }) {
       Industry: properties.industry,
       // Tags: properties.tag,
       "Tech stack": properties.techstack,
-      "Main TW contact": properties.main_tw_contact.name,
-      Team: properties.members.map(member => member.name)
+      "Main TW contact": (
+        <Link to={`/users/${properties.main_tw_contact._id}`} target="_blank">
+          {properties.main_tw_contact.name}
+        </Link>
+      ),
+      Team: properties.members.map((member, index) => (
+        <Link key={index} to={`/users/${member._id}`} target="_blank">
+          {member.name}
+        </Link>
+      ))
     };
   }
   for (let property in formattedProperties) {
