@@ -23,11 +23,13 @@ export default class NavBar extends Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink exact className="nav-link" to="/">
-                Home
-              </NavLink>
-            </li>
+            {toggle(
+              <li className="nav-item">
+                <NavLink exact className="nav-link" to="/">
+                  Home
+                </NavLink>
+              </li>
+            )}
             <li className="nav-item">
               <NavLink className="nav-link" to="/search">
                 Search

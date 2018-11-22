@@ -7,6 +7,7 @@ import Search from "./components/Search/Search";
 import Editor from "./components/Editor/Editor";
 import Details from "./components/ViewCase/Details";
 import UserDetails from "./components/UserDetails/UserDetails";
+import { toggleToAnother } from "./utils/toggle";
 
 class App extends Component {
   render() {
@@ -14,7 +15,10 @@ class App extends Component {
       <div>
         <NavBar />
         <Switch>
-          <Route path="/" exact component={Home} />
+          {toggleToAnother(
+            <Route path="/" exact component={Search} />,
+            <Route path="/" exact component={Home} />
+          )}
           <Route path="/search" exact component={Search} />
           <Route path="/editor" exact component={Editor} />
           <Route
