@@ -1,8 +1,12 @@
 const clickDropDown = (dropdownId, optToSelect) => {
   cy.get(`#${dropdownId} input`)
     .first()
-    .click({ force: true })
-    .type(optToSelect, { force: true })
+    .click({
+      force: true
+    })
+    .type(optToSelect, {
+      force: true
+    })
     .get(`#${dropdownId} .select__menu`)
     .contains(optToSelect)
     .click();
@@ -54,17 +58,10 @@ describe("Search For Project", () => {
       .find("a")
       .should("have.length", 7);
 
-    getResultRows().within(() => {
-      cy.get("a")
-        .eq(0)
-        .should("have.text", "Resort Website");
-      cy.get("a")
-        .eq(2)
-        .should("have.text", "Creative Retail Platform");
-      cy.get("a")
-        .eq(6)
-        .should("have.text", "Water Treatment Tracker");
-    });
+    getResultRows()
+      .should("contain", "Resort Website")
+      .and("contain", "Creative Retail Platform")
+      .and("contain", "Water Treatment Tracker");
   });
 
   it("Go to project details page", () => {
