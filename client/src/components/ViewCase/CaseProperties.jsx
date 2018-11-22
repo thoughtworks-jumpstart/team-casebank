@@ -19,7 +19,7 @@ export default function CaseProperties({ properties }) {
         </Link>
       ),
       Team: properties.members.map((member, index) => (
-        <Link key={index} to={`/users/${member._id}`} target="_blank">
+        <Link key={index} to={`/usersdetails/${member._id}`} target="_blank">
           {member.name}
         </Link>
       ))
