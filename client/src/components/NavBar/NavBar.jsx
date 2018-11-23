@@ -22,7 +22,7 @@ export default class NavBar extends Component {
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav mr-auto">
             {toggle(
               <li className="nav-item">
                 <NavLink exact className="nav-link" to="/">
