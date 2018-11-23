@@ -30,7 +30,7 @@ const users = [
     office: "New York",
     role: "Developer",
     email: "john_mayer@thoughtworks.com",
-    techstack: ["Javascript", "React", "Mongoose", "Python", "jQuery", "Ruby"],
+    techstack: ["JavaScript", "React", "Mongoose", "Python", "jQuery", "Ruby"],
     projects: [
       "Flexible Digital Food Ordering Platform",
       "OneClick Pizza",
@@ -47,7 +47,7 @@ const users = [
     office: "Singapore",
     role: "Developer",
     email: "mary_lamb@thoughtworks.com",
-    techstack: ["Javascript", "React", "Html", "Ruby", "Rails", "NoSQL"],
+    techstack: ["JavaScript", "React", "Html", "Ruby", "Rails", "NoSQL"],
     projects: [
       "Supermarket App",
       "OneClick Pizza",
@@ -80,7 +80,7 @@ const users = [
     office: "Singapore",
     role: "Developer",
     email: "betty_brown@thoughtworks.com",
-    techstack: ["Javascript", "PHP", "Mongoose"],
+    techstack: ["JavaScript", "PHP", "Mongoose"],
     projects: ["Resort Website"],
     passwordSalt: "",
     passwordHash: ""
@@ -152,7 +152,7 @@ const users = [
     office: "Singapore",
     role: "Developer",
     email: "veron@thoughtworks.com",
-    techstack: ["jQuery", "Javsscript", "PostgreSQL"],
+    techstack: ["jQuery", "JavaScript", "PostgreSQL"],
     projects: ["Water Treatment Tracker"],
     passwordSalt: "",
     passwordHash: ""
@@ -164,7 +164,7 @@ const users = [
     office: "Singapore",
     role: "Developer",
     email: "ken@thoughtworks.com",
-    techstack: ["jQuery", "Javsscript"],
+    techstack: ["jQuery", "JavaScript"],
     projects: ["Water Treatment Tracker", "HSEQ Incident Reporting App"],
     passwordSalt: "",
     passwordHash: ""
@@ -176,7 +176,7 @@ const users = [
     office: "Singapore",
     role: "Developer",
     email: "vince@thoughtworks.com",
-    techstack: ["Swift", "Javsscript"],
+    techstack: ["Swift", "JavaScript"],
     projects: ["Water Treatment Tracker", "HSEQ Incident Reporting App"],
     passwordSalt: "",
     passwordHash: ""
@@ -188,7 +188,7 @@ const users = [
     office: "Singapore",
     role: "UI/UX Designer",
     email: "roth@thoughtworks.com",
-    techstack: ["Swift", "Javsscript"],
+    techstack: ["Swift", "JavaScript"],
     projects: ["Water Treatment Tracker", "HSEQ Incident Reporting App"],
     passwordSalt: "",
     passwordHash: ""
