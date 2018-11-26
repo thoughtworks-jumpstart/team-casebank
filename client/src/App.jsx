@@ -4,7 +4,7 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
 import Search from "./components/Search/Search";
-import Editor from "./components/Editor/Editor";
+import Editor from "./components/NewProject/Editor";
 import Details from "./components/ViewCase/Details";
 import UserDetails from "./components/UserDetails/UserDetails";
 import { toggleToAnother } from "./utils/toggle";

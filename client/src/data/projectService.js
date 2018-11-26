@@ -201,7 +201,6 @@ async function getProjects() {
       headers: { "Content-Type": "application/json" }
     });
     const jsonResult = await message.json();
-    console.log(jsonResult);
     return jsonResult;
   } catch (error) {
     console.log(error.message);
