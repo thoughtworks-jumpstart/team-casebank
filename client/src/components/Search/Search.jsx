@@ -97,7 +97,7 @@ export default class Search extends Component {
       }
     },
     region: {
-      selectIsMulti: false,
+      selectIsMulti: true,
       searchFieldName: "region",
       displayName: "Region",
       openMenuOnClick: true,
@@ -158,11 +158,17 @@ export default class Search extends Component {
               console.log(`option is ${option.value}`);
               console.log(`key is ${key}`);
               //get projects which attribute matches selected option
-              const matchingProjects = filterList.filter(project =>
-                project[this.searchOptionSettings[key].searchFieldName].find(
-                  item => item.toLowerCase() === option.value.toLowerCase()
-                )
-              );
+              const matchingProjects = filterList.filter(project => {
+                const projectAttribute =
+                  project[this.searchOptionSettings[key].searchFieldName];
+                if (Array.isArray(projectAttribute)) {
+                  return projectAttribute.find(
+                    item => item.toLowerCase() === option.value.toLowerCase()
+                  );
+                } else {
+                  return projectAttribute === option.value;
+                }
+              });
               results = [...new Set([...results, ...matchingProjects])];
             }
           } else {
@@ -181,7 +187,7 @@ export default class Search extends Component {
         }
       }
     }
-    this.setState({resultList: results});
+    this.setState({ resultList: results });
   };
 
   //Triggered when user selects option in dropdown
