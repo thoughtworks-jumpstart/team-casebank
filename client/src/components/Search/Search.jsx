@@ -80,42 +80,64 @@ export default class Search extends Component {
     client: {
       selectIsMulti: false,
       searchFieldName: "client",
-      displayName: "Client"
+      displayName: "Client",
+      openMenuOnClick: false,
+      components: {
+        DropdownIndicator: () => null,
+        IndicatorSeparator: () => null
+      }
     },
     project: {
       selectIsMulti: false,
       searchFieldName: "name",
-      displayName: "Project"
+      displayName: "Project",
+      openMenuOnClick: false,
+      components: {
+        DropdownIndicator: () => null,
+        IndicatorSeparator: () => null
+      }
     },
     region: {
       selectIsMulti: false,
       searchFieldName: "region",
-      displayName: "Region"
+      displayName: "Region",
+      openMenuOnClick: true,
+      components: {}
     },
     office: {
       selectIsMulti: false,
       searchFieldName: "office",
-      displayName: "Office"
+      displayName: "Office",
+      openMenuOnClick: true,
+      components: {}
     },
     year: {
       selectIsMulti: false,
       searchFieldName: "year",
-      displayName: "Year"
+      displayName: "Year",
+      openMenuOnClick: true,
+      components: {}
     },
     nda: {
       selectIsMulti: false,
       searchFieldName: "nda",
-      displayName: "NDA Status"
+      displayName: "NDA Status",
+      openMenuOnClick: true,
+      components: {}
     },
     industry: {
       selectIsMulti: false,
       searchFieldName: "industry",
-      displayName: "Industry"
+      displayName: "Industry",
+      openMenuOnClick: true,
+      components: {}
     },
     techstack: {
       selectIsMulti: true,
       searchFieldName: "techstack",
-      displayName: "Tech Stack"
+      displayName: "Tech Stack",
+      openMenuOnClick: true,
+      components: {}
     }
   };
 
@@ -260,6 +282,8 @@ export default class Search extends Component {
               handleChange={this.handleChange}
               isMulti={this.searchOptionSettings[key].selectIsMulti}
               selectedValue={this.state.selectedSearch[key]}
+              openMenuOnClick={this.searchOptionSettings[key].openMenuOnClick}
+              components={this.searchOptionSettings[key].components}
             />
           ))}
           <button

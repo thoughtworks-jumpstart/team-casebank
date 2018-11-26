@@ -27,13 +27,22 @@ const properties = [
     attribute: "Region",
     list: [
       "Australia",
+      "Brazil",
+      "Canada",
+      "Chille",
       "China",
-      "Europe",
+      "Ecuador",
+      "Germany",
       "India",
-      "North America",
-      "Latin America",
-      "Southeast Asia",
-      "Africa"
+      "Italy",
+      "Singapore",
+      "South Africa",
+      "Spain",
+      "Thailand",
+      "Turkey",
+      "UK",
+      "USA",
+      "Uganda"
     ]
   },
   {
@@ -44,19 +53,19 @@ const properties = [
         China: ["Beijing", "Chengdu", "Shanghai", "Shenzhen", "Wuhan", "Xi' An"]
       },
       {
-        Europe: [
-          "Barcelona",
-          "Berlin",
-          "Bologna",
-          "Cologne",
-          "Hamburg",
-          "Istanbul",
-          "London",
-          "Madrid",
-          "Manchester",
-          "Milan",
-          "Munich"
-        ]
+        Spain: ["Barcelona", "Madrid"]
+      },
+      {
+        Germany: ["Berlin", "Cologne", "Hamburg", "Munich"]
+      },
+      {
+        Italy: ["Bologna", "Milan"]
+      },
+      {
+        Turkey: ["Istanbul"]
+      },
+      {
+        UK: ["Manchester", "London"]
       },
       {
         India: [
@@ -71,29 +80,23 @@ const properties = [
         ]
       },
       {
-        NorthAmerica: [
+        USA: [
           "Atlanta",
           "Chicago",
           "Dallas",
           "Denver",
           "New York",
-          "San Francisco",
-          "Toronto",
-          "Calgary"
+          "San Francisco"
         ]
       },
-      {
-        LatinAmerica: [
-          "Belo Horizonte",
-          "Porto Alegre",
-          "Quito",
-          "Recife",
-          "Santiago",
-          "São Paulo"
-        ]
-      },
-      { SoutheastAsia: ["Bangkok", "Singapore"] },
-      { Africa: ["Johannesburg", "Kampala"] }
+      { Canada: ["Toronto", "Calgary"] },
+      { Brazil: ["Belo Horizonte", "Porto Alegre", "Recife", "São Paulo"] },
+      { Ecuador: ["Quito"] },
+      { Chille: ["Santiago", "Porto Alegre"] },
+      { Singapore: ["Singapore"] },
+      { Thailand: ["Bangkok"] },
+      { SouthAfrica: ["Johannesburg"] },
+      { Uganda: ["Kampala"] }
     ]
   },
   {

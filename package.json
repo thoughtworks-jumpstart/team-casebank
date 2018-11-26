@@ -23,7 +23,8 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^4.0.1",
-    "cross-env": "^5.2.0"
+    "cross-env": "^5.2.0",
+    "react-strap": "0.0.1"
   },
   "devDependencies": {
     "cypress": "^3.1.2"

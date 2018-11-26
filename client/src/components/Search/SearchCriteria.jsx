@@ -9,7 +9,9 @@ export default class SearchCriteria extends Component {
       searchLabel,
       searchOptions,
       isMulti,
-      selectedValue
+      selectedValue,
+      openMenuOnClick,
+      components
     } = this.props;
 
     const valueArrayOfObjects = searchOptions.map(element => ({
@@ -34,6 +36,8 @@ export default class SearchCriteria extends Component {
           classNamePrefix="select"
           value={selectedValue}
           placeholder="All"
+          openMenuOnClick={openMenuOnClick}
+          components={components}
         />
       </div>
     );
