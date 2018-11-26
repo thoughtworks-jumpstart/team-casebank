@@ -72,4 +72,15 @@ async function login(email, password) {
   }
 }
 
-export { getUsers, getUserById, login };
+async function logout() {
+  try {
+    await fetch("/users/logout", {
+      method: "post",
+      headers: { "Content-Type": "application/json" }
+    });
+  } catch (error) {
+    throw error;
+  }
+}
+
+export { getUsers, getUserById, login, logout };

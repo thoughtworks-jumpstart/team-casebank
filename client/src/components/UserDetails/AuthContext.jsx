@@ -7,6 +7,20 @@ class AuthProvider extends React.Component {
     name: "",
     email: ""
   };
+
+  componentDidMount = async () => {
+    let storedState = localStorage.getItem("team-projectHub");
+    if (storedState) {
+      let parsedStoredState = JSON.parse(storedState);
+
+      this.setState({
+        isAuth: parsedStoredState.isAuth,
+        name: parsedStoredState.name,
+        email: parsedStoredState.email
+      });
+    }
+  };
+
   render() {
     return (
       <AuthContext.Provider
@@ -28,6 +42,14 @@ class AuthProvider extends React.Component {
       email,
       name
     });
+    localStorage.setItem(
+      "team-projectHub",
+      JSON.stringify({
+        isAuth: true,
+        email,
+        name
+      })
+    );
   };
   logout = () => {
     this.setState({
@@ -35,6 +57,7 @@ class AuthProvider extends React.Component {
       email: "",
       name: ""
     });
+    localStorage.removeItem("team-projectHub");
   };
 }
 
