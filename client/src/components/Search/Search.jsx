@@ -170,53 +170,18 @@ export default class Search extends Component {
             console.log(`key non multi is ${key}`);
             if (options.value) {
               //get projects which attribute matches selected option
-              filterList = filterList.filter(
+              const matchingProjects = filterList.filter(
                 project =>
                   project[this.searchOptionSettings[key].searchFieldName] ===
                   options.value
               );
+              results = [...new Set([...results, ...matchingProjects])];
             }
           }
         }
       }
     }
-    this.setState({
-      resultList: results,
-      filterOptions: {
-        nda: getFilteredProperties(
-          filterList,
-          this.searchOptionSettings["nda"].searchFieldName
-        ),
-        client: getFilteredProperties(
-          filterList,
-          this.searchOptionSettings["client"].searchFieldName
-        ),
-        region: getFilteredProperties(
-          filterList,
-          this.searchOptionSettings["region"].searchFieldName
-        ),
-        office: getFilteredProperties(
-          filterList,
-          this.searchOptionSettings["office"].searchFieldName
-        ),
-        industry: getFilteredProperties(
-          filterList,
-          this.searchOptionSettings["industry"].searchFieldName
-        ),
-        techstack: getFilteredMultiProperties(
-          filterList,
-          this.searchOptionSettings["techstack"].searchFieldName
-        ),
-        year: getFilteredProperties(
-          filterList,
-          this.searchOptionSettings["year"].searchFieldName
-        ),
-        project: getFilteredProperties(
-          filterList,
-          this.searchOptionSettings["project"].searchFieldName
-        )
-      }
-    });
+    this.setState({resultList: results});
   };
 
   //Triggered when user selects option in dropdown
