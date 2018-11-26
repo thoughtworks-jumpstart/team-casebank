@@ -8,35 +8,38 @@ import Editor from "./components/NewProject/Editor";
 import Details from "./components/ViewCase/Details";
 import UserDetails from "./components/UserDetails/UserDetails";
 import { toggleToAnother } from "./utils/toggle";
+import { AuthProvider } from "./components/UserDetails/AuthContext";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <NavBar />
-        <Switch>
-          {toggleToAnother(
-            <Route path="/" exact component={Search} />,
-            <Route path="/" exact component={Home} />
-          )}
-          <Route path="/search" exact component={Search} />
-          <Route path="/editor" exact component={Editor} />
-          <Route
-            path="/results/details/:id"
-            exact
-            render={props => {
-              return <Details id={props.match.params.id} />;
-            }}
-          />
-          <Route
-            path="/userdetails/:id"
-            exact
-            render={props => {
-              return <UserDetails id={props.match.params.id} />;
-            }}
-          />
-        </Switch>
-      </div>
+      <AuthProvider>
+        <div>
+          <NavBar />
+          <Switch>
+            {toggleToAnother(
+              <Route path="/" exact component={Search} />,
+              <Route path="/" exact component={Home} />
+            )}
+            <Route path="/search" exact component={Search} />
+            <Route path="/editor" exact component={Editor} />
+            <Route
+              path="/results/details/:id"
+              exact
+              render={props => {
+                return <Details id={props.match.params.id} />;
+              }}
+            />
+            <Route
+              path="/userdetails/:id"
+              exact
+              render={props => {
+                return <UserDetails id={props.match.params.id} />;
+              }}
+            />
+          </Switch>
+        </div>
+      </AuthProvider>
     );
   }
 }

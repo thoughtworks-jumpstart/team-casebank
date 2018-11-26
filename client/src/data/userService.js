@@ -54,4 +54,22 @@ async function getUserById(userId) {
   }
 }
 
-export { getUsers, getUserById };
+async function login(email, password) {
+  try {
+    const loginStatus = await fetch("/users/login", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user: { email, password } })
+    });
+    const loginStatusContent = await loginStatus.json();
+    if (loginStatusContent.user) {
+      return { user: loginStatusContent.user };
+    } else {
+      return { message: loginStatus.data.message };
+    }
+  } catch (error) {
+    return { message: `Login unhandled failure. ${error.message}` };
+  }
+}
+
+export { getUsers, getUserById, login };

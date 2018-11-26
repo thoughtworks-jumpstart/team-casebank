@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const UserSchema = new mongoose.Schema({
   name: { type: String, index: true },
@@ -33,5 +35,23 @@ UserSchema.methods.setPassword = function(password) {
 UserSchema.methods.validPassword = function(password) {
   return this.passwordHash === hashPassword(password, this.passwordSalt);
 };
+
+UserSchema.methods.generateJWT = function() {
+  return jwt.sign(
+    {
+      userid: this._id,
+      email: this.email
+    },
+    getJWTSigningSecret()
+  );
+};
+
+function getJWTSigningSecret() {
+  const secret = process.env.JWT_SIGNING_SECRET;
+  if (!secret) {
+    throw new Error("Secret retrieval has error");
+  }
+  return secret;
+}
 
 module.exports = mongoose.model("User", UserSchema);
