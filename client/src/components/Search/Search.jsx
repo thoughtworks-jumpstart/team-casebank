@@ -11,7 +11,6 @@ export default class Search extends Component {
   state = {
     project: [],
     resultList: [],
-    selectedOptions: "All",
     filterOptions: {
       nda: [],
       client: [],
@@ -142,25 +141,35 @@ export default class Search extends Component {
   };
 
   handleSelectOption = () => {
+    //a copy of all projects
     let filterList = [...this.state.project];
+    let results = [];
+    //loop through all dropdowns
     for (let key in this.state.selectedSearch) {
+      //if dropdown has a selected option
       if (this.state.selectedSearch[key] !== []) {
+        //get the selected options from dropdown
         const options = this.state.selectedSearch[key];
         if (options) {
+          //if dropdown is a multiselect
           if (this.searchOptionSettings[key].selectIsMulti) {
+            //loop through selected options in dropdown
             for (let option of options) {
               console.log(`option is ${option.value}`);
               console.log(`key is ${key}`);
-              filterList = filterList.filter(project =>
+              //get projects which attribute matches selected option
+              const matchingProjects = filterList.filter(project =>
                 project[this.searchOptionSettings[key].searchFieldName].find(
                   item => item.toLowerCase() === option.value.toLowerCase()
                 )
               );
+              results = [...new Set([...results, ...matchingProjects])];
             }
           } else {
             console.log(`option non multi is ${options.value}`);
             console.log(`key non multi is ${key}`);
             if (options.value) {
+              //get projects which attribute matches selected option
               filterList = filterList.filter(
                 project =>
                   project[this.searchOptionSettings[key].searchFieldName] ===
@@ -172,7 +181,7 @@ export default class Search extends Component {
       }
     }
     this.setState({
-      resultList: filterList,
+      resultList: results,
       filterOptions: {
         nda: getFilteredProperties(
           filterList,
@@ -210,9 +219,13 @@ export default class Search extends Component {
     });
   };
 
+  //Triggered when user selects option in dropdown
   handleChange = (selectedOption, selectedLabel) => {
+    //save previous selected options for all dropdowns
     let previousSelected = this.state.selectedSearch;
+    //update the the dropdown triggered with new value
     previousSelected[selectedLabel] = selectedOption;
+    //save updated selections to state
     this.setState({ selectedSearch: previousSelected });
     this.handleSelectOption();
   };
