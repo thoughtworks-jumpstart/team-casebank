@@ -11,6 +11,7 @@ export default class Login extends Component {
     passwordValid: null
   };
   render() {
+    let { loginFailureMessage } = this.state;
     return (
       <AuthConsumer>
         {({ isAuth, login, logout }) => (
@@ -53,6 +54,11 @@ export default class Login extends Component {
                   Sign in
                 </button>
                 <div className="checkbox mb-3" />
+                {loginFailureMessage && loginFailureMessage.length > 0 && (
+                  <div className="alert alert-danger" role="alert">
+                    Login fail: {loginFailureMessage}
+                  </div>
+                )}
               </form>
             )}
           </div>

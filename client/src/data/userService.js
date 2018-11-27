@@ -56,17 +56,47 @@ async function getUserById(userId) {
 
 async function login(email, password) {
   try {
+    console.log(`login status---`);
     const loginStatus = await fetch("/users/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user: { email, password } })
     });
     const loginStatusContent = await loginStatus.json();
+    console.log(`login status ${loginStatusContent.message}`);
     if (loginStatusContent.user) {
       return { user: loginStatusContent.user };
     } else {
-      return { message: loginStatus.data.message };
+      return { message: loginStatusContent.message };
     }
+    /**
+    let loginStatus = fetch("/users/login", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user: { email, password } })
+    })
+      .then(response => response.json())
+      .then(loginStatusContent => {
+        if (loginStatusContent.user) {
+          return { user: loginStatusContent.user };
+        } else {
+          return { message: loginStatusContent.message };
+        }
+      }); */
+    /**
+    console.log(`login status---`);
+    const loginStatus = await request("/users/login", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user: { email, password } })
+    });
+    console.log(`login status ${loginStatus}`);
+    const loginStatusContent = loginStatus;
+    if (loginStatusContent.user) {
+      return { user: loginStatusContent.user };
+    } else {
+      return { message: loginStatusContent.message };
+    } */
   } catch (error) {
     return { message: `Login unhandled failure. ${error.message}` };
   }

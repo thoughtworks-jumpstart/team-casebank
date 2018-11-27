@@ -19,14 +19,14 @@ router.post("/login", async (req, res) => {
   const password = req.body.user.password;
   if (!email || !password) {
     return res.status(status.UNAUTHORIZED).json({
-      message: "email and password are required for login"
+      message: "Email and Password are required for login"
     });
   }
   let user = await User.findOne({ email });
   if (!user || !user.validPassword(password)) {
     return res
       .status(status.UNAUTHORIZED)
-      .json({ message: "email or password is invalid" });
+      .json({ message: "Email or Password is invalid" });
   }
   const token = user.generateJWT();
   res.cookie("jwt", token, {

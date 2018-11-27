@@ -4,8 +4,9 @@ import { toggle } from "../../utils/toggle";
 import logo from "../../logo.png";
 import { logout } from "../../data/userService";
 import { AuthConsumer } from "../UserDetails/AuthContext";
+import { withRouter } from "react-router";
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   render() {
     return (
       <AuthConsumer>
@@ -48,46 +49,48 @@ export default class NavBar extends Component {
                 )}
               </ul>
             </div>
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-              <ul className="navbar-nav ml-auto">
-                {name !== "" && (
-                  <li className="nav-item dropdown">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href="."
-                      id="navbarDropdownMenuLink"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      {name}
-                    </a>
-                    <div
-                      className="dropdown-menu dropdown-menu-right"
-                      aria-labelledby="navbarDropdownMenuLink"
-                    >
+            {this.displayUserMenu(this.props.location.pathname) && (
+              <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul className="navbar-nav ml-auto">
+                  {name !== "" && (
+                    <li className="nav-item dropdown">
                       <a
-                        className="dropdown-item"
-                        onClick={event => {
-                          this.submitLogout(logout, event);
-                        }}
-                        href="#1"
+                        className="nav-link dropdown-toggle"
+                        href="."
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
                       >
-                        Logout
+                        {name}
                       </a>
-                    </div>
-                  </li>
-                )}
-                {name === "" && (
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="/login">
-                      Login
-                    </NavLink>
-                  </li>
-                )}
-              </ul>
-            </div>
+                      <div
+                        className="dropdown-menu dropdown-menu-right"
+                        aria-labelledby="navbarDropdownMenuLink"
+                      >
+                        <a
+                          className="dropdown-item"
+                          onClick={event => {
+                            this.submitLogout(logout, event);
+                          }}
+                          href="#1"
+                        >
+                          Logout
+                        </a>
+                      </div>
+                    </li>
+                  )}
+                  {name === "" && (
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to="/login">
+                        Login
+                      </NavLink>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            )}
           </nav>
         )}
       </AuthConsumer>
@@ -99,4 +102,17 @@ export default class NavBar extends Component {
     await logout();
     logoutFunction();
   };
+
+  displayUserMenu = currentPath => {
+    for (let identifiedStr of this.pathsToOmitUserMenu) {
+      if (currentPath.includes(identifiedStr)) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  pathsToOmitUserMenu = ["details"];
 }
+
+export default withRouter(NavBar);
