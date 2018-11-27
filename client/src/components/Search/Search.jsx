@@ -33,42 +33,24 @@ export default class Search extends Component {
     }
   };
 
+  getFilteredOptions(filters, projects) {
+    return filters.reduce((acc, filter) => {
+      acc[filter] = getFilteredProperties( projects, this.searchOptionSettings[filter].searchFieldName);
+      return acc;
+    }, {});
+  }
+
   async componentDidMount() {
+    const filters = ["nda", "client", "region", "office", "industry", "year", "project"]
     const projects = await getProjects();
+    console.log(this.getFilteredOptions(filters, projects))
     this.setState({
       project: projects,
       filterOptions: {
-        nda: getFilteredProperties(
-          projects,
-          this.searchOptionSettings["nda"].searchFieldName
-        ),
-        client: getFilteredProperties(
-          projects,
-          this.searchOptionSettings["client"].searchFieldName
-        ),
-        region: getFilteredProperties(
-          projects,
-          this.searchOptionSettings["region"].searchFieldName
-        ),
-        office: getFilteredProperties(
-          projects,
-          this.searchOptionSettings["office"].searchFieldName
-        ),
-        industry: getFilteredProperties(
-          projects,
-          this.searchOptionSettings["industry"].searchFieldName
-        ),
+        ...this.getFilteredOptions(filters, projects),
         techstack: getFilteredMultiProperties(
           projects,
           this.searchOptionSettings["techstack"].searchFieldName
-        ),
-        year: getFilteredProperties(
-          projects,
-          this.searchOptionSettings["year"].searchFieldName
-        ),
-        project: getFilteredProperties(
-          projects,
-          this.searchOptionSettings["project"].searchFieldName
         )
       },
       resultList: projects
@@ -202,40 +184,14 @@ export default class Search extends Component {
   };
 
   clearFilter = () => {
+    const filters = ["nda", "client", "region", "office", "industry", "year", "project"]
     this.setState({
       resultList: this.state.project,
       filterOptions: {
-        nda: getFilteredProperties(
-          this.state.project,
-          this.searchOptionSettings["nda"].searchFieldName
-        ),
-        client: getFilteredProperties(
-          this.state.project,
-          this.searchOptionSettings["client"].searchFieldName
-        ),
-        region: getFilteredProperties(
-          this.state.project,
-          this.searchOptionSettings["region"].searchFieldName
-        ),
-        office: getFilteredProperties(
-          this.state.project,
-          this.searchOptionSettings["office"].searchFieldName
-        ),
-        industry: getFilteredProperties(
-          this.state.project,
-          this.searchOptionSettings["industry"].searchFieldName
-        ),
+        ...this.getFilteredOptions(filters, this.state.project),
         techstack: getFilteredMultiProperties(
           this.state.project,
           this.searchOptionSettings["techstack"].searchFieldName
-        ),
-        year: getFilteredProperties(
-          this.state.project,
-          this.searchOptionSettings["year"].searchFieldName
-        ),
-        project: getFilteredProperties(
-          this.state.project,
-          this.searchOptionSettings["project"].searchFieldName
         )
       },
       selectedSearch: {
