@@ -104,28 +104,28 @@ export default class Search extends Component {
       components: {}
     },
     office: {
-      selectIsMulti: false,
+      selectIsMulti: true,
       searchFieldName: "office",
       displayName: "Office",
       openMenuOnClick: true,
       components: {}
     },
     year: {
-      selectIsMulti: false,
+      selectIsMulti: true,
       searchFieldName: "year",
       displayName: "Year",
       openMenuOnClick: true,
       components: {}
     },
     nda: {
-      selectIsMulti: false,
+      selectIsMulti: true,
       searchFieldName: "nda",
       displayName: "NDA Status",
       openMenuOnClick: true,
       components: {}
     },
     industry: {
-      selectIsMulti: false,
+      selectIsMulti: true,
       searchFieldName: "industry",
       displayName: "Industry",
       openMenuOnClick: true,
