@@ -17,4 +17,13 @@ router.get("/", async (req, res) => {
   res.status(200).json(projects);
 });
 
+router.post("/", async (req, res) => {
+  try {
+    let project = new Project(req.body);
+    await project.save();
+    return res.status(201).json(project);
+  } catch (err) {
+    return res.status(400).json(err);
+  }
+});
 module.exports = router;

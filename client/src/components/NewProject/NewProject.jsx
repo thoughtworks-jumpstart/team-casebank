@@ -4,6 +4,7 @@ import ProjectAttributes from "./ProjectAttributes";
 import Title from "./Title";
 import getProjectAttributes from "../../data/attributeService";
 import { getUsers } from "../../data/userService";
+import { createProject } from "../../data/projectService";
 export default class NewProject extends Component {
   constructor(props) {
     super(props);
@@ -14,12 +15,18 @@ export default class NewProject extends Component {
         Techstack: [],
         Office: null,
         Industry: null,
-        nda: null
+        nda: null,
+        Client: null,
+        Team: []
       },
-      attributes: []
+      name: "",
+      attributes: [],
+      content: "Enter project details here"
     };
     this.onChangeHTML = this.onChangeHTML.bind(this);
     this.updateAttributes = this.updateAttributes.bind(this);
+    this.submitProject = this.submitProject.bind(this);
+    this.saveName = this.saveName.bind(this);
   }
 
   onChangeHTML(content) {
@@ -29,7 +36,9 @@ export default class NewProject extends Component {
   async componentDidMount() {
     const attributes = await getProjectAttributes();
     const users = await getUsers();
-    const userList = users.map(user => user.name);
+    const userList = users.map(user => {
+      return { value: user._id, label: user.name };
+    });
     const tw_contact = { attribute: "Main TW Contact", list: userList };
     const team = { attribute: "Team", list: userList };
     attributes.push(tw_contact);
@@ -47,6 +56,29 @@ export default class NewProject extends Component {
   }
   createOption(option) {}
 
+  saveName(e) {
+    this.setState({ name: e.target.value });
+  }
+  async submitProject() {
+    let values = { ...this.state.selectedOptions };
+    let project = {
+      name: this.state.name ? this.state.name : null,
+      client: values.Client ? values.Client.value : null,
+      region: values.Region ? values.Region.value : null,
+      techstack: values.Techstack ? values.Techstack.map(e => e.value) : null,
+      office: values.Office ? values.Office.value : null,
+      industry: values.Industry ? values.Industry.value : null,
+      nda: values.nda ? values.nda.value : null,
+      members: values.Team ? values.Team.map(e => e.value) : null,
+      main_tw_contact: values["Main TW Contact"]
+        ? values["Main TW Contact"].value
+        : null,
+      year: values.Year ? parseInt(values.Year.value) : null,
+      description: this.state.content
+    };
+    await createProject(project);
+  }
+
   render() {
     let attributes = this.state.attributes;
     return attributes.length ? (
@@ -59,6 +91,9 @@ export default class NewProject extends Component {
               }
               selected={this.state.selectedOptions.Client}
               onChange={this.updateAttributes}
+              submit={this.submitProject}
+              name={this.state.name}
+              saveName={this.saveName}
             />
           </div>
         </div>
@@ -72,7 +107,10 @@ export default class NewProject extends Component {
             />
           </div>
           <div className="col-9">
-            <Editor onChangeHTML={this.onChangeHTML} />
+            <Editor
+              onChangeHTML={this.onChangeHTML}
+              value={this.state.content}
+            />
           </div>
         </div>
       </div>

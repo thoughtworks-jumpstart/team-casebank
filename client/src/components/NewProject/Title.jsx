@@ -1,7 +1,15 @@
 import React from "react";
 import CreatableSelect from "react-select/lib/Creatable";
 
-export default function Title({ clients, selected, createOption, onChange }) {
+export default function Title({
+  clients,
+  selected,
+  createOption,
+  onChange,
+  submit,
+  name,
+  saveName
+}) {
   return (
     <div className="pl-5 w-50">
       <CreatableSelect
@@ -29,8 +37,11 @@ export default function Title({ clients, selected, createOption, onChange }) {
       <input
         className="form-control mt-2"
         type="text"
+        value={name}
         placeholder="Title of Project"
+        onChange={saveName}
       />
+      <button onClick={e => submit()}>Submit</button>
     </div>
   );
 }

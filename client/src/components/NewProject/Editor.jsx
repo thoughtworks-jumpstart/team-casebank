@@ -12,7 +12,7 @@ class RichTextEditor extends Component {
   render() {
     return (
       <ReactSummernote
-        value="Enter project details here"
+        value={this.props.value}
         options={{
           height: 350,
           dialogsInBody: true,
@@ -31,7 +31,7 @@ class RichTextEditor extends Component {
             ["view", ["fullscreen", "codeview"]]
           ]
         }}
-        onChange={this.onChange}
+        onChange={this.props.onChangeHTML}
       />
     );
   }

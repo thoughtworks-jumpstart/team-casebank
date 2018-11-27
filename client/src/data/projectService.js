@@ -221,4 +221,18 @@ async function getProjectById(projectId) {
   }
 }
 
-export { getProjects, getProjectById };
+async function createProject(project) {
+  try {
+    let response = await fetch("/projects", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(project)
+    });
+    if (response.status === 201) {
+      alert("Successfully created project");
+    }
+  } catch (error) {
+    alert("Error creating project");
+  }
+}
+export { createProject, getProjects, getProjectById };

@@ -28,7 +28,6 @@ export default function ProjectAttributes({
       return a;
     });
   formattedAttributes.unshift(getYears());
-  console.log(selected);
   return formattedAttributes ? (
     <div>
       {formattedAttributes.map(a => {
@@ -49,9 +48,13 @@ export default function ProjectAttributes({
               }
               isClearable={true}
               name={a.attribute}
-              options={a.list.map(name => {
-                return { value: name, label: name };
-              })}
+              options={
+                a.attribute === "Team" || a.attribute === "Main TW Contact"
+                  ? a.list
+                  : a.list.map(name => {
+                      return { value: name, label: name };
+                    })
+              }
               onChange={selectedOptions =>
                 onChange(selectedOptions, a.attribute)
               }
