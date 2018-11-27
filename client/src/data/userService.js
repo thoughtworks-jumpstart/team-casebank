@@ -36,8 +36,17 @@ const users = [
   }
 ];
 
-function getUsers() {
-  return users;
+async function getUsers() {
+  try {
+    let response = await fetch(`/users`, {
+      method: "get",
+      headers: { "Content-Type": "application/json" }
+    });
+    let users = await response.json();
+    return users;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 async function getUserById(userId) {

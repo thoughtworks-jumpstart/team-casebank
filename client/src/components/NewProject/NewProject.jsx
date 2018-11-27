@@ -3,7 +3,7 @@ import Editor from "./Editor";
 import ProjectAttributes from "./ProjectAttributes";
 import Title from "./Title";
 import getProjectAttributes from "../../data/attributeService";
-
+import { getUsers } from "../../data/userService";
 export default class NewProject extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +28,12 @@ export default class NewProject extends Component {
 
   async componentDidMount() {
     const attributes = await getProjectAttributes();
+    const users = await getUsers();
+    const userList = users.map(user => user.name);
+    const tw_contact = { attribute: "Main TW Contact", list: userList };
+    const team = { attribute: "Team", list: userList };
+    attributes.push(tw_contact);
+    attributes.push(team);
     this.setState({ attributes });
   }
 
@@ -46,7 +52,15 @@ export default class NewProject extends Component {
     return attributes.length ? (
       <div className="container-fluid p-4">
         <div className="row text-center">
-          <div className="col">{/* <Title properties={title} /> */}</div>
+          <div className="col">
+            <Title
+              clients={
+                this.state.attributes.filter(a => a.attribute === "Client")[0]
+              }
+              selected={this.state.selectedOptions.Client}
+              onChange={this.updateAttributes}
+            />
+          </div>
         </div>
         <div className="row m-4">
           <div className="col-3 pl-4">

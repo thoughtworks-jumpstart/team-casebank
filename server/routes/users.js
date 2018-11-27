@@ -10,7 +10,7 @@ router.get("/:userId", async (req, res) => {
   res.status(200).json(user);
 });
 router.get("/", async (req, res) => {
-  let users = await User.find({}).populate("projects", "name");
+  let users = await User.find({}, "name");
   res.status(200).json(users);
 });
 

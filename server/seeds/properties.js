@@ -123,6 +123,22 @@ const properties = [
   {
     attribute: "nda",
     list: ["Internal only", "External can", "Not sure, please check"]
+  },
+  {
+    attribute: "Client",
+    list: [
+      "Sonic",
+      "Pepsi Co",
+      "Nokia",
+      "Superthin Pizzeria",
+      "FreshFood People Corp",
+      "Genting Group",
+      "Noble Group",
+      "Creative Technology",
+      "Osim International",
+      "Hyflux Ltd",
+      "Sembcorp Marine"
+    ]
   }
 ];
 

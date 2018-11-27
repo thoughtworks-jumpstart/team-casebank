@@ -11,3 +11,13 @@ export default async function getAttributes() {
     console.log(err);
   }
 }
+
+export function getYears() {
+  const years = [];
+  const currentYear = new Date().getFullYear();
+  for (let i = 1999; i <= currentYear; i++) {
+    years.push(i.toString());
+  }
+  let Year = { attribute: "Year", list: years };
+  return Year;
+}
