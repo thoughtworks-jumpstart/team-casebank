@@ -79,6 +79,7 @@ export default class NewProject extends Component {
     };
     let response = await createProject(project);
     if (response) {
+      alert("Created project!")
       this.setState({ created: true });
     }
   }
