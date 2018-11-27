@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "cross-env NODE_ENV=local nodemon server.js",
+    "dev": "cross-env NODE_ENV=local node server.js",
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "jest --watch",
     "seed": "seed",
@@ -38,7 +38,6 @@
     "jest": "^23.6.0",
     "mongodb-memory-server": "^2.6.2",
     "mongoose-fixture-loader": "^1.0.2",
-    "nodemon": "^1.18.5",
     "prettier": "^1.15.2",
     "supertest": "^3.3.0"
   }
