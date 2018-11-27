@@ -5,6 +5,7 @@ import Title from "./Title";
 import getProjectAttributes from "../../data/attributeService";
 import { getUsers } from "../../data/userService";
 import { createProject } from "../../data/projectService";
+import { Redirect } from "react-router-dom";
 export default class NewProject extends Component {
   constructor(props) {
     super(props);
@@ -76,11 +77,17 @@ export default class NewProject extends Component {
       year: values.Year ? parseInt(values.Year.value) : null,
       description: this.state.content
     };
-    await createProject(project);
+    let response = await createProject(project);
+    if (response) {
+      this.setState({ created: true });
+    }
   }
 
   render() {
     let attributes = this.state.attributes;
+    if (this.state.created) {
+      return <Redirect to="/search" />;
+    }
     return attributes.length ? (
       <div className="container-fluid p-4">
         <div className="row text-center">

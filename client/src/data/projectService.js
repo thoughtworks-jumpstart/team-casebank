@@ -228,11 +228,9 @@ async function createProject(project) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(project)
     });
-    if (response.status === 201) {
-      alert("Successfully created project");
-    }
-  } catch (error) {
-    alert("Error creating project");
-  }
+    return response.status === 201
+      ? response.status
+      : alert("Failed to create");
+  } catch (error) {}
 }
 export { createProject, getProjects, getProjectById };
