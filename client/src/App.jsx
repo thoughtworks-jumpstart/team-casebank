@@ -24,7 +24,7 @@ class App extends Component {
             )}
             <Route path="/search" exact component={Search} />
             <Route path="/login" exact component={Login} />
-            <Route path="/editor" exact component={Editor} />
+            <Route path="/editor" exact component={NewProject} />
             <Route
               path="/results/details/:id"
               exact
