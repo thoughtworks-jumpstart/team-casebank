@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <AuthProvider>
-        <div>
+        <div className="test-font">
           <NavBar />
           <Switch>
             {toggleToAnother(

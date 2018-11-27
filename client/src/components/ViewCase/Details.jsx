@@ -23,12 +23,12 @@ export default class Details extends Component {
       return (
         <div className="container-fluid p-4">
           <div className="row text-center">
-            <div className="col">
+            <div className="col border-bottom">
               <Title properties={title} />
             </div>
           </div>
           <div className="row m-4">
-            <div className="col-3 pl-4">
+            <div className="col-3 pl-4 border-right">
               <CaseProperties properties={properties} />
             </div>
             <div className="col-9">

@@ -31,7 +31,7 @@ export default function CaseProperties({ properties }) {
   for (let property in formattedProperties) {
     array.push(
       <div key={property}>
-        <h6 className="text-capitalize font-weight-bold">{property}</h6>
+        <h6 className="text-capitalize font-weight-bold mt-3">{property}</h6>
         {Array.isArray(formattedProperties[property]) ? (
           formattedProperties[property].map((string, index) => (
             <h6
@@ -42,7 +42,7 @@ export default function CaseProperties({ properties }) {
             </h6>
           ))
         ) : (
-          <h6 className="text-danger font-weight-normal text-capitalize">
+          <h6 className="text-danger font-weight-normal text-capitalize mb-3">
             {formattedProperties[property]}
           </h6>
         )}

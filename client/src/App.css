@@ -34,3 +34,7 @@
 .resultListingHeader {
   text-align: left;
 }
+
+.test-font {
+  font-family: 'Montserrat', sans-serif;
+}

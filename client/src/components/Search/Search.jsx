@@ -212,6 +212,7 @@ export default class Search extends Component {
     return (
       <div className="row mt-4">
         <div className="col-2 ml-4">
+          <h4>Filter by</h4>
           {Object.keys(this.searchOptionSettings).map((key, index) => (
             <SearchCriteria
               selectId={`${key}-dropdown`}
@@ -236,6 +237,7 @@ export default class Search extends Component {
         </div>
 
         <div className="col mr-4">
+          <h4>Case studies</h4>
           <SearchResults resultList={resultList} />
         </div>
       </div>
