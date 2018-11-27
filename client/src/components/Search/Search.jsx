@@ -33,17 +33,27 @@ export default class Search extends Component {
     }
   };
 
-  getFilteredOptions(filters, projects) {
+  getFilteredOptions = (filters, projects) => {
     return filters.reduce((acc, filter) => {
-      acc[filter] = getFilteredProperties( projects, this.searchOptionSettings[filter].searchFieldName);
+      acc[filter] = getFilteredProperties(
+        projects,
+        this.searchOptionSettings[filter].searchFieldName
+      );
       return acc;
     }, {});
-  }
+  };
 
   async componentDidMount() {
-    const filters = ["nda", "client", "region", "office", "industry", "year", "project"]
+    const filters = [
+      "nda",
+      "client",
+      "region",
+      "office",
+      "industry",
+      "year",
+      "project"
+    ];
     const projects = await getProjects();
-    console.log(this.getFilteredOptions(filters, projects))
     this.setState({
       project: projects,
       filterOptions: {
@@ -122,54 +132,43 @@ export default class Search extends Component {
     }
   };
 
-  handleSelectOption = () => {
-    //a copy of all projects
-    let filterList = [...this.state.project];
-    let results = [];
-    //loop through all dropdowns
-    for (let key in this.state.selectedSearch) {
-      //if dropdown has a selected option
-      if (this.state.selectedSearch[key] !== []) {
-        //get the selected options from dropdown
-        const options = this.state.selectedSearch[key];
-        if (options) {
-          //if dropdown is a multiselect
-          if (this.searchOptionSettings[key].selectIsMulti) {
-            //loop through selected options in dropdown
-            for (let option of options) {
-              console.log(`option is ${option.value}`);
-              console.log(`key is ${key}`);
-              //get projects which attribute matches selected option
-              const matchingProjects = filterList.filter(project => {
-                const projectAttribute =
-                  project[this.searchOptionSettings[key].searchFieldName];
-                if (Array.isArray(projectAttribute)) {
-                  return projectAttribute.find(
-                    item => item.toLowerCase() === option.value.toLowerCase()
-                  );
-                } else {
-                  return projectAttribute === option.value;
-                }
-              });
-              results = [...new Set([...results, ...matchingProjects])];
-            }
-          } else {
-            console.log(`option non multi is ${options.value}`);
-            console.log(`key non multi is ${key}`);
-            if (options.value) {
-              //get projects which attribute matches selected option
-              const matchingProjects = filterList.filter(
-                project =>
-                  project[this.searchOptionSettings[key].searchFieldName] ===
-                  options.value
-              );
-              results = [...new Set([...results, ...matchingProjects])];
-            }
-          }
-        }
-      }
+  //Compare Numbers or Strings case insensitive
+  isEqualValue = (firstValue, secondValue) => {
+    if (firstValue instanceof String || typeof firstValue === "string") {
+      return firstValue.toLowerCase() === secondValue.toLowerCase();
+    } else {
+      return firstValue === secondValue;
     }
-    this.setState({ resultList: results });
+  };
+
+  findMatchingProjects = (dropDown, optionValue) => {
+    const { project } = this.state;
+    let allProjects = [...project];
+
+    return allProjects.filter(project => {
+      //make all project attributes into an array
+      const attribute = Array.isArray(project[dropDown])
+        ? project[dropDown]
+        : [project[dropDown]];
+      return attribute.find(item => this.isEqualValue(item, optionValue));
+    });
+  };
+
+  getFilteredResults = () => {
+    const { selectedSearch } = this.state;
+    //a copy of all projects
+    return Object.entries(selectedSearch).flatMap(([dropDown, values]) => {
+      const valuesArray = Array.isArray(values) ? values : [values];
+      return valuesArray.flatMap(option => {
+        //find matching project
+        return this.findMatchingProjects(dropDown, option.value);
+      });
+    });
+  };
+
+  handleSelectOption = () => {
+    const uniqueResults = [...new Set(this.getFilteredResults())];
+    this.setState({ resultList: uniqueResults });
   };
 
   //Triggered when user selects option in dropdown
@@ -184,7 +183,15 @@ export default class Search extends Component {
   };
 
   clearFilter = () => {
-    const filters = ["nda", "client", "region", "office", "industry", "year", "project"]
+    const filters = [
+      "nda",
+      "client",
+      "region",
+      "office",
+      "industry",
+      "year",
+      "project"
+    ];
     this.setState({
       resultList: this.state.project,
       filterOptions: {
