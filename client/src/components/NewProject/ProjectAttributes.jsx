@@ -29,15 +29,29 @@ export default function ProjectAttributes({
       return a;
     });
   formattedAttributes.unshift(getYears());
-  return formattedAttributes ? (
+  let order = [
+    "Region",
+    "Office",
+    "Year",
+    "NDA status",
+    "Industry",
+    "Techstack",
+    "Main TW Contact",
+    "Team"
+  ];
+  let reOrderedA = [];
+  for (let i = 0; i < order.length; i++) {
+    let toAdd = formattedAttributes.filter(a => a.attribute === order[i])[0];
+    reOrderedA.push(toAdd);
+  }
+  return attributes ? (
     <div>
-      {formattedAttributes.map(a => {
+      {reOrderedA.map(a => {
+        console.log(a)
         return (
           <div className="mb-3" key={a.attribute}>
             <h6>
-              <div className="dropdown-label">
-                {a.attribute === "nda" ? "NDA" : a.attribute}
-              </div>
+              <div className="dropdown-label">{a.attribute}</div>
             </h6>
             {a.attribute === "Techstack" ? (
               <CreatableSelect

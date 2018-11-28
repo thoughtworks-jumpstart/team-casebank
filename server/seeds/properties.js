@@ -121,7 +121,7 @@ const properties = [
     ]
   },
   {
-    attribute: "nda",
+    attribute: "NDA status",
     list: ["Internal only", "External can", "Not sure, please check"]
   },
   {
