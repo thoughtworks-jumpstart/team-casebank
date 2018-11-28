@@ -1,5 +1,6 @@
 import React from "react";
 import CreatableSelect from "react-select/lib/Creatable";
+import Select from "react-select";
 import { getYears } from "../../data/attributeService";
 
 export default function ProjectAttributes({
@@ -38,37 +39,56 @@ export default function ProjectAttributes({
                 {a.attribute === "nda" ? "NDA" : a.attribute}
               </div>
             </h6>
-            <CreatableSelect
-              id={a.attribute}
-              value={selected[a.attribute]}
-              isMulti={
-                a.attribute === "Techstack" || a.attribute === "Team"
-                  ? true
-                  : false
-              }
-              isClearable={true}
-              name={a.attribute}
-              options={
-                a.attribute === "Team" || a.attribute === "Main TW Contact"
-                  ? a.list
-                  : a.list.map(name => {
-                      return { value: name, label: name };
-                    })
-              }
-              onChange={selectedOptions =>
-                onChange(selectedOptions, a.attribute)
-              }
-              isDisabled={a.attribute === "Office" && !region ? true : false}
-              className="basic-multi-select"
-              classNamePrefix="select"
-              placeholder="All"
-              openMenuOnClick={false}
-              components={{
-                DropdownIndicator: () => null,
-                IndicatorSeparator: () => null
-              }}
-              onCreateOption={createOption}
-            />
+            {a.attribute === "Techstack" ? (
+              <CreatableSelect
+                id={a.attribute}
+                value={selected[a.attribute]}
+                isMulti={true}
+                isClearable={true}
+                name={a.attribute}
+                options={a.list.map(name => {
+                  return { value: name, label: name };
+                })}
+                onChange={selectedOptions =>
+                  onChange(selectedOptions, a.attribute)
+                }
+                className="basic-multi-select"
+                classNamePrefix="select"
+                placeholder="Select"
+                onCreateOption={createOption}
+              />
+            ) : (
+              <Select
+                id={a.attribute}
+                value={selected[a.attribute]}
+                isMulti={a.attribute === "Team" ? true : false}
+                isClearable={true}
+                name={a.attribute}
+                options={
+                  a.attribute === "Team" || a.attribute === "Main TW Contact"
+                    ? a.list
+                    : a.list.map(name => {
+                        return { value: name, label: name };
+                      })
+                }
+                onChange={selectedOptions =>
+                  onChange(selectedOptions, a.attribute)
+                }
+                isDisabled={a.attribute === "Office" && !region ? true : false}
+                className="basic-multi-select"
+                classNamePrefix="select"
+                placeholder="Select"
+                openMenuOnClick={false}
+                components={
+                  a.attribute === "Main TW Contact" || a.attribute === "Team"
+                    ? {
+                        DropdownIndicator: () => null,
+                        IndicatorSeparator: () => null
+                      }
+                    : null
+                }
+              />
+            )}
           </div>
         );
       })}

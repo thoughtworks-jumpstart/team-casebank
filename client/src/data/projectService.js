@@ -229,7 +229,7 @@ async function createProject(project) {
       body: JSON.stringify(project)
     });
     return response.status === 201
-      ? response.status
+      ? response.json()
       : alert("Failed to create");
   } catch (error) {}
 }

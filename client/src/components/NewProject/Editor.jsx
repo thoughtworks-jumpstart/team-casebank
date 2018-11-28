@@ -14,7 +14,7 @@ class RichTextEditor extends Component {
       <ReactSummernote
         value={this.props.value}
         options={{
-          height: 350,
+          height: 600,
           dialogsInBody: true,
           popover: {
             image: [],

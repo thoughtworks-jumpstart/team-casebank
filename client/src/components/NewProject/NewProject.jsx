@@ -38,7 +38,7 @@ export default class NewProject extends Component {
     const attributes = await getProjectAttributes();
     const users = await getUsers();
     const userList = users.map(user => {
-      return { value: user._id, label: user.name };
+      return { id: user._id, value: user.name, label: user.name };
     });
     const tw_contact = { attribute: "Main TW Contact", list: userList };
     const team = { attribute: "Team", list: userList };
@@ -70,28 +70,29 @@ export default class NewProject extends Component {
       office: values.Office ? values.Office.value : null,
       industry: values.Industry ? values.Industry.value : null,
       nda: values.nda ? values.nda.value : null,
-      members: values.Team ? values.Team.map(e => e.value) : null,
+      members: values.Team ? values.Team.map(e => e.id) : null,
       main_tw_contact: values["Main TW Contact"]
-        ? values["Main TW Contact"].value
+        ? values["Main TW Contact"].id
         : null,
       year: values.Year ? parseInt(values.Year.value) : null,
       description: this.state.content
     };
+    console.log(project);
     let response = await createProject(project);
     if (response) {
-      alert("Created project!")
-      this.setState({ created: true });
+      alert("Created project!");
+      this.setState({ created: true, response });
     }
   }
 
   render() {
     let attributes = this.state.attributes;
     if (this.state.created) {
-      return <Redirect to="/search" />;
+      return <Redirect to={`/results/details/${this.state.response._id}`} />;
     }
     return attributes.length ? (
       <div className="container-fluid p-4">
-        <div className="row text-center">
+        <div className="row">
           <div className="col">
             <Title
               clients={
