@@ -10,7 +10,7 @@ class NavBar extends Component {
   render() {
     return (
       <AuthConsumer>
-        {({ name, logout }) => (
+        {({ isAuth, name, logout }) => (
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <NavLink className="navbar-brand " to="/">
               <img src={logo} alt="logo of Owl" width="80%" height="80%" />
@@ -40,13 +40,14 @@ class NavBar extends Component {
                     Search
                   </NavLink>
                 </li>
-                {toggle(
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="/editor">
-                      Add
-                    </NavLink>
-                  </li>
-                )}
+                {isAuth &&
+                  toggle(
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to="/editor">
+                        Add
+                      </NavLink>
+                    </li>
+                  )}
               </ul>
             </div>
             {this.displayUserMenu(this.props.location.pathname) && (
