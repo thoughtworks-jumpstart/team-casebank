@@ -86,7 +86,12 @@ export default class Login extends Component {
       event.preventDefault();
       const loginStatus = await login(this.state.email, this.state.password);
       if (loginStatus.user) {
-        authContextLogin(loginStatus.user.email, loginStatus.user.name);
+        authContextLogin(
+          loginStatus.user.email,
+          loginStatus.user.name,
+          loginStatus.user.userid
+        );
+        console.log(`login userid ${loginStatus.user.userid}`);
       } else {
         this.setState({ loginFailureMessage: loginStatus.message });
       }

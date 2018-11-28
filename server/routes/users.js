@@ -32,7 +32,9 @@ router.post("/login", async (req, res) => {
   res.cookie("jwt", token, {
     httpOnly: true
   });
-  return res.json({ user: { email: user.email, name: user.name } });
+  return res.json({
+    user: { email: user.email, name: user.name, userid: user._id }
+  });
 });
 
 router.post("/logout", async (req, res) => {

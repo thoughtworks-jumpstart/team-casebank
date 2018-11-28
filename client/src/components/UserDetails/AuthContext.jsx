@@ -5,7 +5,8 @@ class AuthProvider extends React.Component {
   state = {
     isAuth: false,
     name: "",
-    email: ""
+    email: "",
+    userid: ""
   };
 
   componentDidMount = async () => {
@@ -16,7 +17,8 @@ class AuthProvider extends React.Component {
       this.setState({
         isAuth: parsedStoredState.isAuth,
         name: parsedStoredState.name,
-        email: parsedStoredState.email
+        email: parsedStoredState.email,
+        userid: parsedStoredState.userid
       });
     }
   };
@@ -28,6 +30,7 @@ class AuthProvider extends React.Component {
           isAuth: this.state.isAuth,
           name: this.state.name,
           email: this.state.email,
+          userid: this.state.userid,
           login: this.login,
           logout: this.logout
         }}
@@ -36,18 +39,20 @@ class AuthProvider extends React.Component {
       </AuthContext.Provider>
     );
   }
-  login = (email, name) => {
+  login = (email, name, userid) => {
     this.setState({
       isAuth: true,
       email,
-      name
+      name,
+      userid
     });
     localStorage.setItem(
       "team-projectHub",
       JSON.stringify({
         isAuth: true,
         email,
-        name
+        name,
+        userid
       })
     );
   };
@@ -55,7 +60,8 @@ class AuthProvider extends React.Component {
     this.setState({
       isAuth: false,
       email: "",
-      name: ""
+      name: "",
+      userid: ""
     });
     localStorage.removeItem("team-projectHub");
   };
