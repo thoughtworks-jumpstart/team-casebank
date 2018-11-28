@@ -156,14 +156,7 @@ export default class Search extends Component {
 
   getFilteredResults = () => {
     const { selectedSearch } = this.state;
-    const allDropdownEmpty = (Object.values(selectedSearch).flatMap(x => x)).length === 0
-
-    if(allDropdownEmpty){
-      const { project } = this.state;
-      let allProjects = [...project];
-      return allProjects;
-    };
-
+    //a copy of all projects
     return Object.entries(selectedSearch).flatMap(([dropDown, values]) => {
       const valuesArray = Array.isArray(values) ? values : [values];
       return valuesArray.flatMap(option => {

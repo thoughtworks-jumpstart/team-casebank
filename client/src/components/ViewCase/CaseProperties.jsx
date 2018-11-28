@@ -13,14 +13,14 @@ export default function CaseProperties({ properties }) {
       Industry: properties.industry,
       // Tags: properties.tag,
       "Tech stack": properties.techstack,
-      "Main TW contact": (
+      "Main TW contact": properties.main_tw_contact ? (
         <Link
           to={`/userdetails/${properties.main_tw_contact._id}`}
           target="_blank"
         >
           {properties.main_tw_contact.name}
         </Link>
-      ),
+      ) : null,
       Team: properties.members.map((member, index) => (
         <Link key={index} to={`/userdetails/${member._id}`} target="_blank">
           {member.name}

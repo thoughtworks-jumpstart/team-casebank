@@ -41,7 +41,7 @@ export default class Details extends Component {
               <div className="row text-left">
                 <div className="col border-bottom">
                   <Title properties={title} />
-                  {isAuth && this.loginUserIsProjectMember(userid) && (
+                  {isAuth /*&& this.loginUserIsProjectMember(userid)*/ && (
                     <div className="pl-5 ">
                       <button
                         onClick={this.toBeImplemented}
