@@ -8,7 +8,7 @@ const projects = [
     main_tw_contact: "John Mayer",
     techstack: ["React", "Mongoose"],
     year: 2018,
-    region: "Southeast Asia",
+    region: "Singapore",
     office: "Singapore",
     industry: "F&B",
     members: ["John Mayer", "Mary Lamb", "Vlad"]
@@ -23,7 +23,7 @@ const projects = [
     main_tw_contact: "Angeline",
     techstack: ["Ruby", "Rails"],
     year: 2017,
-    region: "North America",
+    region: "Canada",
     office: "Toronto",
     industry: "Entertainment",
     members: ["Yamin", "Angeline"]
@@ -38,7 +38,7 @@ const projects = [
     main_tw_contact: "Calvin",
     techstack: ["Python", "SQL"],
     year: 2017,
-    region: "North America",
+    region: "USA",
     office: "Chicago",
     industry: "Telecommunications",
     members: ["Calvin", "Brian"]
@@ -77,7 +77,7 @@ const projects = [
     main_tw_contact: "Russell",
     techstack: ["Javascript", "React"],
     year: 2018,
-    region: "North America",
+    region: "USA",
     office: "New York",
     industry: "F&B",
     members: ["Daniel Done", "Mary Lamb", "Vlad", "Russell"]
@@ -93,7 +93,7 @@ const projects = [
     main_tw_contact: "John Mayer",
     techstack: ["Javascript", "PHP", "Mongoose"],
     year: 2018,
-    region: "Southeast Asia",
+    region: "Singapore",
     office: "Singapore",
     industry: "Hospitality",
     members: ["John Mayer", "Mary Lamb", "Betty", "James"]
@@ -109,7 +109,7 @@ const projects = [
     main_tw_contact: "Yamin",
     techstack: ["GraphQL", "Perl"],
     year: 2017,
-    region: "Southeast Asia",
+    region: "Singapore",
     office: "Singapore",
     industry: "Financial",
     members: ["Yamin", "Angeline"]
@@ -125,7 +125,7 @@ const projects = [
     main_tw_contact: "Calvin",
     techstack: ["PHP", "Nodejs"],
     year: 2017,
-    region: "Southeast Asia",
+    region: "Singapore",
     office: "Singapore",
     industry: "Retail",
     members: ["Calvin", "Brian"]
@@ -141,7 +141,7 @@ const projects = [
     main_tw_contact: "Russell",
     techstack: ["Java", "Go", "NoSQL"],
     year: 2016,
-    region: "Southeast Asia",
+    region: "Singapore",
     office: "Singapore",
     industry: "Retail",
     members: ["John Mayer", "Daniel Done", "Russell", "Roth"]
@@ -157,7 +157,7 @@ const projects = [
     main_tw_contact: "Russell",
     techstack: ["jQuery", "PostgreSQL"],
     year: 2000,
-    region: "Southeast Asia",
+    region: "Singapore",
     office: "Singapore",
     industry: "B2C",
     members: ["Veron", "Ken", "Russell", "Roth"]
@@ -173,7 +173,7 @@ const projects = [
     main_tw_contact: "Ken",
     techstack: ["jQuery", "Swift"],
     year: 2000,
-    region: "Southeast Asia",
+    region: "Thailand",
     office: "Bangkok",
     industry: "Government",
     members: ["Ken", "John Mayer", "Vince"]
