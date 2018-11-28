@@ -51,8 +51,21 @@ describe("Search For Project", () => {
     checkDropdownIsDisplayed(7, "Tech Stack", "techstack");
   });
 
-  it("Show Southeast Asia projects", () => {
-    clickDropDown("region-dropdown", "Southeast Asia");
+  it("Show Singapore projects", () => {
+    clickDropDown("region-dropdown", "Singapore");
+
+    getResultRows()
+      .find("a")
+      .should("have.length", 6);
+
+    getResultRows()
+      .should("contain", "Resort Website")
+      .and("contain", "Creative Retail Platform")
+      .and("contain", "Water Treatment Tracker");
+  });
+
+  it("Show all Singapore and all China projects", () => {
+    clickDropDown("region-dropdown", "China");
 
     getResultRows()
       .find("a")
@@ -61,29 +74,16 @@ describe("Search For Project", () => {
     getResultRows()
       .should("contain", "Resort Website")
       .and("contain", "Creative Retail Platform")
-      .and("contain", "Water Treatment Tracker");
-  });
-
-  it("Show all SouthEast Asia and all China projects", () => {
-    clickDropDown("region-dropdown", "China");
-
-    getResultRows()
-      .find("a")
-      .should("have.length", 8);
-
-    getResultRows()
-      .should("contain", "Resort Website")
-      .and("contain", "Creative Retail Platform")
       .and("contain", "Water Treatment Tracker")
       .and("contain", "OneClick Pizza");
   });
 
-  it("Show all SouthEast Asia, China and NewYork projects", () => {
+  it("Show all Singapore, China and NewYork projects", () => {
     clickDropDown("office-dropdown", "New York");
 
     getResultRows()
       .find("a")
-      .should("have.length", 9);
+      .should("have.length", 8);
 
     getResultRows()
       .should("contain", "Resort Website")
