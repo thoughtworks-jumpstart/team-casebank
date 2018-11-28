@@ -11,37 +11,43 @@ export default function Title({
   saveName
 }) {
   return (
-    <div className="pl-5 w-50">
-      <CreatableSelect
-        id={clients.attribute}
-        value={selected}
-        isMulti={false}
-        isClearable={true}
-        name={clients.attribute}
-        options={clients.list.map(name => {
-          return { value: name, label: name };
-        })}
-        onChange={selectedOptions =>
-          onChange(selectedOptions, clients.attribute)
-        }
-        className="basic-multi-select"
-        classNamePrefix="select"
-        placeholder="Client Name"
-        openMenuOnClick={false}
-        components={{
-          DropdownIndicator: () => null,
-          IndicatorSeparator: () => null
-        }}
-        onCreateOption={option => createOption(option, clients.attribute)}
-      />
-      <input
-        className="form-control mt-2"
-        type="text"
-        value={name}
-        placeholder="Title of Project"
-        onChange={saveName}
-      />
-      <button onClick={e => submit()}>Submit</button>
+    <div className="w-100">
+      <div className="pl-5 w-50 float-left">
+        <CreatableSelect
+          id={clients.attribute}
+          value={selected}
+          isMulti={false}
+          isClearable={true}
+          name={clients.attribute}
+          options={clients.list.map(name => {
+            return { value: name, label: name };
+          })}
+          onChange={selectedOptions =>
+            onChange(selectedOptions, clients.attribute)
+          }
+          className="basic-multi-select"
+          classNamePrefix="select"
+          placeholder="Client Name"
+          openMenuOnClick={false}
+          components={{
+            DropdownIndicator: () => null,
+            IndicatorSeparator: () => null
+          }}
+          onCreateOption={option => createOption(option, clients.attribute)}
+        />
+        <input
+          className="form-control mt-2"
+          type="text"
+          value={name}
+          placeholder="Title of Project"
+          onChange={saveName}
+        />
+      </div>
+      <div className="pr-5 pt-5">
+        <button className="btn btn-secondary float-right" onClick={e => submit()}>
+          Submit
+        </button>
+      </div>
     </div>
   );
 }
