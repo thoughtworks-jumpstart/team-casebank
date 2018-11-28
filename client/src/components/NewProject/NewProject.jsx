@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Editor from "./Editor";
 import ProjectAttributes from "./ProjectAttributes";
 import Title from "./Title";
-import getProjectAttributes from "../../data/attributeService";
+import { getAttributes, create } from "../../data/attributeService";
 import { getUsers } from "../../data/userService";
 import { createProject } from "../../data/projectService";
 import { Redirect } from "react-router-dom";
@@ -28,6 +28,7 @@ export default class NewProject extends Component {
     this.updateAttributes = this.updateAttributes.bind(this);
     this.submitProject = this.submitProject.bind(this);
     this.saveName = this.saveName.bind(this);
+    this.createOption = this.createOption.bind(this);
   }
 
   onChangeHTML(content) {
@@ -35,7 +36,7 @@ export default class NewProject extends Component {
   }
 
   async componentDidMount() {
-    const attributes = await getProjectAttributes();
+    const attributes = await getAttributes();
     const users = await getUsers();
     const userList = users.map(user => {
       return { id: user._id, value: user.name, label: user.name };
@@ -55,7 +56,13 @@ export default class NewProject extends Component {
     }
     this.setState({ selectedOptions });
   }
-  createOption(option) {}
+  async createOption(option, attribute) {
+    await create(option, attribute);
+    this.updateAttributes({ value: option, label: option }, attribute);
+    let temp = [...this.state.attributes];
+    temp[temp.findIndex(e => e.attribute === attribute)].list.push(option);
+    this.setState({ attributes: temp });
+  }
 
   saveName(e) {
     this.setState({ name: e.target.value });
@@ -103,6 +110,7 @@ export default class NewProject extends Component {
               submit={this.submitProject}
               name={this.state.name}
               saveName={this.saveName}
+              createOption={this.createOption}
             />
           </div>
         </div>
@@ -113,6 +121,7 @@ export default class NewProject extends Component {
               attributes={attributes}
               selected={this.state.selectedOptions}
               region={this.state.selectedOptions.Region}
+              createOption={this.createOption}
             />
           </div>
           <div className="col-9">

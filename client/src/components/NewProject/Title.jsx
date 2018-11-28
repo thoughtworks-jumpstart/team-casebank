@@ -32,7 +32,7 @@ export default function Title({
           DropdownIndicator: () => null,
           IndicatorSeparator: () => null
         }}
-        onCreateOption={createOption}
+        onCreateOption={option => createOption(option, clients.attribute)}
       />
       <input
         className="form-control mt-2"

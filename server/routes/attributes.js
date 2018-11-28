@@ -7,4 +7,16 @@ router.get("/", async (req, res) => {
   res.status(200).json(attributes);
 });
 
+router.post("/new", async (req, res) => {
+  try {
+    const attribute = await Attributes.findOne({
+      attribute: req.body.attribute
+    });
+    attribute.list.push(req.body.option);
+    await attribute.save();
+    res.status(201).json(attribute);
+  } catch (err) {
+    res.status(200).json({ error: err });
+  }
+});
 module.exports = router;

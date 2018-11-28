@@ -47,7 +47,6 @@ export default function ProjectAttributes({
   return attributes ? (
     <div>
       {reOrderedA.map(a => {
-        console.log(a)
         return (
           <div className="mb-3" key={a.attribute}>
             <h6>
@@ -69,7 +68,7 @@ export default function ProjectAttributes({
                 className="basic-multi-select"
                 classNamePrefix="select"
                 placeholder="Select"
-                onCreateOption={createOption}
+                onCreateOption={option => createOption(option, a.attribute)}
               />
             ) : (
               <Select

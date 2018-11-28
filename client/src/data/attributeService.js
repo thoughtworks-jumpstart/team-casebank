@@ -1,12 +1,11 @@
-export default async function getAttributes() {
+export async function getAttributes() {
   try {
     const attributes = await fetch("/attributes", {
       method: "get",
       headers: { "Content-Type": "application/json" }
     });
-    const jsonResult = await attributes.text();
-    const jsonObject = JSON.parse(jsonResult);
-    return jsonObject;
+    const jsonResult = await attributes.json();
+    return jsonResult;
   } catch (err) {
     console.log(err);
   }
@@ -14,10 +13,21 @@ export default async function getAttributes() {
 
 export function getYears() {
   const years = [];
-  const currentYear = new Date().getFullYear();
-  for (let i = 1999; i <= currentYear; i++) {
-    years.push(i.toString());
+  const currentYear = new Date().getFullYear() + 2;
+  for (let i = 1990; i <= currentYear; i++) {
+    years.unshift(i.toString());
   }
   let Year = { attribute: "Year", list: years };
   return Year;
 }
+
+export async function create(option, attribute) {
+  const res = await fetch("/attributes/new", {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ attribute, option })
+  });
+  const jsonResult = await res.json();
+  return jsonResult;
+}
+
