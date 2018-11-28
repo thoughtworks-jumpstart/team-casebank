@@ -35,14 +35,14 @@ export default function CaseProperties({ properties }) {
         {Array.isArray(formattedProperties[property]) ? (
           formattedProperties[property].map((string, index) => (
             <h6
-              className="text-danger font-weight-normal text-capitalize"
+              className="text-secondary font-weight-normal text-capitalize"
               key={index}
             >
               {string}
             </h6>
           ))
         ) : (
-          <h6 className="text-danger font-weight-normal text-capitalize mb-3">
+          <h6 className="text-secondary font-weight-normal text-capitalize mb-3">
             {formattedProperties[property]}
           </h6>
         )}
