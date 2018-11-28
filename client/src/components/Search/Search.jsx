@@ -134,6 +134,7 @@ export default class Search extends Component {
 
   //Compare Numbers or Strings case insensitive
   isEqualValue = (firstValue, secondValue) => {
+    // console.log(firstValue, secondValue)
     if (firstValue instanceof String || typeof firstValue === "string") {
       return firstValue.toLowerCase() === secondValue.toLowerCase();
     } else {
@@ -147,9 +148,10 @@ export default class Search extends Component {
 
     return allProjects.filter(project => {
       //make all project attributes into an array
-      const attribute = Array.isArray(project[dropDown])
-        ? project[dropDown]
-        : [project[dropDown]];
+      const attributeName = this.searchOptionSettings[dropDown].searchFieldName;
+      const attribute = Array.isArray(project[attributeName])
+        ? project[attributeName]
+        : [project[attributeName]];
       return attribute.find(item => this.isEqualValue(item, optionValue));
     });
   };
@@ -157,6 +159,14 @@ export default class Search extends Component {
   getFilteredResults = () => {
     const { selectedSearch } = this.state;
     //a copy of all projects
+    const allDropdownEmpty =
+      Object.values(selectedSearch).flatMap(x => x).length === 0;
+
+    if (allDropdownEmpty) {
+      const { project } = this.state;
+      let allProjects = [...project];
+      return allProjects;
+    }
     return Object.entries(selectedSearch).flatMap(([dropDown, values]) => {
       const valuesArray = Array.isArray(values) ? values : [values];
       return valuesArray.flatMap(option => {
@@ -176,7 +186,16 @@ export default class Search extends Component {
     //save previous selected options for all dropdowns
     let previousSelected = this.state.selectedSearch;
     //update the the dropdown triggered with new value
-    previousSelected[selectedLabel] = selectedOption;
+    //if is array
+    if (Array.isArray(selectedOption)) {
+      previousSelected[selectedLabel] = selectedOption;
+    } else if (selectedOption === null) {
+      previousSelected[selectedLabel] = [];
+    } else {
+      previousSelected[selectedLabel] = [selectedOption];
+    }
+
+    //if null
     //save updated selections to state
     this.setState({ selectedSearch: previousSelected });
     this.handleSelectOption();
