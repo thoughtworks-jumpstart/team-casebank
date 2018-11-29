@@ -36,7 +36,6 @@ describe("Parser tests", () => {
       "https://dynamic.thoughtworks.com/clients/pepsi-mtv-indies/pepsi-mtv-indies-mobile-screenshot.png"
     ];
     const cloudinaryUrls = await uploadImages(imageUrls);
-    console.log(cloudinaryUrls);
     expect(cloudinaryUrls.length).toEqual(2);
   });
 
@@ -53,7 +52,6 @@ describe("Parser tests", () => {
       '<img src="http://res.cloudinary.com/newzealot/image/upload/v1543481488/pz80s84nu53uveurc1fw.png" />\n <img src="http://res.cloudinary.com/newzealot/image/upload/v1543481488/fqfhm2qcowoeufgevgue.png"/>';
 
     const updatedHtml = replaceImageUrls(originalHtml, cloudinaryUrls);
-    console.log(updatedHtml);
     expect(updatedHtml).toEqual(expectedHtml);
   });
 

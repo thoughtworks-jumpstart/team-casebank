@@ -134,7 +134,6 @@ export default class Search extends Component {
 
   //Compare Numbers or Strings case insensitive
   isEqualValue = (firstValue, secondValue) => {
-    console.log(firstValue, secondValue);
     if (firstValue instanceof String || typeof firstValue === "string") {
       return firstValue.toLowerCase() === secondValue.toLowerCase();
     } else if (firstValue === null && secondValue === "Unknown") {
