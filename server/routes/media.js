@@ -9,12 +9,17 @@ cloudinary.config({
 });
 
 router.get("/", async (req, res) => {
-  let cloudImg = cloudinary.v2.uploader.upload(
-    "https://cdn1-www.dogtime.com/assets/uploads/2010/12/puppies.jpg",
-    function(error, result) {
-      console.log(result, error);
+  const image = await cloudinary.v2.uploader.upload(
+    "http://res.cloudinary.com/demo/image/upload/couple.jpg",
+    { tags: "basic_sample" },
+    function(err, image) {
+      if (err) {
+        console.warn(err);
+      }
+      return image;
     }
   );
-  res.status(200).json(cloudImg);
+  console.log(image.url);
+  res.status(200).json(JSON.stringify(image.url));
 });
 module.exports = router;

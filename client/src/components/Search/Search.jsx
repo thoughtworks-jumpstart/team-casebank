@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import SearchResults from "./SearchResults";
 import SearchCriteria from "./SearchCriteria";
-import Media from "./Media";
 import { getProjects } from "../../data/projectService";
 import {
   getFilteredProperties,
@@ -247,7 +246,6 @@ export default class Search extends Component {
     return (
       <div className="row mt-4">
         <div className="col-2 ml-4">
-          <Media />
           <h4>Filter by</h4>
           {Object.keys(this.searchOptionSettings).map((key, index) => (
             <SearchCriteria
