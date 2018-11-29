@@ -53,7 +53,8 @@ export default class SearchResults extends Component {
               desc: true
             }
           ]}
-          defaultPageSize={10}
+          defaultPageSize={14}
+          pageSizeOptions={[14, 20, 25, 50, 100]}
           className="-striped -highlight"
         />
       </div>
