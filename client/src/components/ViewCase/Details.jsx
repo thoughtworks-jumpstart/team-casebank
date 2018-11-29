@@ -40,17 +40,17 @@ export default class Details extends Component {
             <div className="container-fluid p-4">
               <div className="row text-left">
                 <div className="col border-bottom">
-                  <Title properties={title} />
+                  <div className="float-left">
+                    <Title properties={title} />
+                  </div>
                   {isAuth /*&& this.loginUserIsProjectMember(userid)*/ && (
-                    <div className="pl-5 ">
-                      <button
-                        onClick={this.toBeImplemented}
-                        type="button"
-                        className="btn btn-secondary mt-3 mb-3"
-                      >
-                        Update case study
-                      </button>
-                    </div>
+                    <button
+                      onClick={this.toBeImplemented}
+                      type="button"
+                      className="btn btn-secondary mt-5 mr-5 float-right"
+                    >
+                      Update case study
+                    </button>
                   )}
                 </div>
               </div>

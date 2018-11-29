@@ -44,7 +44,10 @@ export default function Title({
         />
       </div>
       <div className="pr-5 pt-5">
-        <button className="btn btn-secondary float-right" onClick={e => submit()}>
+        <button
+          className="btn btn-secondary float-right"
+          onClick={e => submit()}
+        >
           Submit
         </button>
       </div>
