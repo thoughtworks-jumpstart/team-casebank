@@ -2,6 +2,11 @@ const express = require("express");
 const router = express.Router();
 const Project = require("../schemas/Project");
 const User = require("../schemas/User");
+const {
+  parseForImageUrls,
+  uploadImages,
+  replaceImageUrls
+} = require("../cloudinaryUtils/parser");
 // Cases API
 
 router.get("/:projectId", async (req, res) => {
@@ -34,6 +39,13 @@ router.put("/:projectId", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     let project = new Project(req.body);
+    //Get all the image urls from the description
+    const externalUrls = parseForImageUrls(req.body.description);
+    //Pass the image urls to cloudinary and get the new urls
+    const internalUrls = await uploadImages(externalUrls);
+    console.log("Internalurls", internalUrls);
+    //Replace external urls in html with the new url
+    project.description = replaceImageUrls(req.body.description, internalUrls);
     await project.save();
     if (req.body.main_tw_contact) {
       let user = await User.findById(req.body.main_tw_contact);
