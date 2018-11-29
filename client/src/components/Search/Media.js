@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 async function getNewUrl() {
   try {
-    const message = await fetch("/test", {
+    const message = await fetch("/media", {
       method: "get",
       headers: { "Content-Type": "application/json" }
     });

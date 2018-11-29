@@ -11,11 +11,11 @@ app.use(express.json());
 const projectRouter = require("./routes/projects");
 const userRouter = require("./routes/users");
 const attributeRouter = require("./routes/attributes");
-const testRouter = require("./routes/test");
+const mediaRouter = require("./routes/media");
 app.use("/projects", projectRouter);
 app.use("/users", userRouter);
 app.use("/attributes", attributeRouter);
-app.use("/test", testRouter);
+app.use("/media", mediaRouter);
 
 //To resolve React-Router client side routing. Put all API calls above this route!
 app.get("*", function(req, res) {
