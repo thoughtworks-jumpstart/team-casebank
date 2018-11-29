@@ -26,7 +26,7 @@ export default class Login extends Component {
                 <input
                   type="email"
                   id="inputEmail"
-                  className="form-control"
+                  className="form-control mb-3"
                   placeholder="Email address"
                   required
                   autoFocus
