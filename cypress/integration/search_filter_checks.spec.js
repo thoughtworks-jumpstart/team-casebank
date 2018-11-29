@@ -105,6 +105,6 @@ describe("Search For Project", () => {
 
     getResultRows()
       .find("a")
-      .should("have.length", 14);
+      .should("have.length", 11);
   });
 });
