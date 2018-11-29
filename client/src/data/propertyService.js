@@ -3,7 +3,7 @@ export const getFilteredProperties = (projects, property) => {
   properties = projects.map(item => {
     return item[property];
   });
-  let uniqueProperties = [...new Set(properties)];
+  let uniqueProperties = [...new Set(properties), "Unknown"];
   uniqueProperties.sort();
   return uniqueProperties;
 };
@@ -11,11 +11,10 @@ export const getFilteredProperties = (projects, property) => {
 export const getFilteredMultiProperties = (projects, property) => {
   let properties = [];
   properties = projects.flatMap(item => {
-    console.log("Item:", item[property]);
     return item[property];
   });
 
-  let uniqueProperties = [...new Set(properties)];
+  let uniqueProperties = [...new Set(properties), "Unknown"];
   uniqueProperties.sort();
   return uniqueProperties;
 };

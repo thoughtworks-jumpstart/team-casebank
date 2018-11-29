@@ -233,4 +233,5 @@ async function createProject(project) {
       : alert("Failed to create");
   } catch (error) {}
 }
+
 export { createProject, getProjects, getProjectById };

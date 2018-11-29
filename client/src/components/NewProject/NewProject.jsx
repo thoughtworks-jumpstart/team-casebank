@@ -69,26 +69,30 @@ export default class NewProject extends Component {
   }
   async submitProject() {
     let values = { ...this.state.selectedOptions };
-    let project = {
-      name: this.state.name ? this.state.name : null,
-      client: values.Client ? values.Client.value : null,
-      region: values.Region ? values.Region.value : null,
-      techstack: values.Techstack ? values.Techstack.map(e => e.value) : null,
-      office: values.Office ? values.Office.value : null,
-      industry: values.Industry ? values.Industry.value : null,
-      nda: values.nda ? values.nda.value : null,
-      members: values.Team ? values.Team.map(e => e.id) : null,
-      main_tw_contact: values["Main TW Contact"]
-        ? values["Main TW Contact"].id
-        : null,
-      year: values.Year ? parseInt(values.Year.value) : null,
-      description: this.state.content
-    };
-    console.log(project);
-    let response = await createProject(project);
-    if (response) {
-      alert("Created project!");
-      this.setState({ created: true, response });
+    if (this.state.name && values.Client) {
+      let project = {
+        name: this.state.name,
+        client: values.Client.value,
+        region: values.Region ? values.Region.value : null,
+        techstack: values.Techstack ? values.Techstack.map(e => e.value) : null,
+        office: values.Office ? values.Office.value : null,
+        industry: values.Industry ? values.Industry.value : null,
+        nda: values.nda ? values.nda.value : null,
+        members: values.Team ? values.Team.map(e => e.id) : null,
+        main_tw_contact: values["Main TW Contact"]
+          ? values["Main TW Contact"].id
+          : null,
+        year: values.Year ? parseInt(values.Year.value) : null,
+        description: this.state.content
+      };
+      console.log(project);
+      let response = await createProject(project);
+      if (response) {
+        alert("Created project!");
+        this.setState({ created: true, response });
+      }
+    } else {
+      alert("Client and Name of Project must not be empty");
     }
   }
 

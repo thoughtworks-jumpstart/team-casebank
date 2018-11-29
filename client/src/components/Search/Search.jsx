@@ -135,9 +135,11 @@ export default class Search extends Component {
 
   //Compare Numbers or Strings case insensitive
   isEqualValue = (firstValue, secondValue) => {
-    // console.log(firstValue, secondValue)
+    console.log(firstValue, secondValue);
     if (firstValue instanceof String || typeof firstValue === "string") {
       return firstValue.toLowerCase() === secondValue.toLowerCase();
+    } else if (firstValue === null && secondValue === "Unknown") {
+      return true;
     } else {
       return firstValue === secondValue;
     }
@@ -153,7 +155,13 @@ export default class Search extends Component {
       const attribute = Array.isArray(project[attributeName])
         ? project[attributeName]
         : [project[attributeName]];
-      return attribute.find(item => this.isEqualValue(item, optionValue));
+      if (!attribute.length && optionValue === "Unknown") {
+        return true;
+      } else {
+        return (
+          attribute.findIndex(item => this.isEqualValue(item, optionValue)) > -1
+        );
+      }
     });
   };
 
