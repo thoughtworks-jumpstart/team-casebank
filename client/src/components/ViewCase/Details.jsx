@@ -10,6 +10,7 @@ export default class Details extends Component {
     super(props);
 
     this.state = {};
+    this.redirectToEdit = this.redirectToEdit.bind(this)
   }
 
   async componentDidMount() {
@@ -28,7 +29,9 @@ export default class Details extends Component {
     return false;
   };
 
-  toBeImplemented = () => {};
+  redirectToEdit() {
+    window.location.pathname = `/editor/${this.props.id}`
+  }
 
   render() {
     if (this.state.project) {
@@ -45,7 +48,7 @@ export default class Details extends Component {
                   </div>
                   {isAuth /*&& this.loginUserIsProjectMember(userid)*/ && (
                     <button
-                      onClick={this.toBeImplemented}
+                      onClick={this.redirectToEdit}
                       type="button"
                       className="btn btn-secondary mt-5 mr-5 float-right"
                     >

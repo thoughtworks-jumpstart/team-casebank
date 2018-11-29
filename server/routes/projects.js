@@ -18,6 +18,19 @@ router.get("/", async (req, res) => {
   res.status(200).json(projects);
 });
 
+router.put("/:projectId", async (req, res) => {
+  try {
+    let project = await Project.findById(req.params.projectId);
+    for (let key in req.body) {
+      project[key] = req.body[key];
+    }
+    await project.save();
+    res.status(200).json(project);
+  } catch (err) {
+    res.status(400).json({ error: err });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     let project = new Project(req.body);

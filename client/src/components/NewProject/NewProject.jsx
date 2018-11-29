@@ -4,7 +4,11 @@ import ProjectAttributes from "./ProjectAttributes";
 import Title from "./Title";
 import { getAttributes, create } from "../../data/attributeService";
 import { getUsers } from "../../data/userService";
-import { createProject } from "../../data/projectService";
+import {
+  createProject,
+  getProjectById,
+  updateProject
+} from "../../data/projectService";
 import { Redirect } from "react-router-dom";
 import { AuthConsumer } from "../UserDetails/AuthContext";
 export default class NewProject extends Component {
@@ -12,15 +16,6 @@ export default class NewProject extends Component {
     super(props);
 
     this.state = {
-      selectedOptions: {
-        Region: null,
-        Techstack: [],
-        Office: null,
-        Industry: null,
-        nda: null,
-        Client: null,
-        Team: []
-      },
       name: "",
       attributes: [],
       content: "Enter project details here"
@@ -37,6 +32,82 @@ export default class NewProject extends Component {
   }
 
   async componentDidMount() {
+    let content;
+    let selectedOptions = { Team: [], Techstack: [] };
+    let project;
+    if (this.props.id) {
+      project = await getProjectById(this.props.id);
+      content = project.description;
+      for (let key in project) {
+        if (!project[key]) {
+          delete project[key];
+        }
+      }
+      for (let key in project) {
+        switch (key) {
+          case "techstack":
+            for (let tech of project.techstack) {
+              selectedOptions["Techstack"].push({
+                value: tech,
+                label: tech
+              });
+            }
+            break;
+          case "members":
+            for (let member of project.members) {
+              selectedOptions["Team"].push({
+                id: member._id,
+                value: member.name,
+                label: member.name
+              });
+            }
+            break;
+          case "main_tw_contact":
+            selectedOptions["Main TW Contact"] = {
+              id: project[key]._id,
+              value: project[key].name,
+              label: project[key].name
+            };
+            break;
+          case "year":
+            selectedOptions["Year"] = {
+              value: project[key],
+              label: project[key]
+            };
+            break;
+          case "industry":
+            selectedOptions["Industry"] = {
+              value: project[key],
+              label: project[key]
+            };
+            break;
+          case "client":
+            selectedOptions["Client"] = {
+              value: project[key],
+              label: project[key]
+            };
+            break;
+          case "region":
+            selectedOptions["Region"] = {
+              value: project[key],
+              label: project[key]
+            };
+            break;
+          case "office":
+            selectedOptions["Office"] = {
+              value: project[key],
+              label: project[key]
+            };
+            break;
+          case "nda":
+            selectedOptions["NDA Status"] = {
+              value: project[key],
+              label: project[key]
+            };
+            break;
+        }
+      }
+    }
     const attributes = await getAttributes();
     const users = await getUsers();
     const userList = users.map(user => {
@@ -46,7 +117,12 @@ export default class NewProject extends Component {
     const team = { attribute: "Team", list: userList };
     attributes.push(tw_contact);
     attributes.push(team);
-    this.setState({ attributes });
+    this.setState({
+      attributes,
+      selectedOptions,
+      content,
+      name: project ? project.name : null
+    });
   }
 
   updateAttributes(options, attribute) {
@@ -78,29 +154,32 @@ export default class NewProject extends Component {
         techstack: values.Techstack ? values.Techstack.map(e => e.value) : null,
         office: values.Office ? values.Office.value : null,
         industry: values.Industry ? values.Industry.value : null,
-        nda: values.nda ? values.nda.value : null,
-        members: values.Team ? values.Team.map(e => e.id) : null,
+        nda: values["NDA Status"] ? values["NDA Status"].value : null,
+        members: values.Team ? values.Team.map(e => e.id) : [],
         main_tw_contact: values["Main TW Contact"]
           ? values["Main TW Contact"].id
           : null,
         year: values.Year ? parseInt(values.Year.value) : null,
         description: this.state.content
       };
-      console.log(project);
-      let response = await createProject(project);
-      if (response) {
-        alert("Created project!");
+      let response = this.props.id
+        ? await updateProject(project, this.props.id)
+        : await createProject(project);
+      if (this.props.id && response) {
+        alert("Updated project!");
         this.setState({ created: true, response });
+      } else if (response) {
+        alert("Created project!");
+        this.setState({ updated: true, response });
       }
     } else {
-      alert("Client and Name of Project must not be empty");
+      alert("Client and Title of Project must not be empty");
     }
   }
 
   render() {
     let attributes = this.state.attributes;
-
-    if (this.state.created) {
+    if (this.state.created || this.state.updated) {
       return <Redirect to={`/results/details/${this.state.response._id}`} />;
     }
     return attributes.length ? (

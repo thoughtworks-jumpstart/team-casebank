@@ -24,7 +24,13 @@ class App extends Component {
             )}
             <Route path="/search" exact component={Search} />
             <Route path="/login" exact component={Login} />
-            <Route path="/editor" exact component={NewProject} />
+            <Route
+              path="/editor/:id?"
+              exact
+              render={props => {
+                return <NewProject id={props.match.params.id} />;
+              }}
+            />
             <Route
               path="/results/details/:id"
               exact

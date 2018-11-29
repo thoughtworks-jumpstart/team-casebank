@@ -33,7 +33,7 @@ export default function ProjectAttributes({
     "Region",
     "Office",
     "Year",
-    "NDA status",
+    "NDA Status",
     "Industry",
     "Techstack",
     "Main TW Contact",
@@ -90,7 +90,11 @@ export default function ProjectAttributes({
                 isDisabled={a.attribute === "Office" && !region ? true : false}
                 className="basic-multi-select"
                 classNamePrefix="select"
-                placeholder="Select"
+                placeholder={
+                  a.attribute === "Team" || a.attribute === "Main TW Contact"
+                    ? "Enter name"
+                    : "Select"
+                }
                 openMenuOnClick={false}
                 components={
                   a.attribute === "Main TW Contact" || a.attribute === "Team"

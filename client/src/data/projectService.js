@@ -234,4 +234,17 @@ async function createProject(project) {
   } catch (error) {}
 }
 
-export { createProject, getProjects, getProjectById };
+async function updateProject(project, id) {
+  try {
+    let response = await fetch(`/projects/${id}`, {
+      method: "put",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(project)
+    });
+    return response.status === 200
+      ? response.json()
+      : alert("Failed to update");
+  } catch (error) {}
+}
+
+export { createProject, getProjects, getProjectById, updateProject };
