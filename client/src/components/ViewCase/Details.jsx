@@ -49,7 +49,7 @@ export default class Details extends Component {
                       type="button"
                       className="btn btn-secondary mt-5 mr-5 float-right"
                     >
-                      Update case study
+                      Update Project
                     </button>
                   )}
                 </div>
