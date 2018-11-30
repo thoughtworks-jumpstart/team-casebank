@@ -13,7 +13,13 @@ const parseForImageUrls = html => {
   $(":root")
     .find("img")
     .each(function() {
-      results.push($(this).attr("src"));
+      if (
+        !$(this)
+          .attr("src")
+          .includes("cloudinary")
+      ) {
+        results.push($(this).attr("src"));
+      }
     });
   return results;
 };
