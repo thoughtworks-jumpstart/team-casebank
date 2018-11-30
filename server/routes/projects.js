@@ -46,12 +46,9 @@ router.put("/:projectId", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     let project = new Project(req.body);
-    //Get all the image urls from the description
     const externalUrls = parseForImageUrls(req.body.description);
-    //Pass the image urls to cloudinary and get the new urls
     const internalUrls = await uploadImages(externalUrls);
     console.log("Internalurls", internalUrls);
-    //Replace external urls in html with the new url
     project.description = replaceImageUrls(req.body.description, internalUrls);
     await project.save();
     if (req.body.main_tw_contact) {
