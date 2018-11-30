@@ -35,81 +35,28 @@ export default class NewProject extends Component {
     let content;
     let selectedOptions = { Team: [], Techstack: [] };
     let project;
-    if (this.props.id) {
+    const isUpdating = this.props.id ? true : false;
+    
+    if (isUpdating) {
       project = await getProjectById(this.props.id);
       content = project.description;
-      for (let key in project) {
-        if (!project[key]) {
-          delete project[key];
-        }
-      }
-      for (let key in project) {
-        switch (key) {
-          case "techstack":
-            for (let tech of project.techstack) {
-              selectedOptions["Techstack"].push({
-                value: tech,
-                label: tech
-              });
-            }
-            break;
-          case "members":
-            for (let member of project.members) {
-              selectedOptions["Team"].push({
-                id: member._id,
-                value: member.name,
-                label: member.name
-              });
-            }
-            break;
-          case "main_tw_contact":
-            selectedOptions["Main TW Contact"] = {
-              id: project[key]._id,
-              value: project[key].name,
-              label: project[key].name
-            };
-            break;
-          case "year":
-            selectedOptions["Year"] = {
-              value: project[key],
-              label: project[key]
-            };
-            break;
-          case "industry":
-            selectedOptions["Industry"] = {
-              value: project[key],
-              label: project[key]
-            };
-            break;
-          case "client":
-            selectedOptions["Client"] = {
-              value: project[key],
-              label: project[key]
-            };
-            break;
-          case "region":
-            selectedOptions["Region"] = {
-              value: project[key],
-              label: project[key]
-            };
-            break;
-          case "office":
-            selectedOptions["Office"] = {
-              value: project[key],
-              label: project[key]
-            };
-            break;
-          case "nda":
-            selectedOptions["NDA Status"] = {
-              value: project[key],
-              label: project[key]
-            };
-            break;
-        }
-      }
+      this.removeNullValues(project);
+      this.populateSelectedOptions(project, selectedOptions);
     }
+
     const attributes = await getAttributes();
     const users = await getUsers();
+    this.addContactAndTeamAttribute(users, attributes);
+
+    this.setState({
+      attributes,
+      selectedOptions,
+      content,
+      name: project ? project.name : null
+    });
+  }
+
+  addContactAndTeamAttribute(users, attributes) {
     const userList = users.map(user => {
       return { id: user._id, value: user.name, label: user.name };
     });
@@ -117,12 +64,63 @@ export default class NewProject extends Component {
     const team = { attribute: "Team", list: userList };
     attributes.push(tw_contact);
     attributes.push(team);
-    this.setState({
-      attributes,
-      selectedOptions,
-      content,
-      name: project ? project.name : null
-    });
+  }
+
+  populateSelectedOptions(project, selectedOptions) {
+    for (let key in project) {
+      switch (key) {
+        case "techstack":
+          for (let tech of project.techstack) {
+            selectedOptions["Techstack"].push({
+              value: tech,
+              label: tech
+            });
+          }
+          break;
+        case "members":
+          for (let member of project.members) {
+            selectedOptions["Team"].push({
+              id: member._id,
+              value: member.name,
+              label: member.name
+            });
+          }
+          break;
+        case "main_tw_contact":
+          selectedOptions["Main TW Contact"] = {
+            id: project[key]._id,
+            value: project[key].name,
+            label: project[key].name
+          };
+          break;
+        default:
+          const displayValue = this.getDisplayValue(key);
+          selectedOptions[displayValue] = {
+            value: project[key],
+            label: project[key]
+          };
+          break;
+      }
+    }
+  }
+
+  getDisplayValue(key, titleCaseKey) {
+    let result = "";
+    if (key === "nda") {
+      result = "NDA Status";
+    }
+    else {
+      result = key.charAt(0).toUpperCase() + key.slice(1);
+    }
+    return result;
+  }
+
+  removeNullValues(project) {
+    for (let key in project) {
+      if (!project[key]) {
+        delete project[key];
+      }
+    }
   }
 
   updateAttributes(options, attribute) {
