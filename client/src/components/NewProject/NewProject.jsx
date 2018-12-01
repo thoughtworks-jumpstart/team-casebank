@@ -158,8 +158,9 @@ export default class NewProject extends Component {
           ? values["Main TW Contact"].id
           : null,
         year: values.Year ? parseInt(values.Year.value) : null,
-        description: this.state.content
+        description: this.state.content ? this.state.content : ""
       };
+      console.log(project);
       let response = this.props.id
         ? await updateProject(project, this.props.id)
         : await createProject(project);
